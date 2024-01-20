@@ -1,0 +1,120 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 20, 2024, 4:43:14 PM
+    Author     : Admin
+*/
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+::-webkit-scrollbar{
+    width: 0;
+}
+.video-cover{
+    height: 500px;
+    background-color: black;
+}
+.img-cover {
+    display:flex;
+    justify-content:center;
+}
+.img-cover img{
+     
+    position:relative;
+    width: 870px;
+    height: 500px;
+}
+.play{
+    position:absolute;
+    top: 53%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.play a i{
+    font-size:64px;
+    color:whitesmoke;
+    
+}
+.img-movie img{
+    position:relative;
+    width:281px;
+    height:400px;
+    top: -43px;
+    border:2px solid white;
+    border-radius:3px;
+}
+.grid-left{
+    display:flex;
+}
+.movie-name{
+    display: flex;
+}
+.time{
+    display:flex
+}
+.vote{
+    display:flex;
+}
+.content-movie{
+    margin-left: 29px;
+    margin-top: 32px;
+}
+.content-movie div{
+    margin: 9px 0;
+}
+.movie-name div:last-child{
+    margin-left:9px;
+}
+.time div:last-child{
+     margin-left:9px;
+}
+.vote div:last-child{
+    margin-left:9px;
+}
+.vote div:first-child{
+    font-size:25px;
+    color:var(--primary-color)
+}
+.space span:last-child{
+    margin-left:25px;
+}
+.time div i{
+    color:var(--primary-color)
+}
+.movie-name div:last-child{
+    background-color:var(--primary-color);
+    padding:0 5px;
+    border:1px solid var(--primary-color);
+    border-radius:5px;
+    font-size:14px;
+    color:white;
+}
+.movie-name div h2{
+    color: #3333333;
+    opacity:0.85;
+}
+.space span:first-child{
+    color:#333333;
+    opacity:0.5;
+    
+}
+.sumarize-text{
+    margin:10px 0;
+    font-size:25px;
+    font-weight:550;
+    border-left: 5px solid #034EA2;
+    padding-left:7px;
+}
+.content-sumarize p{
+    text-align:justify;
+    font-size:14px;
+    color:#3333333;
+    opacity:0.7;
+}
+.sumarize-text{
+    margin:10px 0;
+}

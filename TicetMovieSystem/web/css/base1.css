@@ -1,0 +1,25 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 11, 2024, 4:03:25 PM
+    Author     : Admin
+*/
+
+:root{
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --primary-color:#f5811f;
+}
+*{
+    box-sizing: inherit;
+    line-height: 1.6rem;
+}
+html{
+    font-size: 98%;
+    
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;    
+}

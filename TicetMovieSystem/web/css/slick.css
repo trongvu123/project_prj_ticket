@@ -1,0 +1,93 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 14, 2024, 2:46:16 PM
+    Author     : Admin
+*/
+
+.slider-content {
+    margin-top: 50px;
+}
+
+.slider-content__img {
+    position: relative;
+    display: flex;
+    margin-left: 180px;
+    margin: auto;
+}
+
+.slider-content__img img {
+    width: 1080px;
+    height: 359px;
+    object-fit: cover;
+    margin: 0 20px;
+
+}
+.slick-next {
+    background-color: #4CAF50;
+    color: white;
+    position: absolute;
+    bottom: 160px;
+    right: 0;
+    display: none;
+}
+
+.slick-prev {
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 154px;
+}
+.slick-next,
+.slick-prev {
+    display: none !important;
+}
+
+.slick-prev, .slick-next {
+    z-index: 1;
+}
+#semi-circle {
+    bottom: 204px;
+    right: 11px;
+    position: relative;
+    height: 30px;
+    width: 51px;
+    background-color: #696c6e;
+    border: 1px solid transparent;
+    border-radius: 50px 50px 0 0;
+    border-bottom: transparent;
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+#semi-circle2 {
+    bottom: 233px;
+    left: 1487px;
+    position: relative;
+    height: 30px;
+    width: 51px;
+    background-color: #696c6e;
+    border: 1px solid transparent;
+    border-radius: 50px 50px 0 0;
+    border-bottom: transparent;
+    transform: rotate(-90deg);
+    cursor: pointer;
+}
+.arrow-pre{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    
+}
+.arrow-next{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+   
+}

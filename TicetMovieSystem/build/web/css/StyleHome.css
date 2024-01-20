@@ -1,0 +1,205 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 20, 2024, 6:02:48 PM
+    Author     : Admin
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header-contain{
+    margin-top: 24px;
+}
+.header-logo a{
+    position: relative;
+    left: 130px;
+    width: 8%;
+}
+.header-logo a img{
+    width:50%;
+}
+.header-logo{
+    display:inline-block;
+    width: 251px;
+}
+.header-content{
+    display:flex;
+    justify-content: space-between;
+}
+.header-info{
+    display:flex;
+    margin-right: 60px;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+.header-info .movie-dropdown,
+.header-info .corner-dropdown,
+.header-info .event-dropdown {
+    width: 200px;
+    margin-top: 20px;
+}
+.logo-ticket{
+
+    width: 20%;
+    margin-right: 36px;
+}
+.corner-dropdown{
+    margin-left: -61px;
+}
+.buy{
+    margin-top: -47px;
+    z-index: 1;
+
+}
+.buy p{
+    color: var(--white-color);
+    font-weight: 400;
+    filter: blur(0.3px);
+    margin-left: 5.9px;
+
+}
+.logo-ticket i{
+    width: 60px;
+    font-size: 70px;
+    color: #f5811f;
+    transform: scaleX(1.5);
+
+
+}
+.arrow-down{
+    margin-left: 10px;
+    margin-top: -2px;
+    font-size: 8px;
+}
+.movie-dropdown{
+    display:flex;
+}
+.corner-dropdown{
+    display:flex;
+}
+.event-dropdown{
+    display:flex;
+
+}
+.log_and_search{
+    display:flex;
+    position: relative;
+    right: 138px;
+    margin-top: 33px;
+}
+
+.corner-drop{
+    position: relative;
+}
+.corner-content{
+    position: absolute;
+    margin-top: 20px;
+    top: 83px;
+    min-width: 180px;
+    right: 612px;
+    padding: 4px 0;
+    display: none;
+}
+.corner-content a{
+
+    height: 40px;
+     text-decoration: none;
+     color: var(--text-color);
+    text-align: center;
+    display: flex; justify-content: center; align-items: center;
+}
+.event-drop{
+    position: relative;
+}
+.event-content{
+    margin-top: 20px;
+    position: absolute;
+    top:83px;
+    min-width: 180px;
+    right: 462px;
+    padding: 4px 0;
+    display: none;
+}
+.event-content a{
+      height: 40px;
+       text-decoration: none;
+       color: var(--text-color);
+    text-align: center;
+    display: flex; justify-content: center; align-items: center;
+}
+.login{
+    margin-left: 20px;
+}
+.login a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+.corner-dropdown{
+
+    cursor: pointer;
+}
+.corner-dropdown::after{
+    content: "";
+   
+    position: absolute;
+    width: 123px;
+    height: 30px;
+    top: 77px;
+    left: 772px;
+}
+.corner-dropdown:hover .corner-content{
+    display: block;
+    background-color: #f9f9f9;
+
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+
+}
+/*.corner-dropdown:hover a{
+    color: var(--primary-color);
+}*/
+.corner-dropdown{
+    height: 6px;
+}
+.event-dropdown{
+    height: 6px;
+    cursor: pointer;
+}
+.event-dropdown::after{
+    content: "";
+  
+    position: absolute;
+    width: 82px;
+    height: 36px;
+    top: 77px;
+    left: 943px;
+}
+.event-dropdown:hover .event-content{
+    display: block;
+    background-color: #f9f9f9;
+
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+.login a:hover{
+    color:var(--primary-color);
+    transition: ease 0.3s;
+}
+
+.corner-content div:hover{
+
+    background-color: #fff1e6;
+}
+.event-content div:hover{
+
+    background-color: #fff1e6;
+}
+
+
