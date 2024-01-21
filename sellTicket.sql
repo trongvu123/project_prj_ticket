@@ -477,10 +477,12 @@ VALUES
 ('s282', '13:00', 'd51'),
 ('s283', '13:45', 'd51');
 CREATE TABLE Seats (
-    SeatID NVARCHAR(20) PRIMARY KEY,
-    SeatName NVARCHAR(10),   
+    SeatID INT IDENTITY(1,1) PRIMARY KEY,
+    SeatName NVARCHAR(100),   
     ShowtimeID NVARCHAR(20) FOREIGN KEY REFERENCES Showtimes(ShowtimeID)
 );
+
+
 
 CREATE TABLE [User] (
     Phone NVARCHAR(20) NOT NULL PRIMARY KEY,
@@ -527,7 +529,7 @@ CREATE TABLE Ticket (
     Phone NVARCHAR(20),
     DayId NVARCHAR(20),
     ShowtimeID NVARCHAR(20),
-    SeatID NVARCHAR(20),
+    SeatID INT,
 	CinemaID nvarchar(20),
     Price FLOAT,
     PRIMARY KEY (MovieID, Phone, DayId, ShowtimeID, SeatID, TransactionType,CinemaID),
