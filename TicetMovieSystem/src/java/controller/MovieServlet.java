@@ -61,9 +61,16 @@ public class MovieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("movieID");
+        String movieID = request.getParameter("trailerID");
         MovieDAO d = new MovieDAO();
+        ArrayList<Movie> listTop3 = new ArrayList<>();
+        listTop3 = d.getMovieTop8ByStatus("show");
         Movie movie = d.getMovieByID(id);
+        Movie movie1 = d.getMovieByID(movieID);
+        request.setAttribute("listTop3", listTop3);
         request.setAttribute("id", movie);
+        request.setAttribute("id1", movie1);
+
         request.getRequestDispatcher("movie.jsp").forward(request, response);
     }
 

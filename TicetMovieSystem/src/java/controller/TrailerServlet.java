@@ -64,6 +64,7 @@ public class TrailerServlet extends HttpServlet {
             Movie movie = d.getMovieByID(movieID);
             request.setAttribute("tl", movie);
             request.getRequestDispatcher("home.jsp").forward(request, response);
+            
             out.print(movie);
         } catch (Exception e) {
         }
