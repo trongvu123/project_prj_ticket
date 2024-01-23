@@ -48,5 +48,10 @@ public class Showtimes {
     public void setDays(Days days) {
         this.days = days;
     }
+
+    @Override
+    public String toString() {
+        return "Showtimes{" + "showtimeID=" + showtimeID + ", showtimeStart=" + showtimeStart + ", days=" + days + '}';
+    }
     
 }

@@ -20,15 +20,16 @@
                 <div class="img-cover">
                     <img src="${o.coverURL}" alt="alt"/>
                 <div class="play"><a href="movie?movieID=${o.movieID}&trailerID=${o.movieID}"><i class="fa-solid fa-circle-play"></i></a></div>
+
             </div>
         </div>
-               <c:set var="trailer" value="${requestScope.id1}"></c:set>
-                <c:if test="${trailer != null}">
-                    <div class="video-trailer">
-                        <div class="overlay" id="overlay"></div>
-                        <div>${trailer.videoURL}</div>
-                    </div>
-                </c:if>
+        <c:set var="trailer" value="${requestScope.id1}"></c:set>
+        <c:if test="${trailer != null}">
+            <div class="video-trailer">
+                <div class="overlay" id="overlay"></div>
+                <div>${trailer.videoURL}</div>
+            </div>
+        </c:if>
         <div class="grid">
             <div class="grid-movie">
                 <div class="grid-left">
@@ -74,6 +75,29 @@
                     <div class="sumarize-text">Contents</div>
                     <p>${o.content}</p>
                 </div>
+                <div class="days-contain">
+                    <div class="day-text">Screening Schedule</div>
+                    <c:set var="d" value="${requestScope.listDay}"></c:set>
+                    <c:set var="s" value="${requestScope.sID}"></c:set>
+                        <!--<form action="showtime" method="post">-->
+                            <div class="list-day">
+                            <c:forEach items="${d}" var="listDay" >
+                                <button name="dayID" value="${p.dayID}">
+                                    <a href="movie?movieID=${o.movieID}&dayID=${listDay.dayID}">${listDay.dayName}</a>
+                                </button>
+
+                            </c:forEach>
+
+                            <c:forEach items="${s}" var="listS">
+                                <button>
+                                    <a >${listS.showtimeStart}</a>
+                                </button>
+                            </c:forEach>
+
+                        </div>
+
+                    <!--</form>-->
+                </div>
             </div>
             <c:set var="l" value="${requestScope.listTop3}"></c:set> 
                 <div class="movie-recomend">
@@ -84,15 +108,14 @@
                         <h4>${list.title}</h4>
                         <div class="btn-movie3">
                             <button><a href="movie?movieID=${list.movieID}"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button>
-                        </div>
-                 
+                        </div>                
                     </div>
                 </c:forEach>
-                           <div class="btn-more__contain">
-                            <div class="btn-more">
-                                <div class="btn-more__link"><a href="#">See also</a><i class="fa-solid fa-chevron-right"></i></div>
-                            </div>
-                        </div>
+                <div class="btn-more__contain">
+                    <div class="btn-more">
+                        <div class="btn-more__link"><a href="#">See also</a><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                </div>
             </div>           
         </div>
         <jsp:include page="footer.jsp"/>
