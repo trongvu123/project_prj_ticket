@@ -64,18 +64,21 @@ public class MovieServlet extends HttpServlet {
         String movieID = request.getParameter("trailerID");
          String dayID = request.getParameter("dayID");
          String showtimeID = request.getParameter("showtimeID");
+         SeatsDAO seatsDAO = new SeatsDAO();
         showtimesDAO s = new showtimesDAO();
         MovieDAO d = new MovieDAO();
          ArrayList<Days> days = new ArrayList<>();
           ArrayList<Showtimes> list = new ArrayList<>();
+          ArrayList<Seats> seatses = new ArrayList<>();
         list=s.getAllShowtimes(dayID);
-        
+        seatses = seatsDAO.getAllSeats(showtimeID);
          DaysDAO d1 = new DaysDAO();
         ArrayList<Movie> listTop3 = new ArrayList<>();
         listTop3 = d.getMovieTop8ByStatus("show");
         Movie movie = d.getMovieByID(id);
         Movie movie1 = d.getMovieByID(movieID);
         days=d1.getAllDays(id);
+        request.setAttribute("listSeat", seatses);
         request.setAttribute("sID", list);
         request.setAttribute("listDay", days);
         request.setAttribute("listTop3", listTop3);

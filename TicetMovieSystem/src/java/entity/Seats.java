@@ -49,5 +49,10 @@ public class Seats {
     public void setShowtimes(Showtimes showtimes) {
         this.showtimes = showtimes;
     }
+
+    @Override
+    public String toString() {
+        return "Seats{" + "seatID=" + seatID + ", seatName=" + seatName + ", showtimes=" + showtimes + '}';
+    }
     
 }

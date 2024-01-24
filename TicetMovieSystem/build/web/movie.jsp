@@ -79,6 +79,7 @@
                     <div class="day-text">Screening Schedule</div>
                     <c:set var="d" value="${requestScope.listDay}"></c:set>
                     <c:set var="s" value="${requestScope.sID}"></c:set>
+                    <c:set var="seat" value="${requestScope.listSeat}"></c:set>
                         <!--<form action="showtime" method="post">-->
                             <div class="list-day">
                             <c:forEach items="${d}" var="listDay" >
@@ -90,10 +91,12 @@
 
                             <c:forEach items="${s}" var="listS">
                                 <button>
-                                    <a >${listS.showtimeStart}</a>
+                                    <a movie?movieID=${o.movieID}&showtimeID=${listS.showtimeID}">${listS.showtimeStart}</a>
                                 </button>
                             </c:forEach>
-
+                            <c:forEach items="${seat}" var="s">
+                                <h1>${s.seatName}</h1>
+                            </c:forEach>
                         </div>
 
                     <!--</form>-->
