@@ -11,7 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="./css/movie.css"/>
+        <link rel="stylesheet" href="./css/movie1.css"/>
+
     </head>
     <body>
         <jsp:include page="header.jsp"/>
@@ -80,26 +81,29 @@
                     <c:set var="d" value="${requestScope.listDay}"></c:set>
                     <c:set var="s" value="${requestScope.sID}"></c:set>
                     <c:set var="seat" value="${requestScope.listSeat}"></c:set>
-                        <!--<form action="showtime" method="post">-->
+                        <form action="showtime" >
                             <div class="list-day">
                             <c:forEach items="${d}" var="listDay" >
-                                <button name="dayID" value="${p.dayID}">
-                                    <a href="movie?movieID=${o.movieID}&dayID=${listDay.dayID}">${listDay.dayName}</a>
+                                <button  class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
+                                    ${listDay.dayName}
                                 </button>
+                                    <input name="movieID" type="hidden" value="${listDay.movie.movieID}">
+                            </c:forEach> <input name="movieID" type="hidden" value="${param.movieID}">
+                            <div>
+                                <c:forEach items="${s}" var="listS">
+                                    <button class="btn-showtime" name="showtimeID" value="${listS.showtimeID}">
+                                        ${listS.showtimeStart}
+                                    </button>
+                                    <input name="dayID" type="hidden" value="${listS.days.dayID}">
+                                </c:forEach>
+                            </div>
 
-                            </c:forEach>
-
-                            <c:forEach items="${s}" var="listS">
-                                <button>
-                                    <a movie?movieID=${o.movieID}&showtimeID=${listS.showtimeID}">${listS.showtimeStart}</a>
-                                </button>
-                            </c:forEach>
-                            <c:forEach items="${seat}" var="s">
-                                <h1>${s.seatName}</h1>
+                            <c:forEach items="${seat}" var="t">
+                                <h1>${t.seatName}</h1>
                             </c:forEach>
                         </div>
 
-                    <!--</form>-->
+                    </form>
                 </div>
             </div>
             <c:set var="l" value="${requestScope.listTop3}"></c:set> 
@@ -122,5 +126,6 @@
             </div>           
         </div>
         <jsp:include page="footer.jsp"/>
+
     </body>
 </html>

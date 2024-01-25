@@ -262,3 +262,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     height:00px;
     display:flex
 }
+.day-text{
+    margin:30px 0;
+    font-size: 25px;
+    font-weight: 550;
+    border-left: 5px solid #034EA2;
+    padding-left: 7px;
+}
+.btn-day.active{
+    color:white;
+    background-color: #034ea2;
+}
+.btn-day{
+    border:none;
+    width:80px;
+    height:65px;
+    padding:4px;
+    border-radius: 5px;
+    margin: 0 7px;
+}
+.btn-day{
+    border:none;
+    width:80px;
+    height:65px;
+    padding:4px;
+    border-radius: 5px;
+    margin: 0 7px;
+    cursor:pointer;
+}
+.btn-showtime{
+    margin:20px 7px;
+    border:none;
+    width:102px;
+    height:39px;
+    border-radius:3px;
+    cursor:pointer
+    
+}
+.btn-showtime{
+    margin:20px 7px;
+    width:102px;
+    height:39px;
+    border-radius:3px;
+    background-color:transparent;
+    cursor:pointer;
+    border:1px solid #3333;
+    transition:background-color 0.3s, color 0.3s;
+}
+.btn-showtime:hover{
+       color:white;
+    background-color: #034ea2;
+}

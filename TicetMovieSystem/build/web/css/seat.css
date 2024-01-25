@@ -1,0 +1,190 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 25, 2024, 3:56:46 PM
+    Author     : Admin
+*/
+*{
+ 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #f9f9f9;
+}
+.content{
+    margin-top: 40px;
+    width: 853px;
+    height: 587px;
+    background-color: #FFF;
+
+}
+.booking-seat ul{
+    list-style: none;
+}
+.list-item{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+.view{
+    margin-top: 30px;
+    text-align: center;
+    color: #dedede;
+}
+.seat-button {
+    padding: 6px;
+    color: white;
+    /* border: 0.1px gray; */
+    border: thin solid rgb(170, 169, 169);
+    border-radius: 5px;
+    background-color: transparent;
+    width: 22px;
+    height: 21px;
+    cursor: pointer;
+    position: relative;
+}
+.seat{
+    margin-top: 6px;
+    color: #777777;
+    font-size: 0.9rem;
+}
+.seat-button:hover{
+    border: none;
+    background-color: #f58020;
+    transition: ease 0.4s;
+}
+.seat-button.selected:focus{
+    border: none;
+    background-color: #f58020;
+}
+.seat-button.selected {
+    border: none;
+    background-color: #f58020;
+}
+/* CSS */
+.seat-button.booked {
+    border: none;
+    background-color: #ccc; /* Màu xám */
+    cursor: default;
+}
+
+
+.seat-button span{
+    font-size: 12px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.pivot {
+    display: inline-block;
+    border: 1px solid #f58020;
+    width:713px; 
+    margin-left: 71px;
+}
+.seat-note{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 38px;
+}
+.seat-note__nofi{
+    display: flex;
+    margin-left: 71px;
+    
+}
+.seat-booked{
+    display: flex;
+}
+.note{
+    font-size: 0.7rem;
+    margin-left: 9px;
+    margin-top: 3px;
+}
+.seat-choose{
+    display: flex;
+    margin-left: 16px;
+}
+.seat-choosing{
+ 
+}
+.seat-class{
+    display: flex;
+    margin-right: 70px;
+    
+}
+.seat-vip{
+    display: flex;
+   margin-right: 16px;
+}
+.seat-booked__button{
+
+}
+.seat-single{
+    display: flex;
+    margin-right: 16px;
+}
+.seat-double{
+    display: flex;
+}
+.seat-vip__button{
+    padding: 2px;
+    color: white;
+    /* border: 0.1px  gray; */
+    border: thin solid #f58020;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 20px; 
+    height: 19px; 
+    pointer-events: none;
+}
+.seat-single__button{
+    padding: 2px;
+    color: white;
+    /* border: 0.1px  gray; */
+    border: thin solid rgb(170, 169, 169);
+    border-radius: 5px;
+    background-color: transparent;
+    width: 20px; 
+    height: 19px; 
+    pointer-events: none;
+}
+.seat-double__button{
+    padding: 2px;
+    color: white;
+    /* border: 0.1px  gray; */
+    border: thin solid #034ea2;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 44px; 
+    height: 19px; 
+    pointer-events: none;
+ 
+}
+.seat-booked__button{
+    padding: 2px;
+    color: white;
+    /* border: 0.1px  gray; */
+    border: none;
+    border-radius: 5px;
+    background-color: #d0d0d0;
+    width: 20px; 
+    height: 19px; 
+    pointer-events: none;
+}
+.seat-choosing__button{
+    padding: 2px;
+    color: white;
+    /* border: 0.1px  gray; */
+    border: none;
+    border-radius: 5px;
+    background-color: #f58020;
+    width: 20px; 
+    height: 19px; 
+    pointer-events: non
+}
