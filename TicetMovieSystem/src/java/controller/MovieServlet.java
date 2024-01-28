@@ -70,14 +70,23 @@ public class MovieServlet extends HttpServlet {
          ArrayList<Days> days = new ArrayList<>();
           ArrayList<Showtimes> list = new ArrayList<>();
           ArrayList<Seats> seatses = new ArrayList<>();
+             
         list=s.getAllShowtimes(dayID);
         seatses = seatsDAO.getAllSeats(showtimeID);
          DaysDAO d1 = new DaysDAO();
+          days=d1.getAllDays(id);
+              if(list.isEmpty()){
+            String dayFirstString="";
+
+         dayFirstString= days.get(0).getDayID();
+
+        list=s.getAllShowtimes(dayFirstString);
+        }
         ArrayList<Movie> listTop3 = new ArrayList<>();
         listTop3 = d.getMovieTop8ByStatus("show");
         Movie movie = d.getMovieByID(id);
         Movie movie1 = d.getMovieByID(movieID);
-        days=d1.getAllDays(id);
+    
         request.setAttribute("listSeat", seatses);
         request.setAttribute("sID", list);
         request.setAttribute("listDay", days);

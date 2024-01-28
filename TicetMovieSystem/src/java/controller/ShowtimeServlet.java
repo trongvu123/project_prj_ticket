@@ -85,6 +85,14 @@ public class ShowtimeServlet extends HttpServlet {
         Movie movie = d.getMovieByID(id);
         Movie movie1 = d.getMovieByID(movieID);
         days = d1.getAllDays(id);
+        if(list.isEmpty()){
+            String dayFirstString="";
+            for (int i = 0; i < days.size(); i++) {
+                dayFirstString= days.get(i).getDayID();
+                break;              
+            }
+        list=s.getAllShowtimes(dayFirstString);
+        }
         HttpSession session = request.getSession();
         session.setAttribute("sID", list);
         session.setAttribute("listSeat", seatses);

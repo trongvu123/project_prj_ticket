@@ -83,16 +83,26 @@
                     <c:set var="seat" value="${requestScope.listSeat}"></c:set>
                         <form action="showtime" >
                             <div class="list-day">
-                            <c:forEach items="${d}" var="listDay" >
-                                <button  class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
-                                    ${listDay.dayName}
-                                </button>
+                                <div class="day-contain">
+                                <c:forEach items="${d}" var="listDay" varStatus="l">
+                                    <c:if test="${l.index==0 and param.dayID==null}" >
+                                              <button  class="btn-day active" name="dayID" value="${listDay.dayID}" >
+                                        ${listDay.dayName}
+                                    </button>
+                                    </c:if>
+                                    
+                                    <button  class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
+                                        ${listDay.dayName}
+                                    </button>
+                             
                                     <input name="movieID" type="hidden" value="${listDay.movie.movieID}">
-                            </c:forEach> <input name="movieID" type="hidden" value="${param.movieID}">
+                                </c:forEach> <input name="movieID" type="hidden" value="${param.movieID}">
+                            </div>
+
                             <div>
                                 <c:forEach items="${s}" var="listS">
                                     <button class="btn-showtime" name="showtimeID" value="${listS.showtimeID}">
-                                        ${listS.showtimeStart}
+                                        <a href="seat?showtimeID=${listS.showtimeID}">${listS.showtimeStart}</a>
                                     </button>
                                     <input name="dayID" type="hidden" value="${listS.days.dayID}">
                                 </c:forEach>

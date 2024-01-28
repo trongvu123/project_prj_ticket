@@ -15,8 +15,11 @@
     </head>
     <body>
          <jsp:include page="header.jsp"/>
-         <c:set var="sID" value="${sessionScope.showtimeID}"></c:set>
+         <c:set var="sID" value="${requestScope.showtimeID}"></c:set>
          <div>${sID}</div>
+         <c:forEach items="${sessionScope.listShowtime}" var="o">
+             <div>${o.showtimeID}</div>
+         </c:forEach>
         <div class="content">
         <div class="booking-seat">
             <form id="seatForm" action="kiemtra" method="post" >

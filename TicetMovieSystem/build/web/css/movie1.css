@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     grid-template-rows: 1fr;
 }
 ::-webkit-scrollbar{
-    width: 0;
+    /*width: 0;*/
 }
 .video-cover{
     height: 500px;
@@ -289,6 +289,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 5px;
     margin: 0 7px;
     cursor:pointer;
+        white-space:wrap;
 }
 .btn-showtime{
     margin:20px 7px;
@@ -309,7 +310,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border:1px solid #3333;
     transition:background-color 0.3s, color 0.3s;
 }
-.btn-showtime:hover{
-       color:white;
+.btn-showtime a {
+    text-decoration: none;
+    color: black;
+}
+
+.btn-showtime:hover a {
+    color: white;
+}
+
+.btn-showtime:hover {
     background-color: #034ea2;
+}
+.day-contain{
+    width:500px;
+    overflow-x:scroll;
+    white-space:nowrap;
 }

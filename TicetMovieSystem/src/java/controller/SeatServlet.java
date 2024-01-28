@@ -62,16 +62,17 @@ public class SeatServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
          HttpSession session = request.getSession();
-
+         String showtimeID = request.getParameter("showtimeID");
     ArrayList<Showtimes> list = (ArrayList<Showtimes>) session.getAttribute("sID");
     ArrayList<Seats> seatses = (ArrayList<Seats>) session.getAttribute("listSeat");
     ArrayList<Days> days = (ArrayList<Days>) session.getAttribute("listDay");
     ArrayList<Movie> listTop3 = (ArrayList<Movie>) session.getAttribute("listTop3");
     Movie movie = (Movie) session.getAttribute("id");
     Movie movie1 = (Movie) session.getAttribute("id1");
-    String showtimeID = (String) session.getAttribute("showtimeID");
+//    String showtimeID = (String) session.getAttribute("showtimeID");
     request.setAttribute(showtimeID, movie);
-    session.setAttribute("showtimeID", showtimeID);
+    request.setAttribute("showtimeID", showtimeID);
+    session.setAttribute("listShowtime", list);
 
     request.getRequestDispatcher("seat.jsp").forward(request, response);
     } 
