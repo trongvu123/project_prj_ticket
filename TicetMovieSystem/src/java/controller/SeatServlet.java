@@ -5,6 +5,9 @@
 
 package controller;
 
+import dao.DaysDAO;
+import dao.SeatsDAO;
+import dao.showtimesDAO;
 import entity.Days;
 import entity.Movie;
 import entity.Seats;
@@ -63,6 +66,9 @@ public class SeatServlet extends HttpServlet {
     throws ServletException, IOException {
          HttpSession session = request.getSession();
          String showtimeID = request.getParameter("showtimeID");
+         showtimesDAO dShowtime = new showtimesDAO();
+         DaysDAO daysDAO = new DaysDAO();
+         SeatsDAO seatsDAO = new SeatsDAO();
     ArrayList<Showtimes> list = (ArrayList<Showtimes>) session.getAttribute("sID");
     ArrayList<Seats> seatses = (ArrayList<Seats>) session.getAttribute("listSeat");
     ArrayList<Days> days = (ArrayList<Days>) session.getAttribute("listDay");
@@ -70,10 +76,15 @@ public class SeatServlet extends HttpServlet {
     Movie movie = (Movie) session.getAttribute("id");
     Movie movie1 = (Movie) session.getAttribute("id1");
 //    String showtimeID = (String) session.getAttribute("showtimeID");
+    String dayID = (String) session.getAttribute("dayID");
+    Days dayChoose = daysDAO.getDay(dayID);
+    Showtimes showtimeChoose = seatsDAO.getShowtimes(showtimeID);
     request.setAttribute(showtimeID, movie);
     request.setAttribute("showtimeID", showtimeID);
     session.setAttribute("listShowtime", list);
-
+    session.setAttribute("movie", movie);
+    session.setAttribute("day", dayChoose);
+    session.setAttribute("showtime", showtimeChoose);
     request.getRequestDispatcher("seat.jsp").forward(request, response);
     } 
 

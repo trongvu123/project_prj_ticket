@@ -27,7 +27,7 @@ public class DaysDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, id);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Movie movie = getMovieByID(id);
                 Days day = new Days(rs.getString(1), rs.getString(2), movie);
                 list.add(day);
@@ -35,6 +35,25 @@ public class DaysDAO extends DBContext {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public Days getDay(String id) {
+
+        String sql = "select d.*\n"
+                + "from Days d\n"
+                + "where d.DayId=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Movie movie = getMovieByID(id);
+                return new Days(rs.getString(1), rs.getString(2), movie);
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public Movie getMovieByID(String type) {
@@ -77,9 +96,10 @@ public class DaysDAO extends DBContext {
         }
         return null;
     }
+
     public static void main(String[] args) {
         DaysDAO d = new DaysDAO();
-        ArrayList <Days> list = new  ArrayList<>();
+        ArrayList<Days> list = new ArrayList<>();
         list = d.getAllDays("mov1");
         for (Days days : list) {
             System.out.println(days);

@@ -84,16 +84,19 @@
                         <form action="showtime" >
                             <div class="list-day">
                                 <div class="day-contain">
+                                    
                                 <c:forEach items="${d}" var="listDay" varStatus="l">
                                     <c:if test="${l.index==0 and param.dayID==null}" >
                                               <button  class="btn-day active" name="dayID" value="${listDay.dayID}" >
                                         ${listDay.dayName}
                                     </button>
                                     </c:if>
-                                    
-                                    <button  class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
+                                    <c:if test="${l.index != 0 or param.dayID != null}">
+                                    <button class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
                                         ${listDay.dayName}
                                     </button>
+                                    </c:if>
+                                    
                              
                                     <input name="movieID" type="hidden" value="${listDay.movie.movieID}">
                                 </c:forEach> <input name="movieID" type="hidden" value="${param.movieID}">

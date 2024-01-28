@@ -101,6 +101,7 @@ public class ShowtimeServlet extends HttpServlet {
         session.setAttribute("id", movie);
         session.setAttribute("id1", movie1);
         session.setAttribute("showtimeID", showtimeID);
+        session.setAttribute("dayID", dayID);
         request.setAttribute("sID", list);
         request.setAttribute("listSeat", seatses);
         request.setAttribute("listDay", days);
