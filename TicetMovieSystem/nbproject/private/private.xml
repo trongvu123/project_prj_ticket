@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Showtimes.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/js/main1.js</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/css/seat.css</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/seat.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/SeatsDAO.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/DaysDAO.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/ShowtimeServlet.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/base1.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/SeatServlet.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/movie1.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/footer.css</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/header.jsp</file>
         </group>
     </open-files>
 </project-private>
