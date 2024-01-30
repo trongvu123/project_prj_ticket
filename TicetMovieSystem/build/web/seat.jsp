@@ -928,6 +928,7 @@
                     <c:set var="movie" value="${sessionScope.movie}"></c:set>
                     <c:set var="day" value="${sessionScope.day}"></c:set>
                     <c:set var="showtime" value="${sessionScope.showtime}"></c:set>
+                    <c:set var="cinemas" value="${requestScope.cinema}"></c:set>
                         <div class="img-title">
                             <div class="img-bill">
                                 <img src="${movie.imgURL}" alt="alt"/>
@@ -937,6 +938,7 @@
                             <div>2D Phụ Đề - <span>T18</span></div>
                         </div>
                     </div>
+                            <div class="cinema">${cinemas.cinemaName}</div>
                     <div class="time-bill">
                         Rate: <span>${showtime.showtimeStart}</span> - <span>${day.dayName}</span></div>
                 </div>
@@ -960,37 +962,35 @@
         <jsp:include page="footer.jsp" />
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // Tương ứng với cách bạn lấy dữ liệu từ cơ sở dữ liệu
-                // Đây chỉ là ví dụ giả định
                 var bookedSeats = [2, 5, 9, 13];
                 let total = 0;
                 var seatButtons = document.querySelectorAll('.seat-button');
 
                 seatButtons.forEach(function (button, index) {
-     
                     var isBooked = bookedSeats.includes(index + 1);
-
 
                     if (isBooked) {
                         button.classList.add('booked');
                     }
 
-
                     button.addEventListener('click', function () {
-                        total++;
-                        console.log(total);
-
                         var isBooked = this.classList.contains('booked');
+                        var isSelected = this.classList.contains('selected');
 
-
-                        if (!isBooked ) {
-
-                            this.classList.toggle('selected');
-                          
+                        if (!isBooked) {
+                            if (!isSelected && total < 8) {
+                                this.classList.add('selected');
+                                total++;
+                            } else if (isSelected) {
+                                this.classList.remove('selected');
+                                total--;
+                            }
                         }
+                        console.log(total);
                     });
                 });
             });
+
             document.addEventListener("DOMContentLoaded", function () {
                 let seatButtons = document.querySelectorAll('.seat-button');
                 let count = document.querySelector('.total-seat__bill span');
@@ -1012,19 +1012,23 @@
                             if (total <= 8) {
                                 seatPrice += 2;
                                 selectedSeats.push(seatValue);
+                                check = true;
                             }
-                            check = true;
+                            
                             bill.style.display = 'block';
                         } else {
+                            if(total<=8){
                             total--;
                             seatPrice -= 2;
                             selectedSeats.pop(seatValue);
                             check = false;
+                            }
+                            
                         }
                         if (total < 1) {
                             bill.style.display = 'none';
                         }
-                        if (total >= 8) {
+                        if (total > 8) {
                             total = 8;
                             var overlay = document.querySelector('.overlay');
                             overlay.classList.add('show-overlay');

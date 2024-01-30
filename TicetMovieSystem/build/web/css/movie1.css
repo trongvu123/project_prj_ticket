@@ -323,8 +323,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: #034ea2;
 }
 
-.day-contain{
+.day-remain{
     width:500px;
     overflow-x:scroll;
     white-space:nowrap;
+}
+.day-contain{
+    display:flex;
+  
+}
+.cinema{
+    margin-top:12px;
+    margin-left:60px;
+    
+}
+.cinema select{
+    width:200px;
+    height:40px;
+    border-radius:5px;
+    
+}
+.cinema select option{
+    border-radius:2px;
+    height:40px;
 }

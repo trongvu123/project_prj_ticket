@@ -81,25 +81,37 @@
                     <c:set var="d" value="${requestScope.listDay}"></c:set>
                     <c:set var="s" value="${requestScope.sID}"></c:set>
                     <c:set var="seat" value="${requestScope.listSeat}"></c:set>
+                    <c:set var="cinema" value="${requestScope.cinema}"></c:set>
                         <form action="showtime" >
                             <div class="list-day">
                                 <div class="day-contain">
-                                    
-                                <c:forEach items="${d}" var="listDay" varStatus="l">
-                                    <c:if test="${l.index==0 and param.dayID==null}" >
-                                              <button  class="btn-day active" name="dayID" value="${listDay.dayID}" >
-                                        ${listDay.dayName}
-                                    </button>
-                                    </c:if>
-                                    <c:if test="${l.index != 0 or param.dayID != null}">
-                                    <button class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
-                                        ${listDay.dayName}
-                                    </button>
-                                    </c:if>
-                                    
-                             
-                                    <input name="movieID" type="hidden" value="${listDay.movie.movieID}">
-                                </c:forEach> <input name="movieID" type="hidden" value="${param.movieID}">
+                                    <div class="day-remain">
+                                    <c:forEach items="${d}" var="listDay" varStatus="l">
+                                        <c:if test="${l.index==0 and param.dayID==null}" >
+                                            <button  class="btn-day active" name="dayID" value="${listDay.dayID}" >
+                                                ${listDay.dayName}
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${l.index != 0 or param.dayID != null}">
+                                            <button class="btn-day ${listDay.dayID eq param.dayID ? 'active' : ''}" name="dayID" value="${listDay.dayID}" >
+                                                ${listDay.dayName}
+                                            </button>
+                                        </c:if>
+
+
+                                        <input name="movieID" type="hidden" value="${listDay.movie.movieID}">
+                                    </c:forEach> <input name="movieID" type="hidden" value="${param.movieID}">
+                                </div>
+
+                                <div class="cinema">
+                                    <div class="list-cinema">
+                                        <select name="cinema" >
+                                            <c:forEach items="${cinema}" var="ci">
+                                                <option value="${ci.cinemaID}" ${ param.cinema eq ci.cinemaID ? 'selected' : ''}>${ci.cinemaName}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
                             <div>
@@ -139,6 +151,14 @@
             </div>           
         </div>
         <jsp:include page="footer.jsp"/>
+        <script>
+            let select = document.querySelector('.list-cinema select');
+            let form = select.form; 
 
+            select.addEventListener('change', function() {
+                form.submit(); 
+            });
+
+        </script>
     </body>
 </html>

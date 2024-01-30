@@ -4,10 +4,12 @@
  */
 package controller;
 
+import dao.CinemaDAO;
 import dao.DaysDAO;
 import dao.MovieDAO;
 import dao.SeatsDAO;
 import dao.showtimesDAO;
+import entity.Cinema;
 import entity.Days;
 import entity.Movie;
 import entity.Seats;
@@ -71,13 +73,17 @@ public class ShowtimeServlet extends HttpServlet {
         String movieID = request.getParameter("trailerID");
         String dayID = request.getParameter("dayID");
         String showtimeID = request.getParameter("showtimeID");
+        String cinemaID = request.getParameter("cinema");
         SeatsDAO seatsDAO = new SeatsDAO();
         showtimesDAO s = new showtimesDAO();
         MovieDAO d = new MovieDAO();
+        CinemaDAO cdao = new CinemaDAO();
+        ArrayList<Cinema> cinema = new ArrayList<>();
         ArrayList<Days> days = new ArrayList<>();
         ArrayList<Showtimes> list = new ArrayList<>();
         ArrayList<Seats> seatses = new ArrayList<>();
         list = s.getAllShowtimes(dayID);
+        cinema = cdao.getAllCinema();
         seatses = seatsDAO.getAllSeats(showtimeID);
         DaysDAO d1 = new DaysDAO();
         ArrayList<Movie> listTop3 = new ArrayList<>();
@@ -102,6 +108,9 @@ public class ShowtimeServlet extends HttpServlet {
         session.setAttribute("id1", movie1);
         session.setAttribute("showtimeID", showtimeID);
         session.setAttribute("dayID", dayID);
+        
+         session.setAttribute("cinema", cinemaID);
+         request.setAttribute("cinema", cinema);
         request.setAttribute("sID", list);
         request.setAttribute("listSeat", seatses);
         request.setAttribute("listDay", days);

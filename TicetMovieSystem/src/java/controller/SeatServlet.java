@@ -5,9 +5,11 @@
 
 package controller;
 
+import dao.CinemaDAO;
 import dao.DaysDAO;
 import dao.SeatsDAO;
 import dao.showtimesDAO;
+import entity.Cinema;
 import entity.Days;
 import entity.Movie;
 import entity.Seats;
@@ -69,18 +71,22 @@ public class SeatServlet extends HttpServlet {
          showtimesDAO dShowtime = new showtimesDAO();
          DaysDAO daysDAO = new DaysDAO();
          SeatsDAO seatsDAO = new SeatsDAO();
+         CinemaDAO cinemaDAO = new CinemaDAO();
     ArrayList<Showtimes> list = (ArrayList<Showtimes>) session.getAttribute("sID");
     ArrayList<Seats> seatses = (ArrayList<Seats>) session.getAttribute("listSeat");
     ArrayList<Days> days = (ArrayList<Days>) session.getAttribute("listDay");
     ArrayList<Movie> listTop3 = (ArrayList<Movie>) session.getAttribute("listTop3");
+    String cinemaID = (String) session.getAttribute("cinema");
     Movie movie = (Movie) session.getAttribute("id");
     Movie movie1 = (Movie) session.getAttribute("id1");
 //    String showtimeID = (String) session.getAttribute("showtimeID");
+    Cinema cinema = cinemaDAO.getCinema(cinemaID);
     String dayID = (String) session.getAttribute("dayID");
     Days dayChoose = daysDAO.getDay(dayID);
     Showtimes showtimeChoose = seatsDAO.getShowtimes(showtimeID);
     request.setAttribute(showtimeID, movie);
     request.setAttribute("showtimeID", showtimeID);
+    request.setAttribute("cinema", cinema);
     session.setAttribute("listShowtime", list);
     session.setAttribute("movie", movie);
     session.setAttribute("day", dayChoose);

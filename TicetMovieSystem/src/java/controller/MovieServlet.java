@@ -67,10 +67,12 @@ public class MovieServlet extends HttpServlet {
          SeatsDAO seatsDAO = new SeatsDAO();
         showtimesDAO s = new showtimesDAO();
         MovieDAO d = new MovieDAO();
+        CinemaDAO cdao = new CinemaDAO();
+        ArrayList<Cinema> cinema = new ArrayList<>();
          ArrayList<Days> days = new ArrayList<>();
           ArrayList<Showtimes> list = new ArrayList<>();
           ArrayList<Seats> seatses = new ArrayList<>();
-             
+             cinema = cdao.getAllCinema();
         list=s.getAllShowtimes(dayID);
         seatses = seatsDAO.getAllSeats(showtimeID);
          DaysDAO d1 = new DaysDAO();
@@ -86,7 +88,7 @@ public class MovieServlet extends HttpServlet {
         listTop3 = d.getMovieTop8ByStatus("show");
         Movie movie = d.getMovieByID(id);
         Movie movie1 = d.getMovieByID(movieID);
-    
+        request.setAttribute("cinema", cinema);
         request.setAttribute("listSeat", seatses);
         request.setAttribute("sID", list);
         request.setAttribute("listDay", days);

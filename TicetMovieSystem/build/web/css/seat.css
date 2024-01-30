@@ -259,7 +259,7 @@ body{
 }
 .grid-right__showtime{
     width:400px;
-    height:340px;
+    height:415px;
     background-color:white;
     border-radius:5px;
     border-top:5px solid var(--primary-color);
@@ -292,7 +292,7 @@ body{
 .btn-order{
     position:relative;
     left: 1056px;
-    bottom:110px;
+    bottom:67px;
     border:none;
     background-color:var(--primary-color);
     width:197px;
@@ -345,12 +345,13 @@ body{
     display: grid;
     transition: opacity 0.3s ease;
     margin: auto;
-
+   
 }
 .overlay.show-overlay {
     display: block;
     opacity: 1;
     z-index: 10;
+     display: flex;
 }
 .notifi{
     background-color: white;
@@ -362,6 +363,7 @@ body{
     align-items: center;
     place-self: center;
     border-radius: 7px;
+    margin: auto;
 }
 .contain-notifi div:first-child{
     font-size: 30px;
@@ -391,4 +393,9 @@ body{
     height:40px;
     cursor:pointer;
     border-radius:5px;
+}
+.cinema{
+    color:#4a4a4a;
+    font-weight:550;
+    margin: 5px 0;
 }
