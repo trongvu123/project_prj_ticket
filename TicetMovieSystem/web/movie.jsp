@@ -116,7 +116,7 @@
 
                             <div>
                                 <c:forEach items="${s}" var="listS">
-                                    <button class="btn-showtime" name="showtimeID" value="${listS.showtimeID}">
+                                    <button class="btn-showtime" name="showtimeID" value="${listS.showtimeID}" type="submit">
                                         <a href="seat?showtimeID=${listS.showtimeID}">${listS.showtimeStart}</a>
                                     </button>
                                     <input name="dayID" type="hidden" value="${listS.days.dayID}">
@@ -152,12 +152,12 @@
         </div>
         <jsp:include page="footer.jsp"/>
         <script>
-            let select = document.querySelector('.list-cinema select');
-            let form = select.form; 
-
-            select.addEventListener('change', function() {
-                form.submit(); 
-            });
+//            let select = document.querySelector('.list-cinema select');
+//            let form = select.form; 
+//
+//            select.addEventListener('change', function() {
+//                form.submit(); 
+//            });
 
         </script>
     </body>

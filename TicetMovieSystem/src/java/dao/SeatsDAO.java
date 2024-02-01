@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -33,6 +34,27 @@ public class SeatsDAO extends DBContext {
                 Showtimes s = getShowtimes(rs.getString(3));
                 Seats seats = new Seats(rs.getString(1), rs.getString(2), s);
                 list.add(seats);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public ArrayList<String> getAllSeatsName(String id) {
+        ArrayList<String> list = new ArrayList<>();
+        String sql = "select s.*\n"
+                + "from Seats s\n"
+                + "where s.ShowtimeID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String seatName = rs.getString(2);
+                String[] seats = seatName.split(",");
+                for (String s : seats) {
+                    list.add(s);
+                }
             }
         } catch (Exception e) {
         }
@@ -116,10 +138,9 @@ public class SeatsDAO extends DBContext {
 
     public static void main(String[] args) {
         SeatsDAO d = new SeatsDAO();
-        ArrayList<Seats> list = new ArrayList<>();
-        list = d.getAllSeats("s1");
-        for (Seats seats : list) {
-            System.out.println(seats);
-        }
+        ArrayList<String> list = d.getAllSeatsName("s1");
+        String[] seatName = list.toArray(new String[5]);
+        System.out.println(Arrays.toString(seatName));
+
     }
 }

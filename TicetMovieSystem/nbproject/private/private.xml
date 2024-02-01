@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/PRJ/TicetMovieSystem/web/seat.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/seat.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/ShowtimeServlet.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/CinemaDAO.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/SeatsDAO.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/SeatServlet.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Cinema.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Seats.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/movie.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/home.jsp</file>
         </group>
     </open-files>
 </project-private>

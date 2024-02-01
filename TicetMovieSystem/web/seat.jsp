@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.google.gson.Gson" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -938,7 +939,7 @@
                             <div>2D Phụ Đề - <span>T18</span></div>
                         </div>
                     </div>
-                            <div class="cinema">${cinemas.cinemaName}</div>
+                    <div class="cinema">${cinemas.cinemaName}</div>
                     <div class="time-bill">
                         Rate: <span>${showtime.showtimeStart}</span> - <span>${day.dayName}</span></div>
                 </div>
@@ -961,13 +962,21 @@
 
         <jsp:include page="footer.jsp" />
         <script>
+            <%
+            Gson gson = new Gson();
+            String json = gson.toJson(request.getAttribute("seatsName"));
+            request.setAttribute("json", json);
+            %>
             document.addEventListener("DOMContentLoaded", function () {
-                var bookedSeats = [2, 5, 9, 13];
+            
+                var bookedSeats = JSON.parse('${json}');
                 let total = 0;
                 var seatButtons = document.querySelectorAll('.seat-button');
 
                 seatButtons.forEach(function (button, index) {
-                    var isBooked = bookedSeats.includes(index + 1);
+                    var seatValue = button.getAttribute('onclick').split("'")[3];
+                    var isBooked = bookedSeats.includes(seatValue);
+
 
                     if (isBooked) {
                         button.classList.add('booked');
@@ -981,6 +990,7 @@
                             if (!isSelected && total < 8) {
                                 this.classList.add('selected');
                                 total++;
+                                console.log(total);
                             } else if (isSelected) {
                                 this.classList.remove('selected');
                                 total--;
@@ -1007,23 +1017,25 @@
                     let check = false;
                     item.addEventListener('click', function () {
                         let seatValue = item.getAttribute('onclick').split("'")[3];
-                        if (!check) {
+                        let selected = this.classList.contains('selected');
+                        let booked = this.classList.contains('booked');
+                        if (!check && !booked) {
                             total++;
                             if (total <= 8) {
                                 seatPrice += 2;
                                 selectedSeats.push(seatValue);
                                 check = true;
                             }
-                            
+
                             bill.style.display = 'block';
                         } else {
-                            if(total<=8){
-                            total--;
-                            seatPrice -= 2;
-                            selectedSeats.pop(seatValue);
-                            check = false;
+                            if (total <= 8 && !booked) {
+                                total--;
+                                seatPrice -= 2;
+                                selectedSeats.pop(seatValue);
+                                check = false;
                             }
-                            
+
                         }
                         if (total < 1) {
                             bill.style.display = 'none';

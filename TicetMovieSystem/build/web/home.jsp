@@ -19,8 +19,8 @@
     <body>
         <jsp:include page="slider.jsp"/>
         <!-- Mua ve nhanh -->
-        
-        <div class="choose-bar">
+        <div class="wrapper">
+            <div class="choose-bar">
             <div class="chosse-bar__content">
                 <div class="circle1"><span>1</span></div>
                 <div class="choose-bar__select-movie">
@@ -66,6 +66,8 @@
 
             </div>
         </div>
+        </div>
+        
         <div class="grid">
             <div class="status-contain">
                 <div class="content">
