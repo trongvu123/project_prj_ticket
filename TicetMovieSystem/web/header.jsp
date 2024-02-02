@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -70,7 +71,25 @@
                     <div class="search-logo">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <div class="login"><a href="login.jsp">Login</a></div>
+                    <c:set var="u" value="${sessionScope.user}"></c:set>
+                    <c:if test="${u eq null}">
+                        <div class="login"><a href="login.jsp">Login</a></div>
+                    </c:if>
+                        <c:if test="${u != null}">
+                            <div class="user">
+                                <div class="user-img"><img src="./img/avt.png" alt="alt"/></div>
+                                <div class="user-name">${u.fullName}</div>
+                                <div class="user-content">
+                            <div><i class="fa-solid fa-user"></i><a href="#">Account</a></div>
+                            <div><i class="fa-solid fa-list-ol"></i><a href="#">History</a></div>
+                            <div><i class="fa-solid fa-cart-shopping"></i><a href="#">Cart</a></div>
+                            <div><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></div>
+                            
+                            
+                        </div>
+                            </div>
+                    </c:if>
+                        
                 </div>
             </div>
         </div>

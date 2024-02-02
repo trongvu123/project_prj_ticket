@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/seat.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/SeatsDAO.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/SeatServlet.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Seats.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/movie.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/home.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/js/main1.js</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/LoginServlet.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/User.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/filter/LoginFilter.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/header.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/LogoutServlet.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/css/home1.css</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/css/StyleHome.css</file>
         </group>
     </open-files>
 </project-private>

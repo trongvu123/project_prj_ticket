@@ -26,6 +26,16 @@ itemsEvent.forEach(item => {
         gsap.to(item, {duration: 0.3, x: 0, color: '#333'});
     });
 });
+const itemsUser = document.querySelectorAll('.user-content div a');
+itemsUser.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        gsap.to(item, {duration: 0.3, x: 6, color: '#f5811f'});
+    });
+
+    item.addEventListener('mouseout', () => {
+        gsap.to(item, {duration: 0.3, x: 0, color: '#333'});
+    });
+});
 document.addEventListener('DOMContentLoaded', function () {
     let box1 = document.querySelector('.circle1');
     let trailer = document.querySelector("#btn-event");
