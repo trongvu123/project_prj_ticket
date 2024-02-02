@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,35 +25,45 @@
                 <div class="col-sm-6 col-md-5 form-section">
                     <div class="login-wrapper">
                         <h2 class="login-title">Sign in</h2>
-                        <form action="#!">
+                        <c:if test="${requestScope.msS != null}">
+                            <div class="alert alert-success" role="alert">
+                                ${msS}
+                            </div>
+                        </c:if>
+                        <c:if test="${requestScope.msE != null}">
+                            <div class="alert alert-warning" role="alert">
+                                ${msE}
+                            </div>
+                        </c:if>
+                        <form action="signup" method="post">
                             <div class="form-group">
                                 <label for="phone" class="sr-only">Phone</label>
-                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone">
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone" required>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="sr-only">Full name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Full name">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Full name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="form-group">
                                 <label for="dob" class="sr-only">Date of birth</label>
-                                <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of birth">
+                                <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of birth" required>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="sr-only">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                             </div>
                             <div class="form-group d-flex">
                                 <label class="sr-only">Gender</label>
                                 <div class="form-check">
-                                    <input type="radio" name="gender" id="male" class="form-check-input" value="male">
+                                    <input type="radio" name="gender" id="male" class="form-check-input" value="male" required>
                                     <label for="male" class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check ml-5">
-                                    <input type="radio" name="gender" id="female" class="form-check-input" value="female">
+                                    <input type="radio" name="gender" id="female" class="form-check-input" value="female" required>
                                     <label for="female" class="form-check-label">Female</label>
                                 </div>
                             </div>
