@@ -1,0 +1,22 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 4, 2024, 12:18:12 AM
+    Author     : Admin
+*/
+.list-service a.active {
+    color: #034EA2;
+    position: relative;
+}
+
+.list-service a.active::after {
+    content: '';
+    position: absolute;
+    left: 20%; 
+    bottom:-5px;
+    width: 60%; 
+    border-bottom: 3px solid #034EA2;
+   
+}
