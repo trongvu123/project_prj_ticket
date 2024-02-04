@@ -476,13 +476,16 @@ VALUES
 ('s281', '12:15', 'd51'),
 ('s282', '13:00', 'd51'),
 ('s283', '13:45', 'd51');
+
+drop table Seats
 CREATE TABLE Seats (
     SeatID INT IDENTITY(1,1) PRIMARY KEY,
+	TransactionType nvarchar(10),
     SeatName NVARCHAR(100),   
     ShowtimeID NVARCHAR(20) FOREIGN KEY REFERENCES Showtimes(ShowtimeID)
 );
-
-
+INSERT INTO Seats(TransactionType,SeatName,ShowtimeID)
+VALUES ('bill','L-1,C-3','s1');
 
 CREATE TABLE [User] (
     Phone NVARCHAR(20) NOT NULL PRIMARY KEY,
@@ -509,54 +512,55 @@ VALUES
 ('ci3','CINEMA-C Ha Noi'),
 ('ci4','CINEMA-D Ha Noi');
 drop table TicketCart
-CREATE TABLE TicketCart (
-    MovieID NVARCHAR(20),
-    Phone NVARCHAR(20),
-    DayId NVARCHAR(20),
-    ShowtimeID NVARCHAR(20),
-    SeatID NVARCHAR(20),
-    Price FLOAT,
-    PRIMARY KEY (MovieID, Phone, DayId, ShowtimeID, SeatID),
-    FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-    FOREIGN KEY (Phone) REFERENCES [User](Phone),
-    FOREIGN KEY (DayId) REFERENCES Days(DayId),
-    FOREIGN KEY (ShowtimeID) REFERENCES Showtimes(ShowtimeID),
-    FOREIGN KEY (SeatID) REFERENCES Seats(SeatID)
-);
+drop table Ticket
 CREATE TABLE Ticket (
-    TransactionType NVARCHAR(10), -- 'Cart' hoặc 'Bill'
+    TicketID INT IDENTITY(1,1) PRIMARY KEY,
+	TransactionType nvarchar(10),
     MovieID NVARCHAR(20),
     Phone NVARCHAR(20),
     DayId NVARCHAR(20),
     ShowtimeID NVARCHAR(20),
     SeatID INT,
-	CinemaID nvarchar(20),
-    Price FLOAT,
-    PRIMARY KEY (MovieID, Phone, DayId, ShowtimeID, SeatID, TransactionType,CinemaID),
+    CinemaID NVARCHAR(20),
+    Price FLOAT,   
     FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
     FOREIGN KEY (Phone) REFERENCES [User](Phone),
     FOREIGN KEY (DayId) REFERENCES Days(DayId),
     FOREIGN KEY (ShowtimeID) REFERENCES Showtimes(ShowtimeID),
-    FOREIGN KEY (SeatID) REFERENCES Seats(SeatID),
-	FOREIGN KEY (CinemaID) REFERENCES Cinema(CinemaID)
+    FOREIGN KEY (SeatID) REFERENCES Seats(SeatID),  
+    FOREIGN KEY (CinemaID) REFERENCES Cinema(CinemaID)
 );
-INSERT INTO Ticket (TransactionType, MovieID, Phone, DayId, ShowtimeID, SeatID, CinemaID, Price)
-VALUES ('Cart', 'mov1', '0123456789', 'd1', 's1', 'SE001', 'C001', 150000);
+INSERT INTO Ticket ( TransactionType,MovieID, Phone, DayId, ShowtimeID, SeatID, CinemaID, Price)
+VALUES ( 'cart','mov1', '0123456789', 'd1', 's1', 1, 'Ci1', 150000);
 
 select top 8 Movie.*
 from Movie
 where Movie.Status='soon'
 ORDER BY CAST(SUBSTRING(MovieID, 4, LEN(MovieID)) AS INT);
 
-
-DELETE FROM Movie
-WHERE MovieID = 'mov2';
-
-select *
-from Category
-where Category.CategoryID='cat1'
-
 select  Movie.*
 from Movie
 where Movie.MovieID='mov1'
 ORDER BY CAST(SUBSTRING(MovieID, 4, LEN(MovieID)) AS INT);
+
+select d.*
+from Showtimes d
+where d.ShowtimeID='s1'
+
+select u.*
+from [User] u
+where u.Phone='0123456789' and u.Password='password123'
+
+select s.*
+from Seats s
+where s.ShowtimeID='s1' and s.TransactionType='bill'
+select t.*
+from Ticket t
+where t.Phone='0377580457' and t.TransactionType='cart'
+
+select *
+from Seats
+
+select top 1 s.SeatID
+from Seats s
+order by s.SeatID desc
