@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +14,13 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <c:forEach items="${sessionScope.listOrder}" var="o">
+            <h1>${o.movie.title}</h1>
+            <h1>${o.seats.seatName}</h1>
+            <h1>${o.days.dayName}</h1>
+             <h1>${o.price}</h1>
+        </c:forEach>
         <jsp:include page="footer.jsp"/>
+        
     </body>
 </html>

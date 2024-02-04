@@ -38,7 +38,9 @@
                         <li class="item-service"><a class="active" href="cart.jsp">Cart</a></li>
                     </ul>
                 </div>
-                <div>hello</div>
+                <div>hello
+                    
+                </div>
             </div>
         </div>
         <jsp:include page="footer.jsp"/>

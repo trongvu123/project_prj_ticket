@@ -14,6 +14,8 @@ import entity.Days;
 import entity.Movie;
 import entity.Seats;
 import entity.Showtimes;
+import entity.Ticket;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -87,10 +89,12 @@ public class SeatServlet extends HttpServlet {
     seatsName = seatsDAO.getAllSeatsName(showtimeID);
      String[] seatName = seatsName.toArray(new String[0]);
     Showtimes showtimeChoose = seatsDAO.getShowtimes(showtimeID);
+    session.setAttribute("cinemas", cinema);
     request.setAttribute("seatsName", seatName);
     request.setAttribute(showtimeID, movie);
     request.setAttribute("showtimeID", showtimeID);
     request.setAttribute("cinema", cinema);
+    session.setAttribute("showtimeID", showtimeID);
     session.setAttribute("listShowtime", list);
     session.setAttribute("movie", movie);
     session.setAttribute("day", dayChoose);
@@ -108,7 +112,8 @@ public class SeatServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
+    
     }
 
     /** 

@@ -45,7 +45,7 @@
                 <div class="content">
 
                     <div class="booking-seat">
-                        <form id="seatForm" action="kiemtra" method="post" >
+                        <form id="seatForm" action="ticket" method="post" >
 
                             <ul class="list-seat">
                                 <li class="list-item">
@@ -959,7 +959,10 @@
                 </div>
             </div>
         </div>
-
+                        <c:forEach items="${requestScope.arr}" var="o">
+            <h1>${o}</h1>
+           
+        </c:forEach>     
         <jsp:include page="footer.jsp" />
         <script>
             <%

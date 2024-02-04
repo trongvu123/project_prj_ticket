@@ -17,7 +17,8 @@ public class Ticket {
 //    SeatID NVARCHAR(20),
 //	CinemaID nvarchar(20),
 //    Price FLOAT,
-    private String transactionType ;
+    private String ticketID;
+    private String transactionType;
     private Movie movie;
     private User user;
     private Days days;
@@ -29,12 +30,33 @@ public class Ticket {
     public Ticket() {
     }
 
+    public Ticket( Movie movie, User user, Days days, Showtimes showtimes, Seats seats, Cinema cinema, float price) {
+
+        this.movie = movie;
+        this.user = user;
+        this.days = days;
+        this.showtimes = showtimes;
+        this.seats = seats;
+        this.cinema = cinema;
+        this.price = price;
+    }
+
     public String getTransactionType() {
         return transactionType;
     }
 
     public void setTransactionType(String transactionType) {
         this.transactionType = transactionType;
+    }
+
+ 
+
+    public String getTicketID() {
+        return ticketID;
+    }
+
+    public void setTicketID(String ticketID) {
+        this.ticketID = ticketID;
     }
 
     public Movie getMovie() {
@@ -95,7 +117,9 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "transactionType=" + transactionType + ", movie=" + movie + ", user=" + user + ", days=" + days + ", showtimes=" + showtimes + ", seats=" + seats + ", cinema=" + cinema + ", price=" + price + '}';
+        return "Ticket{" + "ticketID=" + ticketID + ", movie=" + movie + ", user=" + user + ", days=" + days + ", showtimes=" + showtimes + ", seats=" + seats + ", cinema=" + cinema + ", price=" + price + '}';
     }
+    
+   
     
 }

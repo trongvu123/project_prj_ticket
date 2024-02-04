@@ -13,24 +13,28 @@ public class Seats {
 //    SeatName NVARCHAR(10),
 //    
 //    ShowtimeID NVARCHAR(20) FOREIGN KEY REFERENCES Showtimes(ShowtimeID)
-    private String seatID;
+    private int seatID;
+    private String transactionType;
     private String seatName ;
     private Showtimes showtimes;
 
     public Seats() {
     }
 
-    public Seats(String seatID, String seatName, Showtimes showtimes) {
+    public Seats(int seatID, String seatName, Showtimes showtimes) {
         this.seatID = seatID;
         this.seatName = seatName;
         this.showtimes = showtimes;
     }
 
-    public String getSeatID() {
+ 
+    
+
+    public int getSeatID() {
         return seatID;
     }
 
-    public void setSeatID(String seatID) {
+    public void setSeatID(int seatID) {
         this.seatID = seatID;
     }
 

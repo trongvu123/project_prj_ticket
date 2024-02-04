@@ -25,14 +25,14 @@ public class SeatsDAO extends DBContext {
         ArrayList<Seats> list = new ArrayList<>();
         String sql = "select s.*\n"
                 + "from Seats s\n"
-                + "where s.ShowtimeID=?";
+                + "where s.ShowtimeID=? and s.TransactionType='bill'";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Showtimes s = getShowtimes(rs.getString(3));
-                Seats seats = new Seats(rs.getString(1), rs.getString(2), s);
+                Showtimes s = getShowtimes(rs.getString(4));
+                Seats seats = new Seats(rs.getInt(1),rs.getString(3), s);
                 list.add(seats);
             }
         } catch (Exception e) {
@@ -40,8 +40,8 @@ public class SeatsDAO extends DBContext {
         return list;
     }
 
-    public ArrayList<String> getAllSeatsName(String id) {
-        ArrayList<String> list = new ArrayList<>();
+    public Seats getSeats(String id) {
+        ArrayList<Seats> list = new ArrayList<>();
         String sql = "select s.*\n"
                 + "from Seats s\n"
                 + "where s.ShowtimeID=?";
@@ -50,7 +50,26 @@ public class SeatsDAO extends DBContext {
             st.setString(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                String seatName = rs.getString(2);
+                Showtimes s = getShowtimes(rs.getString(4));
+                return new Seats(rs.getInt(1),rs.getString(3), s);
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public ArrayList<String> getAllSeatsName(String id) {
+        ArrayList<String> list = new ArrayList<>();
+        String sql = "select s.*\n"
+                + "from Seats s\n"
+                + "where s.ShowtimeID=? and s.TransactionType='bill'";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String seatName = rs.getString(3);
                 String[] seats = seatName.split(",");
                 for (String s : seats) {
                     list.add(s);
@@ -136,11 +155,39 @@ public class SeatsDAO extends DBContext {
         return null;
     }
 
+    public void addSeat(Seats seats) {
+        String sql = "INSERT INTO Seats(TransactionType,SeatName,ShowtimeID)\n"
+                + "VALUES ('cart',?,?);";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, seats.getSeatName());
+            st.setString(2, seats.getShowtimes().getShowtimeID());
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public String lastSeatID() {
+        String sql = "select top 1 s.SeatID\n"
+                + "from Seats s\n"
+                + "order by s.SeatID desc";
+        String lastID="";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()){
+                return lastID+= rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return lastID;
+    }
+
     public static void main(String[] args) {
         SeatsDAO d = new SeatsDAO();
-        ArrayList<String> list = d.getAllSeatsName("s1");
-        String[] seatName = list.toArray(new String[5]);
-        System.out.println(Arrays.toString(seatName));
+       String last = d.lastSeatID();
+        System.out.println(last);
 
     }
 }
