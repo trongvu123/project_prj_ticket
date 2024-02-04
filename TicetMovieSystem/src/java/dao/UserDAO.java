@@ -32,6 +32,8 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+    
+    
 
     public boolean addUser(User user) {
         String sql = "INSERT INTO [User] (Phone, FullName, Email, DOB, Password, Gender, role)\n"

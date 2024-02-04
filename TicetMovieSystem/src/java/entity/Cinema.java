@@ -37,5 +37,10 @@ public class Cinema {
     public void setCinemaName(String cinemaName) {
         this.cinemaName = cinemaName;
     }
+
+    @Override
+    public String toString() {
+        return "Cinema{" + "cinemaID=" + cinemaID + ", cinemaName=" + cinemaName + '}';
+    }
     
 }

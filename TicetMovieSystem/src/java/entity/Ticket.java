@@ -41,6 +41,19 @@ public class Ticket {
         this.price = price;
     }
 
+    public Ticket(String ticketID, String transactionType, Movie movie, User user, Days days, Showtimes showtimes, Seats seats, Cinema cinema, float price) {
+        this.ticketID = ticketID;
+        this.transactionType = transactionType;
+        this.movie = movie;
+        this.user = user;
+        this.days = days;
+        this.showtimes = showtimes;
+        this.seats = seats;
+        this.cinema = cinema;
+        this.price = price;
+    }
+   
+
     public String getTransactionType() {
         return transactionType;
     }
@@ -117,9 +130,10 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "ticketID=" + ticketID + ", movie=" + movie + ", user=" + user + ", days=" + days + ", showtimes=" + showtimes + ", seats=" + seats + ", cinema=" + cinema + ", price=" + price + '}';
+        return "Ticket{" + "ticketID=" + this.getTicketID() + ", movie=" + this.getMovie().getMovieID() + ", user=" + this.getUser().getPhone() + ", days=" + this.getDays().getDayID() + ", showtimes=" + this.getShowtimes().getShowtimeID() + ", seats=" + this.getSeats().getSeatID() + ", cinema=" + this.getCinema().getCinemaID() + ", price=" + price + '}';
     }
     
-   
+
+
     
 }
