@@ -64,6 +64,22 @@ public class TicketDAO extends DBContext {
         return listTicket;
     }
 
+    public float getTotalPrice(String phone) {
+        String sql = "select SUM(t.Price)\n"
+                + "from Ticket t\n"
+                + "where t.Phone=? and t.TransactionType='cart'";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, phone);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                return rs.getFloat(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
     public Movie getMovieByID(String type) {
         ArrayList<Movie> list = new ArrayList<>();
         String sql = "select  Movie.*\n"
@@ -196,12 +212,10 @@ public class TicketDAO extends DBContext {
         }
         return null;
     }
+
     public static void main(String[] args) {
         TicketDAO d = new TicketDAO();
-        ArrayList<Ticket> list = new ArrayList<>();
-        list = d.getAllTickets("0377580457");
-        for (Ticket ticket : list) {
-            System.out.println(ticket);
-        }
+        float total = d.getTotalPrice("0377580457");
+        System.out.println(total);
     }
 }

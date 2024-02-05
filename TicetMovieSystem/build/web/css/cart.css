@@ -221,3 +221,42 @@ tbody td:not(:last-child){
     font-weight:500;
     font-size:15px;
 }
+.buy-all{
+    display:flex;
+    justify-content:end;
+    position:relative;
+    top:30px;
+}
+.buy-all button{
+    border:none;
+    width:170px;
+    height:40px;
+    color:white;
+    background-color:var(--primary-color);
+    border-radius:4px;
+    cursor:pointer;
+}
+.buy-all button{
+    border:none;
+    width:170px;
+    height:40px;
+    color:white;
+    background-color:var(--primary-color);
+    border-radius:4px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+}
+.buy-all button:hover{
+    background-color: #fb9440
+}
+.total-cart{
+   
+    margin-right:12px;
+    text-align:center;
+    width:170px;
+    height:40px;
+   margin-top:5px;
+    font-weight:500;
+    color:#4a4a4a;
+    font-size:20px;
+}

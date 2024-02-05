@@ -65,6 +65,8 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         listTicket = ticketDAO.getAllTickets(user.getPhone());
+        float total = ticketDAO.getTotalPrice(user.getPhone());
+        request.setAttribute("total", total);
         request.setAttribute("list", listTicket);
         session.setAttribute("us", user);
         request.getRequestDispatcher("cart.jsp").forward(request, response);

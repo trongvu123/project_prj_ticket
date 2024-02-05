@@ -109,6 +109,9 @@
                         </tbody>
                     </table>      
                 </div>
+                <div class="buy-all">
+                    <div class="total-cart">Total price: ${requestScope.total}</div>
+                    <a href="#"><button>Buy all</button></a></div>
             </div>
         </div>
         <script>
