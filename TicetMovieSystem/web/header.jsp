@@ -82,7 +82,7 @@
                                 <div class="user-content">
                             <div><i class="fa-solid fa-user"></i><a href="#">Account</a></div>
                             <div><i class="fa-solid fa-list-ol"></i><a href="#">History</a></div>
-                            <div><i class="fa-solid fa-cart-shopping"></i><a href="#">Cart</a></div>
+                            <div><i class="fa-solid fa-cart-shopping"></i><a href="cart">Cart</a></div>
                             <div><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></div>
                             
                             
