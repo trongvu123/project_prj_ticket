@@ -59,12 +59,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-size:20px;
     font-weight:500
 }
-.list-service a:active {
+.list-service a.active {
     color: #034EA2;
     position: relative;
 }
 
-.list-service a:active::after {
+.list-service a.active::after {
     content: '';
     position: absolute;
     left: 20%; 
@@ -76,4 +76,116 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .header-list{
     padding:5px;
     border-bottom:1px solid #3333;
+}
+.acc-contain{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.gender{
+    margin-top:10px;
+    display:flex;
+}
+.name-input i{
+    position:relative;
+    left:25px;
+}
+.email-input i{
+    position:relative;
+    left:25px;
+}
+.dob-input i{
+    position:relative;
+    left:25px;
+}
+.phone-input i{
+    position:relative;
+    left:25px;
+}
+.pass-input i{
+    position:relative;
+    left:25px;
+}
+.input input{
+    border:none;
+    background-color:#f2f2f2
+}
+input:focus{
+    outline:none;
+}
+input{
+    caret-color:#3333;
+}
+.acc-contain{
+    width:832px;
+    height:350px;
+    box-shadow: 3px 4px 7px 3px rgba(0, 0, 0, 0.1);
+    border-radius:5px;
+    margin:auto;
+    text-align:center;
+    margin-top:25px;
+}
+
+.info-left .gender{
+    /* display:flex; */
+    justify-content:start;
+    padding-left:29px;
+    padding-top:27px;
+}
+.info-left .gender div:last-child{
+    margin-left:20px;
+}
+.male input,.female input{
+    position: relative;
+    top: 2px;
+}
+.input input{
+    width:383px;
+    height:36px;
+    border-radius:4px;
+}
+.info-left .ex{
+    margin: 25px 0;
+}
+.info-right .px{
+    margin: 25px 0;
+}
+.info-right label{
+    /*margin-right:321px;*/
+}
+.name label{
+    position:relative;
+    right: 146px;
+}
+.email label{
+    position:relative;
+    right: 159px;
+}
+.input input{
+    padding-left:30px;
+}
+label{
+    color:#4a4a4a;
+    font-weight:380;
+}
+.dob label{
+    position:relative;
+    right: 150px;
+}
+.phone label{
+    position:relative;
+    right: 127px;
+}
+.pass label{
+    position:relative;
+    right: 142px;
+}
+.btn-info{
+    border:none;
+    background-color:var(--primary-color);
+    color:white;
+    width:120px;
+    height:40px;
+    border-radius:4px;
+    margin-left:280px;
+    cursor:pointer;
 }

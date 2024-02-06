@@ -99,6 +99,29 @@ public class TicketDAO extends DBContext {
         }
         return listTicket;
     }
+        public ArrayList<Ticket> getAllTicketsHistory(String phone) {
+        ArrayList<Ticket> listTicket = new ArrayList<>();
+        String sql = "select t.*\n"
+                + "from Ticket t\n"
+                + "where t.Phone=? and t.TransactionType='bill'";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, phone);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Movie movie = getMovieByID(rs.getString(3));
+                User user = getUserTicket(rs.getString(4));
+                Days days = getDay(rs.getString(5));
+                Showtimes showtimes = getShowtimes(rs.getString(6));
+                Seats seats = getSeats(rs.getString(6));
+                Cinema cinema = getCinema(rs.getString(8));
+                Ticket ticket = new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));
+                listTicket.add(ticket);
+            }
+        } catch (Exception e) {
+        }
+        return listTicket;
+    }
     public Ticket getTickets(String phone,String id) {      
         String sql = "select t.*\n"
                 + "from Ticket t\n"

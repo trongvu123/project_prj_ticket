@@ -1,0 +1,130 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 6, 2024, 8:26:25 PM
+    Author     : Admin
+*/
+.list-service a.active {
+    color: #034EA2;
+    position: relative;
+}
+
+.list-service a.active::after {
+    content: '';
+    position: absolute;
+    left: 20%; 
+    bottom:-5px;
+    width: 60%; 
+    border-bottom: 3px solid #034EA2;
+   
+}
+.movie-cart img{
+    width:110px;
+    border-radius:4px
+}
+.table-cart thead tr th{
+    padding:0 41px;
+}
+tbody tr{
+    text-align:center
+}
+.cart{
+    margin-top:30px;
+    width:1050px;
+    margin-left:20px;
+    height:600px;
+    background-color: #fff4;
+      box-shadow: 0 .4rem .8rem #0005;
+    border-radius:8px;
+    overflow:auto;
+}
+thead th{
+    background-color:#d5d1defe;
+}
+table,th,td{
+    border-collapse:collapse;
+}
+tbody tr:nth-child(even){
+    background-color:#0000000b;
+}
+.cart::-webkit-scrollbar{
+    width:0;
+    visibility:hidden;
+}
+tbody td:last-child a{
+    margin: 0 7px;
+    color:#3333;
+    text-decoration:none;
+}
+tbody td:last-child a:first-child{
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+tbody td:last-child a:first-child:hover{
+    color:var(--primary-color);
+}
+tbody td:last-child a:last-child{
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+tbody td:last-child a:last-child:hover{
+    color:#4a4a4a;
+    opacity: 0.8;
+}
+.movie-cart div:first-child{
+    color:#4a4a4a;
+    font-weight:500;
+    font-size:15px;
+}
+tbody td:not(:last-child){
+    color:#4a4a4a;
+    font-weight:500;
+    font-size:15px;
+}
+.buy-all{
+    display:flex;
+    justify-content:end;
+    position:relative;
+    top:30px;
+}
+.buy-all button{
+    border:none;
+    width:170px;
+    height:40px;
+    color:white;
+    background-color:var(--primary-color);
+    border-radius:4px;
+    cursor:pointer;
+}
+.buy-all button{
+    border:none;
+    width:170px;
+    height:40px;
+    color:white;
+    background-color:var(--primary-color);
+    border-radius:4px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+}
+.buy-all button:hover{
+    background-color: #fb9440
+}
+.total-cart{
+   
+    margin-right:12px;
+    text-align:center;
+    width:170px;
+    height:40px;
+   margin-top:5px;
+    font-weight:500;
+    color:#4a4a4a;
+    font-size:20px;
+}
+.no-ticket{
+    
+    text-align:center;
+    margin-top:20px;
+    color:#4a4a4a;
+}

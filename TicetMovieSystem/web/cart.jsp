@@ -71,8 +71,8 @@
             <div class="grid-right__acc">
                 <div class="header-list">
                     <ul class="list-service">
-                        <li class="item-service"><a href="#">Transaction history</a></li>
-                        <li class="item-service"><a href="#">Personal information</a></li>
+                        <li class="item-service"><a href="history">Transaction history</a></li>
+                        <li class="item-service"><a href="account">Personal information</a></li>
                         <li class="item-service"><a class="active" href="cart.jsp">Cart</a></li>
                     </ul>
                 </div>

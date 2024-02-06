@@ -32,15 +32,30 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
-    
-    
+
+    public void updateUser(User user) {
+        String sql = "UPDATE [User]\n"
+                + "SET FullName = ?, Email = ?, DOB = ?, Password = ?, Gender = ?\n"
+                + "WHERE Phone = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, user.getFullName());
+            st.setString(2, user.getEmail());
+            st.setString(3, user.getDob());
+            st.setString(4, user.getPassword());
+            st.setString(5, user.getGender());
+            st.setString(6, user.getPhone());
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
     public boolean addUser(User user) {
         String sql = "INSERT INTO [User] (Phone, FullName, Email, DOB, Password, Gender, role)\n"
                 + "VALUES (?, ?, ?, ?, ?, ?, 1);";
-        int check =0;
+        int check = 0;
         try {
-            PreparedStatement st =connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, user.getPhone());
             st.setString(2, user.getFullName());
             st.setString(3, user.getEmail());
@@ -50,7 +65,7 @@ public class UserDAO extends DBContext {
             check = st.executeUpdate();
         } catch (Exception e) {
         }
-        return check>0;
+        return check > 0;
     }
 
     public static void main(String[] args) {
