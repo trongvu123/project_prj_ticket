@@ -84,6 +84,7 @@ public class LoginServlet extends HttpServlet {
         }else{
             
             session.setAttribute("user", u);
+            session.setMaxInactiveInterval(60*60*24);
             response.sendRedirect("home");
         }
     }

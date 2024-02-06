@@ -40,6 +40,42 @@ public class TicketDAO extends DBContext {
         }
     }
 
+    public void buyTicket(String id) {
+        String sql = "UPDATE Ticket\n"
+                + "SET TransactionType = 'bill'\n"
+                + "WHERE TicketID = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void buyAllTicket(String id) {
+        String sql = "UPDATE Ticket\n"
+                + "SET TransactionType = 'bill'\n"
+                + "WHERE Phone = ?;";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deleteCart(String id) {
+        String sql = "delete from Ticket \n"
+                + "where TicketID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public ArrayList<Ticket> getAllTickets(String phone) {
         ArrayList<Ticket> listTicket = new ArrayList<>();
         String sql = "select t.*\n"
@@ -63,6 +99,28 @@ public class TicketDAO extends DBContext {
         }
         return listTicket;
     }
+    public Ticket getTickets(String phone,String id) {      
+        String sql = "select t.*\n"
+                + "from Ticket t\n"
+                + "where t.Phone=? and t.TransactionType='cart'";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, phone);
+            st.setString(2, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Movie movie = getMovieByID(rs.getString(3));
+                User user = getUserTicket(rs.getString(4));
+                Days days = getDay(rs.getString(5));
+                Showtimes showtimes = getShowtimes(rs.getString(6));
+                Seats seats = getSeats(rs.getString(6));
+                Cinema cinema = getCinema(rs.getString(8));
+                return new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));             
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
 
     public float getTotalPrice(String phone) {
         String sql = "select SUM(t.Price)\n"
@@ -72,7 +130,7 @@ public class TicketDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, phone);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 return rs.getFloat(1);
             }
         } catch (Exception e) {

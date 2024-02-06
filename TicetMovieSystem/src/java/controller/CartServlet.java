@@ -5,6 +5,7 @@
 
 package controller;
 
+import dao.SeatsDAO;
 import dao.TicketDAO;
 import entity.Ticket;
 import entity.User;
@@ -61,11 +62,29 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         TicketDAO ticketDAO = new TicketDAO();
+        SeatsDAO seatsDAO = new SeatsDAO();
+        String deleteID = request.getParameter("deleteId");
+        String buyID = request.getParameter("buyId");
+        String buyAll = request.getParameter("buyAll");
         ArrayList<Ticket> listTicket = new ArrayList<>();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        if(buyAll != null){
+            ticketDAO.buyAllTicket(user.getPhone());
+            seatsDAO.updateAllTypeSeat(user.getPhone());
+        }
+        Ticket ticket=null;
+        if(buyID!=null){
+             ticket = ticketDAO.getTickets(user.getPhone(),buyID);
+        }
+        if(ticket != null){
+            seatsDAO.updateTypeSeat(ticket.getSeats().getSeatID());
+        }
+        ticketDAO.deleteCart(deleteID);
+        ticketDAO.buyTicket(buyID);
         listTicket = ticketDAO.getAllTickets(user.getPhone());
         float total = ticketDAO.getTotalPrice(user.getPhone());
+        
         request.setAttribute("total", total);
         request.setAttribute("list", listTicket);
         session.setAttribute("us", user);

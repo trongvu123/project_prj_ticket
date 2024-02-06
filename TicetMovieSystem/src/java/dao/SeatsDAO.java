@@ -32,12 +32,36 @@ public class SeatsDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Showtimes s = getShowtimes(rs.getString(4));
-                Seats seats = new Seats(rs.getInt(1),rs.getString(3), s);
+                Seats seats = new Seats(rs.getInt(1), rs.getString(3), s);
                 list.add(seats);
             }
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public void updateTypeSeat(int id) {
+        String sql = "UPDATE Seats\n"
+                + "SET TransactionType = 'bill'\n"
+                + "WHERE SeatID = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateAllTypeSeat(String phone) {
+        String sql = "UPDATE Seats\n"
+                + "SET TransactionType = 'bill'\n"
+                + "WHERE SeatID IN (SELECT SeatID FROM Ticket WHERE Phone=?);";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, phone);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 
     public Seats getSeats(String id) {
@@ -51,7 +75,7 @@ public class SeatsDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Showtimes s = getShowtimes(rs.getString(4));
-                return new Seats(rs.getInt(1),rs.getString(3), s);
+                return new Seats(rs.getInt(1), rs.getString(3), s);
 
             }
         } catch (Exception e) {
@@ -70,7 +94,7 @@ public class SeatsDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String seatName = rs.getString(3);
-                String[] seats = seatName.split(",");
+                String[] seats = seatName.split(", ");
                 for (String s : seats) {
                     list.add(s);
                 }
@@ -171,13 +195,13 @@ public class SeatsDAO extends DBContext {
         String sql = "select top 1 s.SeatID\n"
                 + "from Seats s\n"
                 + "order by s.SeatID desc";
-        String lastID="";
+        String lastID = "";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
-            
-            while(rs.next()){
-                return lastID+= rs.getInt(1);
+
+            while (rs.next()) {
+                return lastID += rs.getInt(1);
             }
         } catch (Exception e) {
         }
@@ -186,8 +210,11 @@ public class SeatsDAO extends DBContext {
 
     public static void main(String[] args) {
         SeatsDAO d = new SeatsDAO();
-       String last = d.lastSeatID();
-        System.out.println(last);
+        ArrayList<String> list = new ArrayList<>();
+        list = d.getAllSeatsName("s58");
+        for (String string : list) {
+            System.out.println(string);
+        }
 
     }
 }

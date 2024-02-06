@@ -158,6 +158,75 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .contain-notifi-1 div button:last-child{
     background-color:#3333;
 }
+.overlay-2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    opacity: 0;
+    z-index: -8;
+    display: grid;
+    transition: opacity 0.3s ease;
+    margin: auto;
+   
+}
+.overlay-2.show-overlay {
+    display: block;
+    opacity: 1;
+    z-index: 10;
+     display: flex;
+}
+.notifi-2{
+    background-color: white;
+    width: 327px;
+    height: 260px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center;
+    border-radius: 7px;
+    margin: auto;
+}
+.contain-notifi-2 div:first-child{
+    font-size: 30px;
+}
+.contain-notifi-2 div{
+    margin: 13px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contain-notifi-2 div:first-child{
+    font-size: 50px;
+    color:var(--primary-color);
+}
+.contain-notifi-2 div:nth-child(2){
+    font-size:20px;
+    color:#4a4a4a;
+    font-weight:500;
+}
+.contain-notifi-2 div:nth-child(3){
+    font-size:17px;
+    color:#4a4a4a;
+    font-weight:400;
+}
+.contain-notifi-2 div button{
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    width: 118px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 7px;
+}
+.contain-notifi-2 div button:last-child{
+    background-color:#3333;
+}
 .movie-cart img{
     width:110px;
     border-radius:4px
@@ -260,3 +329,9 @@ tbody td:not(:last-child){
     color:#4a4a4a;
     font-size:20px;
 }
+.no-ticket{
+    
+    text-align:center;
+    margin-top:20px;
+    color:#4a4a4a;
+};

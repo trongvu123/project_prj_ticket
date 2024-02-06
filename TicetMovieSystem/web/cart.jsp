@@ -41,6 +41,18 @@
                 </div>
             </div>
         </div>
+        <div class="overlay-2">
+            <div class="notifi-2">
+                <div class="contain-notifi-2">
+                    <div><i class="fa-solid fa-trash"></i></div>
+                    <div>Notify</div>
+                    <div>Are you sure buy all ?</div>
+                    <div><button>Buy</button>
+                        <button>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="grid-acc">
             <div class="grid-left__acc">
                 <div class="acc-depense">
@@ -65,7 +77,10 @@
                     </ul>
                 </div>
                 <c:set var="o" value="${requestScope.list}"></c:set>
-
+                <c:if test="${empty o}">
+                    <h2 class="no-ticket">No tickets have been booked yet</h2>
+                </c:if>
+                     <c:if test="${not empty o}">
                     <div class="cart">
                         <table class="table-cart">
                             <thead>
@@ -109,9 +124,13 @@
                         </tbody>
                     </table>      
                 </div>
-                <div class="buy-all">
+                </c:if>
+                <c:if test="${not empty o}">
+                    <div class="buy-all">
                     <div class="total-cart">Total price: ${requestScope.total}</div>
-                    <a href="#"><button>Buy all</button></a></div>
+                    <a href="#" onclick="buyAll('buy')"><button>Buy all</button></a></div>
+                </c:if>
+                
             </div>
         </div>
         <script>
@@ -121,7 +140,7 @@
                 let btnBuy = document.querySelector('.overlay button:first-child');
                 let btnDelete = document.querySelector('.overlay button:last-child');
                 btnBuy.addEventListener('click', () => {
-                    window.location = "history?id=" + id;
+                    window.location = "cart?buyId=" + id;
                 });
                 btnDelete.addEventListener('click', () => {
                     overlay.classList.remove('show-overlay');
@@ -133,7 +152,19 @@
                 let btnBuy = document.querySelector('.overlay-1 button:first-child');
                 let btnDelete = document.querySelector('.overlay-1 button:last-child');
                 btnBuy.addEventListener('click', () => {
-                    window.location = "history?id=" + id;
+                    window.location = "cart?deleteId=" + id;
+                });
+                btnDelete.addEventListener('click', () => {
+                    overlay.classList.remove('show-overlay');
+                });
+            }
+            function buyAll(id) {
+                let overlay = document.querySelector('.overlay-2');
+                overlay.classList.add('show-overlay');
+                let btnBuy = document.querySelector('.overlay-2 button:first-child');
+                let btnDelete = document.querySelector('.overlay-2 button:last-child');
+                btnBuy.addEventListener('click', () => {
+                    window.location = "cart?buyAll=" + id;
                 });
                 btnDelete.addEventListener('click', () => {
                     overlay.classList.remove('show-overlay');

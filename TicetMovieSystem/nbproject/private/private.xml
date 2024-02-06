@@ -3,21 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/login.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/js/main1.js</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/base1.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/footer.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/movie1.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/seat.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/seat.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/slick.css</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/account.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/LoginServlet.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/SeatsDAO.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/SeatServlet.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/home1.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/account.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/movie.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/TicketDAO.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Seats.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/cart.jsp</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/css/cart.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/StyleHome.css</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/CartServlet.java</file>
         </group>
     </open-files>
 </project-private>
