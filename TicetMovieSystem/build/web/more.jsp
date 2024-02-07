@@ -23,7 +23,7 @@
                 <div class="text">Movie</div>
                 <div class="status">
                     <ul class="list-status">
-                        <li class="item "><a href="more?status=all" class="${param.status == 'all' ? 'active' : ''}">All</a></li>
+                        <li class="item "><a href="more?status=all" class="${param.status == 'all' ? 'active' : ''}" >All</a></li>
                         <li class="item"><a href="more?status=show" class="${param.status == 'show' ? 'active' : ''}">Showing</a></li>
                         <li class="item"><a href="more?status=soon" class="${param.status == 'soon' ? 'active' : ''}">Coming soon</a></li>
                     </ul>
@@ -36,15 +36,15 @@
                             <!-- Category -->
                             <div class="single category">
                                 <h3 class="side-title">Category</h3>
-                                <ul class="list-unstyled">
-                                    <li><a href="" title="">Horror <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="" class="active">Action <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Animation <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Fiction <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Adventure <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Psychology <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Comedy <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Romance <span class="pull-right">13</span></a></li>
+                                <ul class="list-unstyled">                      
+                                    <li><a href="more?categoryName=Horror&status=${param.status}" title="" class="${param.categoryName == 'Horror' ? 'active' : ''}">Horror <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Action&status=${param.status}" title="" class="${param.categoryName == 'Action' ? 'active' : ''}">Action <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Animation&status=${param.status}" title="" class="${param.categoryName == 'Animation' ? 'active' : ''}">Animation <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Fiction&status=${param.status}" title="" class="${param.categoryName == 'Fiction' ? 'active' : ''}">Fiction <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Adventure&status=${param.status}" title="" class="${param.categoryName == 'Adventure' ? 'active' : ''}">Adventure <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Psychology&status=${param.status}" title="" class="${param.categoryName == 'Psychology' ? 'active' : ''}">Psychology <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Comedy&status=${param.status}" title="" class="${param.categoryName == 'Comedy' ? 'active' : ''}">Comedy <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Romance&status=${param.status}" title="" class="${param.categoryName == 'Romance' ? 'active' : ''}">Romance <span class="pull-right">13</span></a></li>
                                 </ul>
                             </div>
                         </div> 

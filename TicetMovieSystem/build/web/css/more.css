@@ -44,6 +44,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .single ul {
     margin-bottom: 0;
 }
+a{
+    text-decoration: none;
+}
 .single li a {
     color: #666;
     font-size: 14px;

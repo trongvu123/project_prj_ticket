@@ -37,6 +37,96 @@ public class MovieDAO extends DBContext {
         return list;
     }
 
+    public ArrayList<Movie> getAllMoviePaging(String categoryName, String status, int pageIndex, int pageSize) {
+        ArrayList<Movie> list = new ArrayList<>();
+        String sql = "SELECT * FROM (\n"
+                + "SELECT ROW_NUMBER() OVER (ORDER BY CAST(SUBSTRING(MovieID, 4, LEN(MovieID)) AS INT)) AS rn, m.*, c.CategoryName\n"
+                + "FROM Movie m join Category c on m.CategoryID=c.CategoryID\n"
+                + "where c.CategoryName like ? and m.Status=?\n"
+                + "\n"
+                + ") as x\n"
+                + "WHERE rn BETWEEN (?- 1) * ? + 1 AND ?*?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + categoryName + "%");
+            st.setString(2, status);
+            st.setInt(3, pageIndex);
+            st.setInt(4, pageSize);
+            st.setInt(5, pageIndex);
+            st.setInt(6, pageSize);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category category = getCategory(rs.getString(10));
+                Movie movie = new Movie(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getInt(7), rs.getString(8), rs.getInt(9), category, rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14));
+                list.add(movie);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public int countMovie() {
+        String sql = "select COUNT(*)\n"
+                + "from Movie";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public ArrayList<Movie> getAllMovieByCategory(String categoryName) {
+        ArrayList<Movie> list = new ArrayList<>();
+        String sql = "select m.*\n"
+                + "from Movie m\n"
+                + "join Category c on m.CategoryID=c.CategoryID\n"
+                + "where c.CategoryName like ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + categoryName + "%");
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category category = getCategory(rs.getString(10));
+                Movie movie = new Movie(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getInt(7), rs.getString(8), rs.getInt(9), category, rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14));
+                list.add(movie);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public ArrayList<Movie> getAllMovieByCategoryWithStatus(String categoryName, String status) {
+        ArrayList<Movie> list = new ArrayList<>();
+        String sql = "select m.*\n"
+                + "from Movie m\n"
+                + "join Category c on m.CategoryID=c.CategoryID\n"
+                + "where c.CategoryName like ? and m.Status=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + categoryName + "%");
+            st.setString(2, status);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category category = getCategory(rs.getString(10));
+                Movie movie = new Movie(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getInt(7), rs.getString(8), rs.getInt(9), category, rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14));
+                list.add(movie);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public Category getCategory(String categoryID) {
         String sql = "select *\n"
                 + "from Category\n"
@@ -100,7 +190,8 @@ public class MovieDAO extends DBContext {
         }
         return list;
     }
-        public Movie getMovieByID(String type) {
+
+    public Movie getMovieByID(String type) {
         ArrayList<Movie> list = new ArrayList<>();
         String sql = "select  Movie.*\n"
                 + "from Movie\n"
@@ -122,10 +213,13 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         MovieDAO dAO = new MovieDAO();
-        Movie list = dAO.getMovieByID("mov1");
-        System.out.println(list.getVideoURL());
+        ArrayList<Movie> list = new ArrayList<>();
+        list = dAO.getAllMovieByCategoryWithStatus("horror", "show");
+        for (Movie movie : list) {
+            System.out.println(movie.getMovieID());
+        }
     }
 }

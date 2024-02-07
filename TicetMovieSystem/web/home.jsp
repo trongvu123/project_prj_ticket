@@ -107,7 +107,7 @@
             </div>
             <div class="btn-more__contain">
                 <div class="btn-more">
-                    <div class="btn-more__link"><a href="#">See also</a><i class="fa-solid fa-chevron-right"></i></div>
+                    <div class="btn-more__link"><a href="more?status=all">See also</a><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
             </div>
 
