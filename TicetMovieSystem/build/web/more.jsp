@@ -56,25 +56,65 @@
                         <c:forEach items="${o}" var="c">
                             <div class="movie">
                                 <img src="${c.imgURL}" alt="alt"/>
-                            <h3>${c.title}</h3>
-                            <div class="btn-m">
-                                <button><a href="movie?movieID=${c.movieID}"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button>
-                                <button id="btn-event"><a href="more?movieTrailer=${c.movieID}"><i class="fa-solid fa-circle-play icon-m"></i>Trailer</a></button>
-                            </div>
+                                <h3>${c.title}</h3>
+                                <div class="btn-m">
+                                    <button><a href="movie?movieID=${c.movieID}"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button>
+                                    <button id="btn-event"><a href="more?movieTrailer=${c.movieID}"><i class="fa-solid fa-circle-play icon-m"></i>Trailer</a></button>
+                                </div>
                             </div>
                         </c:forEach>
                     </div>
                 </div>
             </div>
-        <nav aria-label="Page navigation example" style="text-align: center;">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+            <c:choose>
+                   <c:when test="${ param.status == 'all' && param.categoryName == null}">
+                    <nav aria-label="Page navigation example" style="text-align: center;">
+                        <ul class="pagination justify-content-center">                         
+                            <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
+                                <c:forEach begin="1" end="${requestScope.maxPage}" step="1" var="pageNumber">
+                                <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber ? 'active' : ''}" href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                </c:forEach>
+                            <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxPage ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
+                        </ul>
+                    </nav>
+                </c:when>
+                <c:when test="${param.status != 'all' && param.categoryName != null}">
+                    <nav aria-label="Page navigation example" style="text-align: center;">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
+                                <c:forEach begin="1" end="${requestScope.maxBoth}" step="1" var="pageNumber">
+                                <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                </c:forEach>
+                            <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxBoth ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
+                        </ul>
+                    </nav>
+                </c:when>
+                <c:when test="${ param.categoryName != null && param.status == 'all'}">
+                    <nav aria-label="Page navigation example" style="text-align: center;">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
+                                <c:forEach begin="1" end="${requestScope.maxCategory}" step="1" var="pageNumber">
+                                <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                </c:forEach>
+                            <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxCategory ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
+                        </ul>
+                    </nav>
+                </c:when>
+                <c:when test="${ param.categoryName == null && param.status != null}">
+                    <nav aria-label="Page navigation example" style="text-align: center;">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
+                                <c:forEach begin="1" end="${requestScope.maxStatus}" step="1" var="pageNumber">
+                                <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                </c:forEach>
+                            <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxStatus ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
+                        </ul>
+                    </nav>
+                </c:when>
+
+            </c:choose>
+
+            <div>${requestScope.maxCategory}</div>
         </div>
 
         <jsp:include page="footer.jsp"/>

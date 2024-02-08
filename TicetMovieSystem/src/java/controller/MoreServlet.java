@@ -57,37 +57,51 @@ public class MoreServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String status = request.getParameter("status");
-        String categoryName = request.getParameter("categoryName");
-        MovieDAO movieDAO = new MovieDAO();
-        ArrayList<Movie> listMovies = new ArrayList<>();
-        if (status==null ) {
-            status = "all";          
-        }
-
-     if (categoryName != null && status.equalsIgnoreCase("")) {
-     
-             listMovies = movieDAO.getAllMovieByCategory(categoryName);
-        }
-     else if (categoryName != null && !status.equalsIgnoreCase("all")) {
-            listMovies = movieDAO.getAllMovieByCategoryWithStatus(categoryName, status);
-        }
-         else if (categoryName != null) {
-              
-            listMovies = movieDAO.getAllMovieByCategory(categoryName);
-        } else if (status.equalsIgnoreCase("all")) {
-            listMovies = movieDAO.getAllMovie();
-        } else {
-            listMovies = movieDAO.getMovieByStatus(status);
-        }
-
-        request.setAttribute("list", listMovies);
-        request.getRequestDispatcher("more.jsp").forward(request, response);
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String page = request.getParameter("pageIndex");
+    String status = request.getParameter("status");
+    String categoryName = request.getParameter("categoryName");
+    int pageIndex = 1;
+    try {
+        pageIndex = Integer.parseInt(page);
+    } catch (Exception e) {
     }
+    MovieDAO movieDAO = new MovieDAO();
+    ArrayList<Movie> listMovies = new ArrayList<>();
+    if (status == null || status.equalsIgnoreCase("")) {
+        status = "all";
+    }
+    int pageSize = 6;
+    int totalMovie = movieDAO.countMovie();
+    int totalMovieWithStatus = movieDAO.countMovieWithStatus(status);
+    int totalMovieWithCategory = movieDAO.countMovieWithCategory(categoryName);
+    int totalBoth = movieDAO.countMovieBoth(categoryName, status);
+    int maxPage = totalMovie / pageSize + (totalMovie % pageSize > 0 ? 1 : 0);
+    int maxPageWithStatus = totalMovieWithStatus / pageSize + (totalMovieWithStatus % pageSize > 0 ? 1 : 0);
+    int maxPageWithCategory = totalMovieWithCategory / pageSize + (totalMovieWithCategory % pageSize > 0 ? 1 : 0);
+    int maxPageBoth = totalBoth / pageSize + (totalBoth % pageSize > 0 ? 1 : 0);
+    int nextPage = pageIndex + 1;
+    int backPage = pageIndex - 1;
+    if (categoryName != null && !status.equalsIgnoreCase("all")) {
+        listMovies = movieDAO.getAllMoviePaging(categoryName, status, pageIndex, pageSize);
+    } else if (categoryName != null) {
+        listMovies = movieDAO.getAllMoviePagingWithCategory(categoryName, pageIndex, pageSize);
+    } else if (status.equalsIgnoreCase("all")) {
+        listMovies = movieDAO.getAllMoviePagingNoCondition(pageIndex, pageSize);
+    } else {
+        listMovies = movieDAO.getAllMoviePagingWithStatus(status, pageIndex, pageSize);
+    }
+    request.setAttribute("maxStatus", maxPageWithStatus);
+    request.setAttribute("maxCategory", maxPageWithCategory);
+    request.setAttribute("maxBoth", maxPageBoth);
+    request.setAttribute("maxPage", maxPage);
+    request.setAttribute("nextPage", nextPage);
+    request.setAttribute("backPage", backPage);
+    request.setAttribute("list", listMovies);
+    request.getRequestDispatcher("more.jsp").forward(request, response);
+}
+
 
     /**
      * Handles the HTTP <code>POST</code> method.

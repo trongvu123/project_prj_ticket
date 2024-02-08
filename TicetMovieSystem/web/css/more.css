@@ -225,3 +225,12 @@ a{
     position: sticky;
     top: 0;
 }
+.pagination li:nth-child(1) a.d-none{
+    display: none;
+}
+.pagination li:last-child a.d2-none{
+    display: none;
+}
+.pagination li:not(:first-child):not(:last-child) a.active {
+    background-color: #eeeeee;
+}
