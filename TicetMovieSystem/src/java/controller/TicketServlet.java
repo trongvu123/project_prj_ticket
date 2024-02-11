@@ -135,7 +135,7 @@ public class TicketServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String[] seats = request.getParameterValues("seat");
         String seatNames = "";
-        int count=0;
+        int count = 0;
         if (seats != null && seats.length > 0) {
             for (String seat : seats) {
                 if (!seat.isEmpty()) {
@@ -157,15 +157,23 @@ public class TicketServlet extends HttpServlet {
         Showtimes showtimes = (Showtimes) session.getAttribute("showtime");
         Cinema cinemas = (Cinema) session.getAttribute("cinemas");
         String lastID = seatsDAO.lastSeatID();
-        int lastID_raw = Integer.parseInt(lastID);
-        Seats seat = new Seats(lastID_raw+1,seatNames, showtimes);
+        int lastID_raw = 0;
+        if (lastID != null && !lastID.isEmpty()) {
+            try {
+                lastID_raw = Integer.parseInt(lastID);
+            } catch (NumberFormatException e) {              
+                e.printStackTrace(); 
+            }
+        }
+
+        Seats seat = new Seats(lastID_raw + 1, seatNames, showtimes);
         seatsDAO.addSeat(seat);
         Ticket ticket = new Ticket(movies, user, day, showtimes, seat, cinemas, price);
         ticketDAO.addToCart(ticket);
-        
+
         String mess = "Added to cart";
         request.setAttribute("mess", mess);
-        
+
         request.getRequestDispatcher("seat.jsp").forward(request, response);
     }
 

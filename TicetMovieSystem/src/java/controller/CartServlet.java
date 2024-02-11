@@ -76,6 +76,7 @@ public class CartServlet extends HttpServlet {
         Ticket ticket=null;
         if(buyID!=null){
              ticket = ticketDAO.getTickets(user.getPhone(),buyID);
+             
         }
         if(ticket != null){
             seatsDAO.updateTypeSeat(ticket.getSeats().getSeatID());

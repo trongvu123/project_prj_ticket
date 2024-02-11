@@ -90,7 +90,7 @@ public class TicketDAO extends DBContext {
                 User user = getUserTicket(rs.getString(4));
                 Days days = getDay(rs.getString(5));
                 Showtimes showtimes = getShowtimes(rs.getString(6));
-                Seats seats = getSeats(rs.getString(6));
+                Seats seats = getSeats(rs.getString(7));
                 Cinema cinema = getCinema(rs.getString(8));
                 Ticket ticket = new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));
                 listTicket.add(ticket);
@@ -99,7 +99,8 @@ public class TicketDAO extends DBContext {
         }
         return listTicket;
     }
-        public ArrayList<Ticket> getAllTicketsHistory(String phone) {
+
+    public ArrayList<Ticket> getAllTicketsHistory(String phone) {
         ArrayList<Ticket> listTicket = new ArrayList<>();
         String sql = "select t.*\n"
                 + "from Ticket t\n"
@@ -122,7 +123,8 @@ public class TicketDAO extends DBContext {
         }
         return listTicket;
     }
-    public Ticket getTickets(String phone,String id) {      
+
+    public Ticket getTickets(String phone, String id) {
         String sql = "select t.*\n"
                 + "from Ticket t\n"
                 + "where t.Phone=? and t.TransactionType='cart'";
@@ -138,7 +140,7 @@ public class TicketDAO extends DBContext {
                 Showtimes showtimes = getShowtimes(rs.getString(6));
                 Seats seats = getSeats(rs.getString(6));
                 Cinema cinema = getCinema(rs.getString(8));
-                return new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));             
+                return new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));
             }
         } catch (Exception e) {
         }
@@ -260,7 +262,7 @@ public class TicketDAO extends DBContext {
         ArrayList<Seats> list = new ArrayList<>();
         String sql = "select s.*\n"
                 + "from Seats s\n"
-                + "where s.ShowtimeID=?";
+                + "where s.SeatID=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, id);
