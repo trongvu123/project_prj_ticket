@@ -173,7 +173,7 @@ public class TicketServlet extends HttpServlet {
 
         String mess = "Added to cart";
         request.setAttribute("mess", mess);
-
+        request.setAttribute("ticketCheck", ticket);
         request.getRequestDispatcher("seat.jsp").forward(request, response);
     }
 

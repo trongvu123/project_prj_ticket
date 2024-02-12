@@ -34,7 +34,12 @@
         <div class="grid">
             <div class="grid-left__showtime">                  
                 <div class="list-showtime">
-
+                    <c:if test="${requestScope.ticketCheck != null}">
+                        <div class="alert">
+                            <div class="alert-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="alert-notifi">Add to cart success</div>
+                        </div>
+                    </c:if>
                     <c:set var="sID" value="${requestScope.showtimeID}"></c:set>
         <!--         <div>${sID}</div>-->
                     <c:forEach items="${sessionScope.listShowtime}" var="o">

@@ -399,3 +399,19 @@ body{
     font-weight:550;
     margin: 5px 0;
 }
+.alert{
+    display:flex;
+    width:319px;
+    height:60px;
+    border-left:3px solid green ;
+    align-items:center;
+    border-radius:5px;
+      box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.18);
+    
+}
+.alert-icon{
+    margin-left:20px;
+    font-size:19px;
+    color:#198754;
+    margin-right:15px;
+}
