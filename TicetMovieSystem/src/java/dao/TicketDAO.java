@@ -114,7 +114,7 @@ public class TicketDAO extends DBContext {
                 User user = getUserTicket(rs.getString(4));
                 Days days = getDay(rs.getString(5));
                 Showtimes showtimes = getShowtimes(rs.getString(6));
-                Seats seats = getSeats(rs.getString(6));
+                Seats seats = getSeats(rs.getString(7));
                 Cinema cinema = getCinema(rs.getString(8));
                 Ticket ticket = new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));
                 listTicket.add(ticket);
@@ -126,8 +126,8 @@ public class TicketDAO extends DBContext {
 
     public Ticket getTickets(String phone, String id) {
         String sql = "select t.*\n"
-                + "from Ticket t\n"
-                + "where t.Phone=? and t.TransactionType='cart'";
+                + "from Ticket t \n"
+                + "where t.Phone=? and t.TransactionType='cart' and t.TicketID=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, phone);
@@ -138,7 +138,7 @@ public class TicketDAO extends DBContext {
                 User user = getUserTicket(rs.getString(4));
                 Days days = getDay(rs.getString(5));
                 Showtimes showtimes = getShowtimes(rs.getString(6));
-                Seats seats = getSeats(rs.getString(6));
+                Seats seats = getSeats(rs.getString(7));
                 Cinema cinema = getCinema(rs.getString(8));
                 return new Ticket(rs.getString(1), rs.getString(2), movie, user, days, showtimes, seats, cinema, rs.getFloat(9));
             }
@@ -298,7 +298,7 @@ public class TicketDAO extends DBContext {
 
     public static void main(String[] args) {
         TicketDAO d = new TicketDAO();
-        float total = d.getTotalPrice("0377580457");
+        Ticket total = d.getTickets("0377580457","4");
         System.out.println(total);
     }
 }
