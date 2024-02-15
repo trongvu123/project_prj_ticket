@@ -276,3 +276,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     padding:0 30px;
     
 }
+.user-content div:nth-child(3) span{
+    position:relative;
+    right:35px;
+    bottom:7px;
+    font-size:10px;
+    color:white;
+    background-color:red;
+    border-radius:100%;
+    width:15px;
+    height:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center
+}

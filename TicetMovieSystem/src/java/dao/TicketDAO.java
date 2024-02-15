@@ -40,6 +40,22 @@ public class TicketDAO extends DBContext {
         }
     }
 
+    public int countTicket(String phone) {
+        String sql = "select COUNT(*)\n"
+                + "from Ticket t\n"
+                + "where t.TransactionType='cart' and t.Phone=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, phone);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
     public void buyTicket(String id) {
         String sql = "UPDATE Ticket\n"
                 + "SET TransactionType = 'bill'\n"
@@ -298,7 +314,7 @@ public class TicketDAO extends DBContext {
 
     public static void main(String[] args) {
         TicketDAO d = new TicketDAO();
-        Ticket total = d.getTickets("0377580457","4");
+        int total = d.countTicket("0377580457");
         System.out.println(total);
     }
 }
