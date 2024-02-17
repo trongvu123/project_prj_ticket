@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Page</title>
         <link type="text/css" rel="stylesheet" href="./css/home1.css"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     </head>
@@ -25,11 +25,12 @@
                 <div class="circle1"><span>1</span></div>
                 <div class="choose-bar__select-movie">
                     <div class="sel">
-                        <form action="home" method="get">
+                        <form action="home" method="get" id="myForm" onsubmit="onFormSubmit(event)">
                         <c:set var="m" value="${requestScope.listMovie}"></c:set>
                         <select class="movie-select" name="movie" onchange="this.form.submit()">
-                        <c:forEach items="${m}" var="m">
-                            <option value="${m.movieID}">${m.title}</option>
+                            <option ${param.movie==null ? 'selected' : ''}>Select movie</option>
+                        <c:forEach items="${m}" var="m">                      
+                            <option value="${m.movieID}" ${m.movieID == param.movie ? 'selected' : ''}>${m.title}</option>
                         </c:forEach>
                         
                         </select>
@@ -41,38 +42,52 @@
                 </div>
                 <div class="circle2"><span>2</span></div>
                 <div class="choose-bar__select-day" >
-                    <form action="home">
+                    <form action="home" onsubmit="onFormSubmit()">
                         <c:set var="d" value="${requestScope.listDays}"></c:set>
                     <select class="day-select" name="day" onchange="this.form.submit()">
-                        <option value="1">Movie 1</option>
-                        <option value="2">Movie 2</option>
-                        <option value="3">Movie 3</option>
+                         <option ${param.day==null ? 'selected' : ''}>Select day</option>
+                    <c:forEach items="${d}" var="d">
+                         <option value="${d.dayID}" ${d.dayID == param.day ? 'selected' : ''}>${d.dayName}</option>
+                    </c:forEach>
+                        
                     </select>
+                     <input name="movie" type="hidden" value="${param.movie}">
                     </form>
                     
                     <div class="arrow-day"><i class="fa-solid fa-chevron-down"></i></div>
                 </div>
                 <div class="circle3"><span>3</span></div>
                 <div class="choose-bar__select-showtime">
+                    <form action="home" onsubmit="onFormSubmit()">
                     <c:set var="s" value="${requestScope.listShowtimes}"></c:set>
-                    <select class="showtime-select" name="showtime">
-                        <option value="1">Movie 1</option>
-                        <option value="2">Movie 2</option>
-                        <option value="3">Movie 3</option>
+                    <select class="showtime-select" name="showtime" onchange="this.form.submit()">
+                         <option ${param.showtime==null ? 'selected' : ''}>Select showtime</option>
+                        <c:forEach items="${s}" var="s">
+                         <option value="${s.showtimeID}" ${s.showtimeID == param.showtime ? 'selected' : ''}>${s.showtimeStart}</option>
+                    </c:forEach>                       
                     </select>
+                     <input name="movie" type="hidden" value="${param.movie}">
+                    <input name="day" type="hidden" value="${param.day}">
+                    </form>
                     <div class="arrow-showtime"><i class="fa-solid fa-chevron-down"></i></div>
                 </div>
                 <div class="circle4"><span>4</span></div>
                 <div class="choose-bar__select-cinema">
+                    <form action="home" onsubmit="onFormSubmit()">
                     <c:set var="c" value="${requestScope.listCinemas}"></c:set>
-                    <select class="cinema-select" name="cinema">                 
-                        <option class="opt" value="1">Movie 1</option>
-                        <option class="opt" value="2">Movie 2</option>
-                        <option class="opt" value="3">Movie 3</option>
+                    <select class="cinema-select" name="cinema" onchange="this.form.submit()">  
+                         <option ${param.cinema==null ? 'selected' : ''}>Select cinema</option>
+                         <c:forEach items="${c}" var="c">
+                         <option value="${c.cinemaID}" ${c.cinemaID == param.cinema ? 'selected' : ''}>${c.cinemaName}</option>
+                    </c:forEach>   
                     </select>
+                    <input name="movie" type="hidden" value="${param.movie}">
+                    <input name="day" type="hidden" value="${param.day}">
+                    <input name="showtime" type="hidden" value="${param.showtime}">
+                    </form>
                     <div class="arrow-cinema"><i class="fa-solid fa-chevron-down"></i></div>
                 </div>
-                <div class="choose-bar__buy">Buy tickets quickly</div>
+                    <div class="choose-bar__buy"><a href="seat?showtimeID=${param.showtime}">Buy tickets quickly</a></div>
 
             </div>
         </div>
@@ -227,6 +242,7 @@
         </div>
                                     <jsp:include page="footer.jsp"/>
 
-        <script src="./js/main1.js"></script>
+                                    <script src="./js/main1.js">
+                                    </script>
     </body>
 </html>
