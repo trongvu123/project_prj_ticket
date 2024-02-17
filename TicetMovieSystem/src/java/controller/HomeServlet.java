@@ -5,8 +5,14 @@
 
 package controller;
 
+import dao.CinemaDAO;
+import dao.DaysDAO;
 import dao.MovieDAO;
+import dao.showtimesDAO;
+import entity.Cinema;
+import entity.Days;
 import entity.Movie;
+import entity.Showtimes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -60,16 +66,35 @@ public class HomeServlet extends HttpServlet {
     throws ServletException, IOException {
           String type = request.getParameter("status");
            String movieID = request.getParameter("movieTrailer");
+           String movie_id =  request.getParameter("movie");
+           String daysID = request.getParameter("day");
+           String showtimeID = request.getParameter("showtime");
+           String cinemaID = request.getParameter("cinema");
         ArrayList<Movie> listTop8 = new ArrayList<>();
+        ArrayList<Movie> listMovie = new ArrayList<>();
+        ArrayList<Days> listDays = new ArrayList<>();
+        ArrayList<Showtimes> listShowtimes = new ArrayList<>();
+        ArrayList<Cinema> listCinemas = new ArrayList<>();
             MovieDAO d = new MovieDAO();
+            DaysDAO daysDAO = new DaysDAO();
+            showtimesDAO showtimeDAO = new showtimesDAO();
+            CinemaDAO cinemaDAO = new CinemaDAO();
         if (type == null) {
             type = "show";      
             
         }         
+        listMovie = d.getAllMovie();
+        listDays= daysDAO.getAllDays(movie_id);
+        listShowtimes = showtimeDAO.getAllShowtimes(daysID);
+        listCinemas = cinemaDAO.getAllCinema();
          Movie movie = d.getMovieByID(movieID);
             request.setAttribute("tl", movie);
             listTop8 = d.getMovieTop8ByStatus(type);
-            request.setAttribute("listTop8", listTop8);          
+            request.setAttribute("listTop8", listTop8);  
+             request.setAttribute("listMovie", listMovie); 
+              request.setAttribute("listDays", listDays); 
+               request.setAttribute("listShowtimes", listShowtimes); 
+                request.setAttribute("listCinemas", listCinemas); 
             request.getRequestDispatcher("home.jsp").forward(request, response);
                    
      

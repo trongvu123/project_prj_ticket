@@ -62,6 +62,32 @@ $(document).ready(function() {
   autoplaySpeed: 2000
         });
     });
+document.addEventListener("DOMContentLoaded", function (){
+    // Lấy tất cả các phần tử select
+    var selects = document.querySelectorAll('select');
+    var currentIndex = 0;
+
+    // Khóa tất cả các phần tử select sau phần tử đầu tiên
+    for (var i = 1; i < selects.length; i++) {
+        selects[i].disabled = true;
+    }
+
+    // Thêm sự kiện onchange cho mỗi phần tử select
+    for (var i = 0; i < selects.length - 1; i++) {
+        selects[i].addEventListener('change', function(e) {
+            
+            if (this === selects[currentIndex]) {
+                currentIndex++;
+                if (currentIndex < selects.length) {
+                    selects[currentIndex].disabled = false;
+                }
+            }
+        });
+    }
+});
+
+
+
 
 
 

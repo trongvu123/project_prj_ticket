@@ -53,6 +53,9 @@
                 <div class="movie-contain">
                     <c:set var="o" value="${requestScope.list}"></c:set>
                         <div class="grid-list">
+                        <c:if test="${empty o}">
+                            <h2>There are no movies</h2>
+                        </c:if>
                         <c:forEach items="${o}" var="c">
                             <div class="movie">
                                 <img src="${c.imgURL}" alt="alt"/>
@@ -75,7 +78,7 @@
 
                                 <c:forEach begin="1" end="${requestScope.maxPage}" step="1" var="pageNumber">
 
-                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber  ? 'active' : ''}" href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber || (param.pageIndex == null && pageNumber==1) ? 'active' : ''}" href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
                                     </c:forEach>
                                 <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxPage ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
                             </ul>
@@ -88,7 +91,7 @@
                             <ul class="pagination justify-content-center">
                                 <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
                                     <c:forEach begin="1" end="${requestScope.maxBoth}" step="1" var="pageNumber">
-                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber  ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber || (param.pageIndex == null && pageNumber==1) ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
                                     </c:forEach>
                                 <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxBoth ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
                             </ul>
@@ -101,7 +104,7 @@
                             <ul class="pagination justify-content-center">
                                 <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
                                     <c:forEach begin="1" end="${requestScope.maxCategory}" step="1" var="pageNumber">
-                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber  ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber || (param.pageIndex == null && pageNumber==1) ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
                                     </c:forEach>
                                 <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxCategory ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
                             </ul>
@@ -114,7 +117,7 @@
                             <ul class="pagination justify-content-center">
                                 <li class="page-item"><a class="page-link ${param.pageIndex == 1 || param.pageIndex == null ? 'd-none' : ''}" href="more?pageIndex=${requestScope.backPage}&status=${param.status}&categoryName=${param.categoryName}">Previous</a></li>
                                     <c:forEach begin="1" end="${requestScope.maxStatus}" step="1" var="pageNumber">
-                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
+                                    <li class="page-item"><a class="page-link ${ param.pageIndex == pageNumber || (param.pageIndex == null && pageNumber==1) ? 'active' : ''} " href="more?pageIndex=${pageNumber}&status=${param.status}&categoryName=${param.categoryName}">${pageNumber}</a></li>
                                     </c:forEach>
                                 <li class="page-item"><a class="page-link ${param.pageIndex == requestScope.maxStatus ? 'd2-none' : ''}" href="more?pageIndex=${requestScope.nextPage}&status=${param.status}&categoryName=${param.categoryName}">Next</a></li>
                             </ul>
