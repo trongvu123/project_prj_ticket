@@ -85,6 +85,9 @@
                             <div class="user-content">
                                 <div><i class="fa-solid fa-user"></i><a href="#">Account</a></div>
                                 <div><i class="fa-solid fa-list-ol"></i><a href="history">History</a></div>
+                                <c:if test="${sessionScope.user.role==0}">
+                                    <div><i class="fa-solid fa-bars-progress"></i><a href="#">Manager</a></div>
+                                </c:if>
                                 <div><i class="fa-solid fa-cart-shopping"></i>
                                     <%  
               User user = (User) session.getAttribute("user");

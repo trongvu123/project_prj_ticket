@@ -5,9 +5,13 @@
         <group>
             <file>file:/D:/PRJ/TicetMovieSystem/web/js/main1.js</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/seat.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Movie.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/HomeServlet.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/MoreServlet.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/ShowtimeServlet.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/SeatServlet.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/MovieDAO.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/more.jsp</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/movie.jsp</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/home.jsp</file>
             <file>file:/D:/PRJ/TicetMovieSystem/src/java/dao/showtimesDAO.java</file>

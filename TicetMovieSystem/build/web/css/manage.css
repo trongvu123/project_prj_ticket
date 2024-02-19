@@ -1,0 +1,29 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 19, 2024, 2:18:37 PM
+    Author     : Admin
+*/
+::-webkit-scrollbar{
+    width: 0;
+}
+thead th{
+    text-align: center;
+}
+tbody tr{
+    text-align: center;
+}
+button a{
+    color: white;
+    text-decoration: none;
+}
+button a:hover{
+    color: #9999;
+}
+.btn-delete{
+    width: 50.725px;
+    height: 25.087px;
+    margin-top: 10px;
+}
