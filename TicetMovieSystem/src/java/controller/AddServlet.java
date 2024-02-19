@@ -22,8 +22,8 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-@WebServlet(name="UpdateServlet", urlPatterns={"/update"})
-public class UpdateServlet extends HttpServlet {
+@WebServlet(name="AddServlet", urlPatterns={"/add"})
+public class AddServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,10 +40,10 @@ public class UpdateServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateServlet</title>");  
+            out.println("<title>Servlet AddServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AddServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,8 +60,7 @@ public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String movieID = request.getParameter("movieID");
-            String movieCode = request.getParameter("movie");
+        String movie = request.getParameter("movie");
         String title = request.getParameter("title");
         String actor = request.getParameter("actor");
         String director = request.getParameter("director");
@@ -84,8 +83,11 @@ public class UpdateServlet extends HttpServlet {
         CategoryDAO categoryDAO = new CategoryDAO();
         MovieDAO movieDAO = new MovieDAO();
         Category category1 = movieDAO.getCategory(category);       
-        Movie newMovie = new Movie(movieCode, title, actor, director, producer, country, duration_raw, status, year_raw, category1, imgURL, imgCover, trailer, content);
+        Movie newMovie = new Movie(movie, title, actor, director, producer, country, duration_raw, status, year_raw, category1, imgURL, imgCover, trailer, content);
         boolean check = movieDAO.addMovie(newMovie);
+         ArrayList<Category> listCategory = new ArrayList<>();
+        listCategory = categoryDAO.getAll();
+        request.setAttribute("listCategory", listCategory);
         String mess="";
         if(!check){
             mess += "Duplicate movieID!";
@@ -95,12 +97,6 @@ public class UpdateServlet extends HttpServlet {
             request.setAttribute("messSuccess", mess);
         }
         request.getRequestDispatcher("add.jsp");
-        Movie movie = movieDAO.getMovieByID(movieID);
-        ArrayList<Category> listCategory = new ArrayList<>();
-        listCategory = categoryDAO.getAll();
-        request.setAttribute("listCategory", listCategory);
-        request.setAttribute("movie", movie);
-        request.getRequestDispatcher("update.jsp").forward(request, response);
     } 
 
     /** 

@@ -361,6 +361,93 @@ public class MovieDAO extends DBContext {
         return null;
     }
 
+    public boolean addMovie(Movie movie) {
+        String sql = "INSERT INTO [dbo].[Movie]\n"
+                + "           ([MovieID],[Title],[Actor],[Director],[Producer],[Country],[Duration]\n"
+                + "           ,[Status]\n"
+                + "           ,[Year]\n"
+                + "           ,[CategoryID]\n"
+                + "           ,[imgURL]\n"
+                + "           ,[coverURL]\n"
+                + "           ,[videoURL]\n"
+                + "           ,[Content])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        int check = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, movie.getMovieID());
+            st.setString(2, movie.getTitle());
+            st.setString(3, movie.getActor());
+            st.setString(4, movie.getDirector());
+            st.setString(5, movie.getProducer());
+            st.setString(6, movie.getCountry());
+            st.setInt(7, movie.getDuration());
+            st.setString(8, movie.getStatus());
+            st.setInt(9, movie.getYear());
+            st.setString(10, movie.getCategory().getCategoryID());
+            st.setString(11, movie.getImgURL());
+            st.setString(12, movie.getCoverURL());
+            st.setString(13, movie.getVideoURL());
+            st.setString(14, movie.getContent());
+            check = st.executeUpdate();
+        } catch (Exception e) {
+        }
+        return check > 0;
+    }
+
+    public boolean updateMovie(Movie movie) {
+        String sql = "UPDATE [dbo].[Movie]\n"
+                + "   SET [MovieID] =?\n"
+                + "      ,[Title] = ?\n"
+                + "      ,[Actor] = ?\n"
+                + "      ,[Director] = ?\n"
+                + "      ,[Producer] = ?\n"
+                + "      ,[Country] = ?\n"
+                + "      ,[Duration] = ?\n"
+                + "      ,[Status] = ?\n"
+                + "      ,[Year] = ?\n"
+                + "      ,[CategoryID] = ?\n"
+                + "      ,[imgURL] = ?\n"
+                + "      ,[coverURL] = ?\n"
+                + "      ,[videoURL] = ?\n"
+                + "      ,[Content] = ?\n"
+                + " WHERE [MovieID] =?";
+        int check = 0;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, movie.getMovieID());
+            st.setString(2, movie.getTitle());
+            st.setString(3, movie.getActor());
+            st.setString(4, movie.getDirector());
+            st.setString(5, movie.getProducer());
+            st.setString(6, movie.getCountry());
+            st.setInt(7, movie.getDuration());
+            st.setString(8, movie.getStatus());
+            st.setInt(9, movie.getYear());
+            st.setString(10, movie.getCategory().getCategoryID());
+            st.setString(11, movie.getImgURL());
+            st.setString(12, movie.getCoverURL());
+            st.setString(13, movie.getVideoURL());
+            st.setString(14, movie.getContent());
+            st.setString(15, movie.getMovieID());
+            check = st.executeUpdate();
+        } catch (Exception e) {
+        }
+        return check > 0;
+    }
+
+    public void deleteMovie(String movieID) {
+        String sql = "DELETE FROM [dbo].[Movie]\n"
+                + "      WHERE [MovieID] =?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, movieID);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         MovieDAO dAO = new MovieDAO();
         int count = dAO.countMovieWithCategory("horror");

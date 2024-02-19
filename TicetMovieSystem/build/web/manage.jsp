@@ -51,7 +51,7 @@
                     <td>${l.duration}</td>
                     <td>${l.year}</td>
                     <td>
-                         <button type="button" class="btn btn-secondary" ><a href="update?id=${l.movieID}">Update</a></button>
+                         <button type="button" class="btn btn-secondary" ><a href="update?movieID=${l.movieID}">Update</a></button>
                          <button type="button" class="btn btn-secondary btn-delete"><a href="#" onclick="deleteItem('${l.movieID}')">Delete</a></button>
                     </td>
                 </tr>

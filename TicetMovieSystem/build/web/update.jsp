@@ -14,155 +14,171 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            legend{
+                margin-left: 20px;
+            }
+            form{
+                margin-top: 40px;
+            }
+        </style>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="update">
                 <fieldset>
-
-                    <!-- Form Name -->
-                    <legend>PRODUCTS</legend>
-
+                <c:if test="${requestScope.messSuccess != null}">
+                    <div class="alert alert-success " role="alert">
+                        ${requestScope.messSuccess}
+                    </div>
+                </c:if>                  
+                <!-- Form Name -->
+                <legend>PRODUCTS</legend>
+                <c:set var="m" value="${requestScope.movie}"></c:set>
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_id">PRODUCT ID</label>  
+                        <label class="col-md-4 control-label" for="product_id">Movie ID</label>  
                         <div class="col-md-4">
-                            <input id="product_id" name="movie" placeholder="MOVIE ID" class="form-control input-md" required="" type="text">
+                            <input id="product_id" name="movie" value="${m.movieID}" placeholder="MOVIE ID" class="form-control input-md" readonly type="text">
 
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
-                        <div class="col-md-4">
-                            <input id="product_name" name="title" placeholder="TITLE" class="form-control input-md" required="" type="text">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name">Title</label>  
+                    <div class="col-md-4">
+                        <input id="product_name" name="title" value="${m.title}" placeholder="TITLE" class="form-control input-md" required="" type="text">
 
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>  
-                        <div class="col-md-4">
-                            <input id="product_name_fr" name="actor" placeholder="ACTOR" class="form-control input-md" required="" type="text">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Actor</label>  
+                    <div class="col-md-4">
+                        <input id="product_name_fr" name="actor" value="${m.actor}" placeholder="ACTOR" class="form-control input-md" required="" type="text">
 
-                        </div>
                     </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>  
-                        <div class="col-md-4">
-                            <input id="product_name_fr" name="director" placeholder="DIRECTOR" class="form-control input-md" required="" type="text">
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Director</label>  
+                    <div class="col-md-4">
+                        <input id="product_name_fr" name="director" value="${m.director}" placeholder="DIRECTOR" class="form-control input-md" required="" type="text">
 
-                        </div>
                     </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>  
-                        <div class="col-md-4">
-                            <input id="product_name_fr" name="producer" placeholder="PRODUCER" class="form-control input-md" required="" type="text">
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Producer</label>  
+                    <div class="col-md-4">
+                        <input id="product_name_fr" name="producer" value="${m.producer}" placeholder="PRODUCER" class="form-control input-md" required="" type="text">
 
-                        </div>
                     </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>  
-                        <div class="col-md-4">
-                            <input id="product_name_fr" name="country" placeholder="COUNTRY" class="form-control input-md" required="" type="text">
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Country</label>  
+                    <div class="col-md-4">
+                        <input id="product_name_fr" name="country" value="${m.country}" placeholder="COUNTRY" class="form-control input-md" required="" type="text">
 
-                        </div>
                     </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>  
-                        <div class="col-md-4">
-                            <input id="product_name_fr" name="duration" placeholder="DURATION" class="form-control input-md" required="" type="text">
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Duration</label>  
+                    <div class="col-md-4">
+                        <input id="product_name_fr" name="duration" value="${m.duration}" placeholder="DURATION" class="form-control input-md" required="" type="text">
 
-                        </div>
                     </div>
-                                   <!-- Select Basic -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="category">Movie category</label>
-                        <div class="col-md-4">
-                            <select id="category" name="category" class="form-control">
+                </div>
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="category">Movie category</label>
+                    <div class="col-md-4">
+                        <select id="category" name="category" class="form-control">
                             <c:forEach items="${requestScope.listCategory}" var="c">
-                                <option value="${c.categoryID}">${c.categoryName}</option>
+                                <option value="${c.categoryID}" ${m.category.categoryID == c.categoryID ? 'selected' : ''}>${c.categoryName}</option>
                             </c:forEach>
-                            </select>
-                        </div>
+                        </select>
                     </div>
-               
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="available_quantity">Year</label>  
-                        <div class="col-md-4">
-                            <input id="available_quantity" name="year" placeholder="YEAR" class="form-control input-md" required="" type="number">
+                </div>
 
-                        </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="available_quantity">Year</label>  
+                    <div class="col-md-4">
+                        <input id="available_quantity" name="year" value="${m.year}" placeholder="YEAR" class="form-control input-md" required="" type="number">
+
                     </div>
-        
-                        <!-- Textarea -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">Content</label>
-                        <div class="col-md-4">                     
-                            <textarea class="form-control" id="product_name_fr" name="content"></textarea>
-                        </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Content</label>
+                    <div class="col-md-4">                     
+                        <textarea class="form-control" id="product_name_fr" name="content">${m.content}</textarea>
                     </div>
-                                <!-- Select Basic -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_categorie">PRODUCT CATEGORY</label>
-                        <div class="col-md-4">
-                            <select id="product_categorie_2" name="statusss" class="form-control">
-                                <option value="show">Show</option>
-                                <option value="show">Soon</option>
-                            </select>
-                        </div>
+                </div>
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_categorie">Status</label>
+                    <div class="col-md-4">
+                        <select id="product_categorie_2" name="status" class="form-control">
+                            <option value="show" ${m.status == show ? 'selected' : ''}>Show</option>
+                            <option value="soon" ${m.status == soon ? 'selected' : ''}>Soon</option>
+                        </select>
                     </div>
-                                 <!-- File Button --> 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="filebutton">Image</label>
-                                <div class="col-md-4">
-                                    <input id="filebutton" name="imgURL" class="input-file" type="file">
-                                </div>
-                            </div>
-                                    <!-- File Button --> 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="filebutton">Image cover</label>
-                                <div class="col-md-4">
-                                    <input id="filebutton" name="imgCover" class="input-file" type="file">
-                                </div>
-                            </div>
-                                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="product_name_fr">Trailer</label>
-                        <div class="col-md-4">                     
-                            <textarea class="form-control" id="product_name_fr" name="trailer"></textarea>
-                        </div>
+                </div>
+                <!-- File Button --> 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="filebutton">Image</label>
+                    <div class="col-md-4">
+                        <input id="filebutton" value="${m.imgURL}" name="imgURL" class="input-file" type="file">
                     </div>
-                    <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
-  <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
-  </div>
-  </div>
+                </div>
+                <!-- File Button --> 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="filebutton">Image cover</label>
+                    <div class="col-md-4">
+                        <input id="filebutton" name="imgCover" value="${m.coverURL}" class="input-file" type="file">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="product_name_fr">Trailer</label>
+                    <div class="col-md-4">                     
+                        <textarea class="form-control" id="product_name_fr_1" name="trailer">${m.videoURL}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                    <div class="col-md-4">
+                        <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Add</button>
+                        <a href="manage"><button class="btn btn-primary">back</button></a>
+                    </div>
+                </div>
 
-                            </fieldset>
-                            </form>
-                        <jsp:include page="footer.jsp"></jsp:include>
-                        <script>
-                            // Lấy tham chiếu đến phần tử select
-var selectElement = document.getElementById("product_categorie_2");
+            </fieldset>
+                    
+        </form>
+                    
+        <jsp:include page="footer.jsp"></jsp:include>
+            <script>
+                var selectElement = document.getElementById("product_categorie_2");
 
-// Hủy bỏ thuộc tính disabled của phần tử select
-function enableSelect() {
-    selectElement.removeAttribute("disabled");
-}
 
-// Gọi hàm enableSelect khi cần thiết
-// Ví dụ: khi một sự kiện nào đó xảy ra
-// Trong ví dụ này, chúng ta gọi hàm enableSelect khi trang web được tải hoàn toàn
-window.onload = enableSelect;
+                function enableSelect() {
+                    selectElement.removeAttribute("disabled");
+                }
 
-                        </script>
-                        </body>
-                        </html>
+                window.onload = enableSelect;
+                window.onload = function () {
+                    var content = ${m.content};
+                    var trailer = ${m.videoURL};
+                    document.getElementById('product_name_fr').textContent = content;
+                    document.getElementById('product_name_fr_1').textContent = trailer;
+                }
+        </script>
+    </body>
+</html>
