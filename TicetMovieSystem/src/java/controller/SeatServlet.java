@@ -86,11 +86,14 @@ public class SeatServlet extends HttpServlet {
     Cinema cinema = cinemaDAO.getCinema(cinemaID);
     String dayID = (String) session.getAttribute("dayID");
     Days dayChoose = daysDAO.getDay(dayID);
+    String dayName = dayChoose.getDayName().split("\\s+")[0];
+
     seatsName = seatsDAO.getAllSeatsName(showtimeID);
      String[] seatName = seatsName.toArray(new String[0]);
     Showtimes showtimeChoose = seatsDAO.getShowtimes(showtimeID);
     session.setAttribute("cinemas", cinema);
     request.setAttribute("seatsName", seatName);
+     request.setAttribute("dayName", dayName);
     request.setAttribute(showtimeID, movie);
     request.setAttribute("showtimeID", showtimeID);
     request.setAttribute("cinema", cinema);

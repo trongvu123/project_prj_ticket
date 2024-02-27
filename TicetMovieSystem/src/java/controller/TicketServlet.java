@@ -134,8 +134,11 @@ public class TicketServlet extends HttpServlet {
         ArrayList<Ticket> listTicket = new ArrayList<>();
         PrintWriter out = response.getWriter();
         String[] seats = request.getParameterValues("seat");
+        Days day = (Days) session.getAttribute("day");
         String seatNames = "";
+        String dayName = day.getDayName().split("\\s+")[0];
         int count = 0;
+ 
         if (seats != null && seats.length > 0) {
             for (String seat : seats) {
                 if (!seat.isEmpty()) {
@@ -149,10 +152,15 @@ public class TicketServlet extends HttpServlet {
                 }
             }
         }
-
-        float price = count * 2;
+        float price = 0;
+          if(dayName.equalsIgnoreCase("Sunday") || dayName.equalsIgnoreCase("Saturday")){
+            price = count * 4;
+        } else{
+              price = count*2;
+          }
+        
         Movie movies = (Movie) session.getAttribute("id");
-        Days day = (Days) session.getAttribute("day");
+//        Days day = (Days) session.getAttribute("day");
         User user = (User) session.getAttribute("user");
         Showtimes showtimes = (Showtimes) session.getAttribute("showtime");
         Cinema cinemas = (Cinema) session.getAttribute("cinemas");

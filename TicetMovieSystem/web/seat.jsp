@@ -967,6 +967,7 @@
                 </div>
             </div>
         </div>
+                        <div>${requestScope.dayName}</div>
         <c:forEach items="${requestScope.arr}" var="o">
             <h1>${o}</h1>
 
@@ -976,7 +977,9 @@
             <%
             Gson gson = new Gson();
             String json = gson.toJson(request.getAttribute("seatsName"));
+            String jsonDayName = gson.toJson(request.getAttribute("dayName"));
             request.setAttribute("json", json);
+            request.setAttribute("day", jsonDayName);
             %>
             document.addEventListener("DOMContentLoaded", function () {
 
@@ -996,7 +999,7 @@
                     button.addEventListener('click', function () {
                         var isBooked = this.classList.contains('booked');
                         var isSelected = this.classList.contains('selected');
-
+                        
                         if (!isBooked) {
                             if (!isSelected && total < 8) {
                                 this.classList.add('selected');
@@ -1022,6 +1025,9 @@
                 let seatPrice = 0;
                 let selectedSeats = [];
                 let total = 0;
+                let days = JSON.parse('<%=request.getAttribute("day")%>');
+
+                console.log(days)
 //                let overplay = document.querySelector('.overplay');
 //                let overplayBtn = document.querySelector('.contain-notifi div button');
                 seatButtons.forEach(function (item) {
@@ -1029,11 +1035,16 @@
                     item.addEventListener('click', function () {
                         let seatValue = item.getAttribute('onclick').split("'")[3];
                         let selected = this.classList.contains('selected');
-                        let booked = this.classList.contains('booked');
+                        let booked = this.classList.contains('booked');                       
                         if (!check && !booked) {
                             total++;
                             if (total <= 8) {
-                                seatPrice += 2;
+                                if(days === "Sunday" || days === "Saturday"){
+                                   seatPrice += 4; 
+                                }
+                                else{
+                                    seatPrice += 2;
+                                }
                                 selectedSeats.push(seatValue);
                                 check = true;
                             }
@@ -1042,7 +1053,12 @@
                         } else {
                             if (total <= 8 && !booked) {
                                 total--;
-                                seatPrice -= 2;
+                                   if(days === "Sunday" || days === "Saturday"){
+                                   seatPrice -= 4; 
+                                }
+                                else{
+                                    seatPrice -= 2;
+                                }
                                 selectedSeats.pop(seatValue);
                                 check = false;
                             }
