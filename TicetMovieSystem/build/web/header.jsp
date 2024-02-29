@@ -7,7 +7,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="entity.User" %>
-
+<%@ page import="entity.Movie" %>
+<%@ page import="dao.MovieDAO"%>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,6 +38,54 @@
                     <div class="movie-dropdown">
                         <div class="movie-drop">
                             <a>Movie</a>
+                            <div class="m-contain">
+                                <div class="movie-hover">
+                                    <div class="movie-hover_show">
+                                        
+                                        <div class="4-movie_show">
+                                            <div class="text-hover_show">Show</div>
+                                            <div class="m_top3-show">
+                                                <%
+                                        MovieDAO mdao = new MovieDAO();
+                                        ArrayList<Movie> list = new ArrayList<>();
+                                        list=mdao.getMovieTop8ByStatus("show");
+                                        for (int i = 0; i < 4; i++) {
+                                        Movie movie = list.get(i);
+                                        %>
+                                        <div class="movie-item_show">
+                                            <div class="img-show"><img src="<%= movie.getImgURL() %>" alt="alt"/></div>
+                                            <div class="title-show"><%= movie.getTitle() %></div>
+                                            <div class="btnz"><button><a href="movie?movieID=<%= movie.getMovieID() %>"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button></div>
+                                        </div>
+                                        <%
+                                        }  
+                                        %>    
+                                                
+                                            </div>
+                                        <div class="text-hover_show">Show</div>
+                                        <div class="m_top3-soon">
+                                                <%
+                                        
+                                        ArrayList<Movie> list2 = new ArrayList<>();
+                                        list2=mdao.getMovieTop8ByStatus("soon");
+                                        for (int i = 0; i < 4; i++) {
+                                        Movie movie2 = list2.get(i);
+                                        %>
+                                        <div class="movie-item_soon">
+                                            <div class="img-soon"><img src="<%= movie2.getImgURL() %>" alt="alt"/></div>
+                                            <div class="title-soon"><%= movie2.getTitle() %></div>
+                                            <div class="btnzx"><button><a href="movie?movieID=<%= movie2.getMovieID() %>"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button></div>
+
+                                        </div>
+                                        <%
+                                        }  
+                                        %>    
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="arrow-down">
                             <i class="fa-solid fa-chevron-down"></i>
@@ -85,9 +135,9 @@
                             <div class="user-content">
                                 <div><i class="fa-solid fa-user"></i><a href="#">Account</a></div>
                                 <div><i class="fa-solid fa-list-ol"></i><a href="history">History</a></div>
-                                <c:if test="${sessionScope.user.role==0}">
+                                        <c:if test="${sessionScope.user.role==0}">
                                     <div><i class="fa-solid fa-bars-progress"></i><a href="manage">Manager</a></div>
-                                </c:if>
+                                        </c:if>
                                 <div><i class="fa-solid fa-cart-shopping"></i>
                                     <%  
               User user = (User) session.getAttribute("user");

@@ -135,14 +135,16 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="filebutton">Image</label>
                     <div class="col-md-4">
-                        <input id="filebutton" value="${m.imgURL}" name="imgURL" class="input-file" type="file">
+                        <input id="filebutton" name="imgURL" value="${m.imgURL}" class="input-file" type="file">
+                        <input type="hidden" name="imgURL_origin" value="${m.imgURL}">
                     </div>
                 </div>
                 <!-- File Button --> 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="filebutton">Image cover</label>
+                    <label class="col-md-4 control-label" for="filebutton2">Image cover</label>
                     <div class="col-md-4">
-                        <input id="filebutton" name="imgCover" value="${m.coverURL}" class="input-file" type="file">
+                        <input id="filebutton2" name="imgCover" value="${m.coverURL}" class="input-file" type="file">
+                        <input type="hidden" name="imgCover_origin" value="${m.coverURL}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -162,7 +164,8 @@
             </fieldset>
                     
         </form>
-                    
+                        <div>${requestScope.img}</div>  
+                        <div>${requestScope.img2}</div>  
         <jsp:include page="footer.jsp"></jsp:include>
             <script>
                 var selectElement = document.getElementById("product_categorie_2");

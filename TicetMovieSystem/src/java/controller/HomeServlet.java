@@ -129,6 +129,13 @@ public class HomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        MovieDAO mdao = new MovieDAO();
+        ArrayList<Movie> list = new ArrayList<>();
+        list=mdao.getMovieTop8ByStatus("show");
+        for (int i = 0; i < 3; i++) {
+            Movie movie = list.get(i);
+            
+        }
     }
 
     /**
