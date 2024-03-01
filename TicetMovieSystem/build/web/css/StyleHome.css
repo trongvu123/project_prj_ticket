@@ -399,6 +399,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
      left: 50%;
      transform: translate(-50%,-50%);
      bottom: 43px;
+     display: none;
+     z-index: 102;
 }
 .movie-item_show button{
         border: none;
@@ -424,6 +426,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
      left: 50%;
      transform: translate(-50%,-50%);
      bottom: 43px;
+     display: none;
+     z-index: 102;
 }
 .movie-item_soon button{
         border: none;
@@ -442,4 +446,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .movie-item_soon{
     position:relative;
     
+}
+
+.movie-item_show:hover .btnz{
+    display:block;
+    transition: opacity 0.5s ease;
+}
+.btnz button:first-child:hover{
+    background-color:#fb9440;
+    transition: opacity 0.5s ease;
+}
+.movie-item_soon:hover .btnzx{
+    display:block;
+    transition: opacity 0.5s ease;
+}
+.btnzx button:first-child:hover{
+    background-color:#fb9440;
+    transition: opacity 0.5s ease;
 }
