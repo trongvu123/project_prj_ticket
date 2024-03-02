@@ -23,6 +23,7 @@
                     <hr class="hrin">
                     <div class="list-rv">
                     <c:forEach items="${requestScope.l}" var="o">
+                        <a href="pageReview?id=${o.reviewID}">
                         <div class="review-contain">
                             <div class="img-rv">
                                 <img src="${o.imgRv}" alt="alt"/>
@@ -36,6 +37,7 @@
                                 <div class="short-content">${o.reviewTitle}</div>
                             </div>
                         </div>
+                            </a>
                     </c:forEach>
                 </div>
             </div>

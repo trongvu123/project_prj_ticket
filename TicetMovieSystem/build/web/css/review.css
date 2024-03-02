@@ -212,3 +212,7 @@ htnl{
     top: -98px;
     left: 76px;
 }
+a{
+    text-decoration:none;
+    color:#4a4a4a
+}

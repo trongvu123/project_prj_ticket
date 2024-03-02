@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/header.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Movie.java</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/HomeServlet.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/seat.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/MovieServlet.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/moreReview.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/css/movie1.css</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/controller/ReviewServlet.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/css/home1.css</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Seats.java</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/src/java/entity/Review.java</file>
             <file>file:/D:/PRJ/TicetMovieSystem/web/home.jsp</file>
-            <file>file:/D:/PRJ/TicetMovieSystem/web/css/StyleHome.css</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/movie.jsp</file>
+            <file>file:/D:/PRJ/TicetMovieSystem/web/css/review.css</file>
         </group>
     </open-files>
 </project-private>

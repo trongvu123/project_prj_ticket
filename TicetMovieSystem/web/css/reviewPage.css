@@ -3,12 +3,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : Mar 2, 2024, 3:09:40 PM
+    Created on : Mar 2, 2024, 11:15:39 PM
     Author     : Admin
 */
-htnl{
-    font-family: Nunito Sans,sans-serif!important;
-}
 .grid{
     width: 1200px;
     max-width: 100%;
@@ -24,18 +21,9 @@ htnl{
     border:none;
     margin-top:15px;
 }
-.hrin{
-    background-color:#034ea2;
-    height:2px;
-    border:none;
-    margin-top:15px;
-}
-.text-rv{
-    font-size:23px;
-    color:#4a4a4a;
-    border-left:4px solid #034ea2;
-   padding-left:8px;
-    margin-top:15px;
+a,span{
+    text-decoration: none;
+    color: #4a4a4a;
 }
 .view-blog{
     display:flex;
@@ -71,30 +59,24 @@ htnl{
 
 
 }
-.img-rv img{
-    width:255px;
-    height:170px;
-    border-radius:5px;
+.title-h3 h3{
+    font-size:30px;
+    line-height:35px;
+    opacity:0.8;
+    margin:10px 0;
 }
-.review-contain{
-    display:flex;
+.rv1,.rv2,.rv3{
     margin:20px 0;
     
 }
-.content-rv{
-    margin-left:20px;
-}
-.content-rv div,h3{
-    margin-bottom:10px;
-}
-.short-content{
-    font-family: Nunito Sans,sans-serif!important;
+p{
+    text-align:justify;
+    color:#4a4a4a;
     font-size:14px;
-    color:#A0A3A7
+    font-family:Nunito Sans,sans-serif!important;
 }
-.content-rv h3{
-     font-family: Nunito Sans,sans-serif!important;
-    font-weight:400;
+.img1,.img2{
+    text-align:center;
 }
 .movie-top3 img{
     width:333px;
@@ -212,7 +194,7 @@ htnl{
     top: -98px;
     left: 76px;
 }
-a{
-    text-decoration:none;
-    color:#4a4a4a
+.img1 img,.img2 img{
+
+    width:650px;
 }
