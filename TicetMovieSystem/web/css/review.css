@@ -1,0 +1,214 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 2, 2024, 3:09:40 PM
+    Author     : Admin
+*/
+htnl{
+    font-family: Nunito Sans,sans-serif!important;
+}
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 842.66px 405.33px;
+    grid-template-rows: 1fr;
+    grid-gap:20px;
+}
+.hrout{
+    background-color:#f4f4f4;
+    height:8px;
+    border:none;
+    margin-top:15px;
+}
+.hrin{
+    background-color:#034ea2;
+    height:2px;
+    border:none;
+    margin-top:15px;
+}
+.text-rv{
+    font-size:23px;
+    color:#4a4a4a;
+    border-left:4px solid #034ea2;
+   padding-left:8px;
+    margin-top:15px;
+}
+.view-blog{
+    display:flex;
+}
+.view-blog button:first-child{
+    background-color:#4080FF;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-right:10px;
+}
+.view-blog button:last-child{
+    background-color:#3333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.view-blog button i {
+    margin-right: 5px;
+}
+.view-blog button{
+    color:white;
+    border:none;
+    width:56px;
+    height:20px;
+    border-radius:3px;
+    font-size:11px;
+    font-weight:550;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.img-rv img{
+    width:255px;
+    height:170px;
+    border-radius:5px;
+}
+.review-contain{
+    display:flex;
+    margin:20px 0;
+    
+}
+.content-rv{
+    margin-left:20px;
+}
+.content-rv div,h3{
+    margin-bottom:10px;
+}
+.short-content{
+    font-family: Nunito Sans,sans-serif!important;
+    font-size:14px;
+    color:#A0A3A7
+}
+.content-rv h3{
+     font-family: Nunito Sans,sans-serif!important;
+    font-weight:400;
+}
+.movie-top3 img{
+    width:333px;
+    height:222px;
+    border-radius:5px;
+}
+.recomend-text{
+    font-size:23px;
+    color:#4a4a4a;
+    border-left:4px solid #034ea2;
+   padding-left:8px;
+    margin-top:15px;
+}
+.movie-top3{
+    position:relative;
+}
+.btn-movie3 button{
+    position:absolute;
+    z-index:1;
+    top: 42%;
+    left: 41.5%;
+    transform: translate(-50%,-50%);
+}
+.btn-movie3 button a{
+        text-decoration: none;
+    color: var(--white-color);
+}
+.btn-movie3 button{
+     margin: 6px 0;
+    border: none;
+    outline:none;
+    width: 120px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    display:none;
+    z-index:2;
+}
+.icon-m{
+    margin-right: 9px;
+}
+.movie-top3:hover .btn-movie3 button{
+    display:block;
+    transition: opacity 0.5s ease;
+   
+}
+.btn-movie3 button:hover{
+     background-color:#fb9440;
+    transition: opacity 0.5s ease;
+}
+.movie-top3::before{
+    content: "";
+    position: absolute;
+    width: 333px;
+    height: 222px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+.movie-top3:hover::before{
+     opacity: 1;
+}
+.movie-top3{
+    margin:15px 0;
+}
+.movie-top3 h4{
+    font-weight:500;
+    opacity:0.8;
+}
+.btn-more{
+    margin: 100px;
+    display:flex;
+    cursor:pointer;
+    display:inline-block;
+}
+.btn-more a{
+    text-decoration:none;
+    color:var(--primary-color);
+
+}
+.btn-more .btn-more__link{
+    margin:auto;
+    border: 1px solid var(--primary-color);
+    border-radius:5px;
+    width:160px;
+    height:43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+.btn-more__link i{
+    font-size:13px;
+    color:var(--primary-color);
+    margin-top:1.4px;
+    margin-left:7px;
+}
+.btn-more:hover .btn-more__link {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn-more:hover .btn-more__link i {
+    color: white;
+}
+.btn-more:hover .btn-more__link a {
+    color: white;
+}
+.btn-more__contain{
+    width:0px;
+    height: 0px;
+    position:relative;
+    top: -98px;
+    left: 76px;
+}
