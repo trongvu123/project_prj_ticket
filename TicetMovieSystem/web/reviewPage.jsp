@@ -40,6 +40,17 @@
                     <img src="${rv.img2}" alt="alt"/>
                 </div>
                 <div class="rv3"><p>${rv.review3}</p></div>
+                <div class="text-random">OTHER FILM REVIEWS</div>
+                <div class="listRandom">
+                    <c:forEach items="${requestScope.random}" var="o">
+                        <a href="pageReview?id=${o.reviewID}">
+                        <div class="contain-random">
+                            <div class="img-random"><img src="${o.imgRv}" alt="alt"/></div>
+                            <div class="title-random">${o.title}</div>
+                        </div>
+                        </a>
+                    </c:forEach>
+                </div>
             </div>
             <c:set var="l" value="${requestScope.listTop3}"></c:set> 
                 <div class="grid-page_right">

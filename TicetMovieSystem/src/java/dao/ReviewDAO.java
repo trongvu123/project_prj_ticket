@@ -38,7 +38,7 @@ public class ReviewDAO extends DBContext {
         String sql = "select *\n"
                 + "from Review\n"
                 + "where ReviewID=?";
-       
+
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
@@ -53,11 +53,36 @@ public class ReviewDAO extends DBContext {
         }
         return null;
     }
+
+    public ArrayList<Review> getRandomReviews(int id) {
+        String sql = "SELECT TOP 4 *\n"
+                + "FROM Review\n"
+                + "WHERE ReviewID != ?\n"
+                + "ORDER BY NEWID();";
+        ArrayList<Review> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Review review = new Review(rs.getInt(1),
+                        rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9), rs.getString(10));
+                list.add(review);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         ArrayList<Review> list = new ArrayList<>();
         ReviewDAO d = new ReviewDAO();
-        Review rv =d.getReview(1);
-        System.out.println(rv);
+       list= d.getRandomReviews(1);
+        for (Review review : list) {
+            System.out.println(review);
+        }
 
     }
 }

@@ -36,18 +36,23 @@ public class PageReviewServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
+        String pid = request.getParameter("pid");
         int id_raw=0;
         try {
             id_raw=Integer.parseInt(id);
         } catch (Exception e) {
         }
+         ReviewDAO rv = new ReviewDAO();
          MovieDAO d = new MovieDAO();
         ArrayList<Movie> listTop3 = new ArrayList<>();
+        ArrayList<Review> listRandom = new ArrayList<>();
+        listRandom=rv.getRandomReviews(id_raw);
         listTop3 = d.getMovieTop8ByStatus("show");
-        ReviewDAO rv = new ReviewDAO();
+       
         Review review = rv.getReview(id_raw);
         request.setAttribute("rv", review);
         request.setAttribute("listTop3", listTop3);
+        request.setAttribute("random", listRandom);
         request.getRequestDispatcher("reviewPage.jsp").forward(request, response);
     } 
 

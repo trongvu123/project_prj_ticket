@@ -198,3 +198,30 @@ p{
 
     width:650px;
 }
+.img-random img{
+    width:192.66px;
+    border-radius:5px;
+}
+.listRandom{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-gap:30px;
+    margin-top:40px;
+   
+}
+.text-random{
+       font-size:23px;
+    color:#4a4a4a;
+    border-left:4px solid #034ea2;
+   padding-left:8px;
+    margin-top:60px;
+}
+.title-random{
+        -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:#4a4a4a;
+    font-family:Nunito Sans,sans-serif!important;
+    font-size: 14px;
+}
