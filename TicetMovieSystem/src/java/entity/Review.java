@@ -38,7 +38,13 @@ public class Review {
         this.review2 = review2;
         this.review3 = review3;
     }
-
+    public Review(String imgRv, String title, String reviewTitle) {
+    
+        this.imgRv = imgRv;
+        this.title = title;
+        this.reviewTitle = reviewTitle;
+ 
+    }
     public int getReviewID() {
         return reviewID;
     }

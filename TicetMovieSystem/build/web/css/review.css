@@ -216,3 +216,72 @@ a{
     text-decoration:none;
     color:#4a4a4a
 }
+.list-page {
+   list-style:none;
+    display:flex
+}
+.list-page li a button{
+      font-family:Nunito Sans,sans-serif!important;
+    border:none;
+    width:32.4px;
+    height:28px;
+    background-color:transparent;
+    color:#4a4a4a;
+    margin:0 12px;
+    transition: background-color 0.3s ease,color 0.2s ease;
+    border-radius:4px;
+    cursor:pointer;
+}
+.list-page li a button:hover{
+    background-color:var(--primary-color);
+    color: white;
+}
+.arrow-back{
+    font-size:10.88px;
+    margin: auto 0;
+}
+.arrow-up{
+    font-size:10.88px;
+    margin: auto 0;
+}
+.paging{
+    display:flex;
+    justify-content:center;
+    padding-top:40px;
+}
+
+.arrow-back a i{
+    color:#4a4a4a4a;
+   
+}
+.arrow-up a i{
+    color:#4a4a4a4a;
+}
+.arrow-back{
+    width:25px;
+    height:25px;
+    border-radius:4px;
+    text-align:center;
+}
+.arrow-up{
+    width:25px;
+    height:25px;
+    border-radius:4px;
+    text-align:center;
+}
+.arrow-back .hover:hover{
+    background-color:#ececec
+}
+.arrow-up .hover:hover{
+    background-color:#ececec
+}
+.list-page li a button.active{
+    background-color:var(--primary-color);
+    color: white;
+}
+.arrow-back a i.active{
+    color:#4a4a4a;
+}
+.arrow-up a i.active{
+    color:#4a4a4a;
+}

@@ -213,6 +213,11 @@
                     </ul>
                 </div>
             </div>
+                <div class="btn-more__contain">
+                <div class="btn-more">
+                    <div class="btn-more__link"><a href="more?status=all">See also</a><i class="fa-solid fa-chevron-right"></i></div>
+                </div>
+            </div>
         </div>
         <hr class="hr2" style="border-top: 5px solid #f4f4f4;">
         <div class="grid">

@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
 import com.google.gson.Gson;
@@ -23,36 +22,61 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-@WebServlet(name="ReviewServlet", urlPatterns={"/review"})
+@WebServlet(name = "ReviewServlet", urlPatterns = {"/review"})
 public class ReviewServlet extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Review> list = new ArrayList<>();
+        ArrayList<Review> listJson = new ArrayList<>();
         Gson gson = new Gson();
-        ReviewDAO dAO= new ReviewDAO();
+        ReviewDAO dAO = new ReviewDAO();
         MovieDAO d = new MovieDAO();
         ArrayList<Movie> listTop3 = new ArrayList<>();
         listTop3 = d.getMovieTop8ByStatus("show");
-        list=dAO.getAllReviews();
-        String listReview = gson.toJson(list);
+        list = dAO.getAllReviews();
+        listJson = dAO.getAllReviewsJson();
+        String listReview = gson.toJson(listJson);
+        ArrayList<Review> listPage = new ArrayList<>();
+        // paging
+        String page = request.getParameter("pageIndex");
+        
+        int pageIndex = 1;
+        try {
+            pageIndex = Integer.parseInt(page);
+        } catch (Exception e) {
+        }
+        int pageSize = 6;
+        int total = dAO.totalReviews();
+        int maxPage = total / pageSize + (total % pageSize > 0 ? 1 : 0);
+        int nextPage = pageIndex + 1;
+        int backPage = pageIndex - 1;
+        listPage= dAO.pagingReviews(pageIndex, pageSize);
+        //
         request.setAttribute("list", listReview);
-        request.setAttribute("l", list);
+        request.setAttribute("maxPage", maxPage);
+        request.setAttribute("nextPage", nextPage);
+        request.setAttribute("backPage", backPage);
+//        request.setAttribute("l", list);
+        request.setAttribute("l", listPage);
         request.setAttribute("listTop3", listTop3);
         request.getRequestDispatcher("moreReview.jsp").forward(request, response);
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -60,12 +84,13 @@ public class ReviewServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -73,12 +98,13 @@ public class ReviewServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
