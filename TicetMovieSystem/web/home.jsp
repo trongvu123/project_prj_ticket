@@ -149,11 +149,11 @@
             <div class="blog-title">CINEMA CORNER</div>
             <div class="grid-blog">
                 <div class="content-left">
-                    <a href="#">
+                    <a href="pageReview?id=1">
                         <img src="./img/blog/1.png" alt="alt"/>
                     </a>
                     <div class="title-left">
-                        <a href="#"> <h3>[Review] Migration: Is the Duck House as a phenomenon as the Minions?</h3></a>
+                        <a href="pageReview?id=1"> <h3>[Review] Migration: Is the Duck House as a phenomenon as the Minions?</h3></a>
                     </div>
                     <div class="view-blog">
                         <button><i class="fa-solid fa-thumbs-up"></i>Like</button>
@@ -164,12 +164,12 @@
                     <ul class="list-content__right">
                         <li class="item-right">
                             <div class="img-right">
-                                <a href="#">
-                                    <img src="./img/blog/2.png" alt="alt"/>
+                                <a href="pageReview?id=2">
+                                    <img src="./img/blog/3.png" alt="alt"/>
                                 </a>
                             </div>
                             <div class="title-right">
-                                <a href="#">
+                                <a href="pageReview?id=2">
                                     <h3>[Review] Aquaman And The Lost Kingdom: Goodbye DCEU!</h3>
                                 </a>
 
@@ -181,12 +181,12 @@
                         </li>
                         <li class="item-right">
                             <div class="img-right">
-                                <a href="#">
-                                    <img src="./img/blog/3.png" alt="alt"/>
+                                <a href="pageReview?id=3">
+                                    <img src="./img/blog/4.png" alt="alt"/>
                                 </a>
                             </div>
                             <div class="title-right">
-                                <a href="#">
+                                <a href="pageReview?id=3">
                                     <h3>[Preview] Aquaman And The Lost Kingdom: Superhero Movie's Last Hope?</h3>
                                 </a>
 
@@ -198,12 +198,12 @@
                         </li>
                         <li class="item-right">
                             <div class="img-right">
-                                <a href="#">
-                                    <img src="./img/blog/4.png" alt="alt"/>
+                                <a href="pageReview?id=4">
+                                    <img src="./img/blog/2.png" alt="alt"/>
                                 </a>
                             </div>
                             <div class="title-right">
-                                <a href="#"><h3>[Review] Crane Devil: Bravely choose controversial messages!</h3></a>
+                                <a href="pageReview?id=4"><h3>[Review] Crane Devil: Bravely choose controversial messages!</h3></a>
                                 <div class="view-blog">
                                     <button><i class="fa-solid fa-thumbs-up"></i>Like</button>
                                     <button><i class="fa-solid fa-eye"></i>603</button>
@@ -213,9 +213,9 @@
                     </ul>
                 </div>
             </div>
-                <div class="btn-more__contain">
-                <div class="btn-more">
-                    <div class="btn-more__link"><a href="more?status=all">See also</a><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="btn-more__contain2">
+                <div class="btn-more2">
+                    <div class="btn-more__link2"><a href="review">See also</a><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
             </div>
         </div>

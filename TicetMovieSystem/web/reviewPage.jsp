@@ -22,7 +22,7 @@
                     <div class="link-contain">
                         <a class="home" href="home?status=show">Home page</a>
                         <span class="sp">/</span>
-                        <a class="home" href="review">Home page</a>
+                        <a class="home" href="review">Film reviews</a>
                         <span class="sp">/</span>
                         <span>${rv.title}</span>
                 </div>

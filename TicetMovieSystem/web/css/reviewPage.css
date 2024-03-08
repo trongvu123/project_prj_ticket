@@ -24,6 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 a,span{
     text-decoration: none;
     color: #4a4a4a;
+    font-size: 15px;
 }
 .view-blog{
     display:flex;
@@ -224,4 +225,15 @@ p{
     color:#4a4a4a;
     font-family:Nunito Sans,sans-serif!important;
     font-size: 14px;
+}
+.home{
+   --tw-text-opacity: 1;
+    color: rgb(119 119 119 / var(--tw-text-opacity));
+}
+
+.home:hover{
+     text-decoration: underline;
+}
+.link-contain{
+    margin-top:15px;
 }

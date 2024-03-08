@@ -40,18 +40,18 @@
                         </a>
                     </c:forEach>
                 </div>
-                    <div class="paging">
-                        
-                        <ul class="list-page">
-                            <div class="arrow-back "  ><a href="review?pageIndex=${requestScope.backPage}"><i class="fa-solid fa-chevron-left ${param.pageIndex != 1 && param.pageIndex != null ? 'active hover' : ''}"></i></a></div>
-                        <c:forEach  begin="1" end="${requestScope.maxPage}" step="1" var="pageNumber">
-                                <li> <a href="review?pageIndex=${pageNumber}" class="${pageNumber==param.pageIndex ? 'active' : ''}"><button class="${param.pageIndex == pageNumber || (param.pageIndex == null && pageNumber==1) ? 'active' : ''}">${pageNumber}</button></a></li>
-                        </c:forEach>
-                          
-                                <div class="arrow-up "  ><a href="review?pageIndex=${requestScope.nextPage}"><i class="fa-solid fa-chevron-right ${param.pageIndex != requestScope.maxPage || param.pageIndex == null ? 'active hover' : ''}"></i></a></div>
-                        </ul>
-                       
-                    </div>
+                <div class="paging">
+
+                    <ul class="list-page">
+                        <div class="arrow-back "  ><a href="review?pageIndex=${requestScope.backPage}"><i class="fa-solid fa-chevron-left ${param.pageIndex != 1 && param.pageIndex != null ? 'active hover' : ''}"></i></a></div>
+                                <c:forEach  begin="1" end="${requestScope.maxPage}" step="1" var="pageNumber">
+                            <li> <a href="review?pageIndex=${pageNumber}" class="${pageNumber==param.pageIndex ? 'active' : ''}"><button class="${param.pageIndex == pageNumber || (param.pageIndex == null && pageNumber==1) ? 'active' : ''}">${pageNumber}</button></a></li>
+                                </c:forEach>
+
+                        <div class="arrow-up "  ><a href="review?pageIndex=${requestScope.nextPage}"><i class="fa-solid fa-chevron-right ${param.pageIndex != requestScope.maxPage || param.pageIndex == null ? 'active hover' : ''}"></i></a></div>
+                    </ul>
+
+                </div>
             </div>
 
             <c:set var="l" value="${requestScope.listTop3}"></c:set> 
@@ -77,7 +77,7 @@
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
             <script>
-                  // Lấy chuỗi JSON từ server
+                // Lấy chuỗi JSON từ server
 //let listReviews = '<%= request.getAttribute("list") %>'.replace(/\r?\n/g, '\\n').replace(/(?<=: )"(.*?)"(?=,)/g, function(match) {
 //    return match.replace(/"/g, '\\"');
 //});
@@ -111,26 +111,26 @@
 ////
 //
 //                console.log(listReviews);
-                window.onload = function() {
-    var pageIndex = ${param.pageIndex};
-     var pageIndex = typeof pageIndex !== 'undefined' ? pageIndex : null;
-    var maxPage = ${requestScope.maxPage};
-    console.log(pageIndex);
-    var arrowBack = document.querySelector('.arrow-back a');
-    var arrowUp = document.querySelector('.arrow-up a');
+                window.onload = function () {
+                    var pageIndex = ${param.pageIndex};
+                    var pageIndex = typeof pageIndex !== 'undefined' ? pageIndex : null;
+                    var maxPage = ${requestScope.maxPage};
+                    console.log(pageIndex);
+                    var arrowBack = document.querySelector('.arrow-back a');
+                    var arrowUp = document.querySelector('.arrow-up a');
 
-    if (pageIndex == 1 || pageIndex == null || pageIndex === undefined) {
-        arrowBack.addEventListener('click', function(event) {
-            event.preventDefault();
-        });
-    }
+                    if (pageIndex == 1 || pageIndex == null || pageIndex === undefined) {
+                        arrowBack.addEventListener('click', function (event) {
+                            event.preventDefault();
+                        });
+                    }
 
-    if (pageIndex == maxPage) {
-        arrowUp.addEventListener('click', function(event) {
-            event.preventDefault();
-        });
-    }
-};
+                    if (pageIndex == maxPage) {
+                        arrowUp.addEventListener('click', function (event) {
+                            event.preventDefault();
+                        });
+                    }
+                };
 
         </script>
     </body>

@@ -104,6 +104,37 @@ public class SeatsDAO extends DBContext {
         return list;
     }
 
+    public ArrayList<String> getAllSeatsNameInCart(String movieID, String dayID, String showtimeID, String phone) {
+        ArrayList<String> list = new ArrayList<>();
+        String sql = "select s.*\n"
+                + "from Seats s\n"
+                + "join Showtimes sh on s.ShowtimeID=sh.ShowtimeID\n"
+                + "join Days d on sh.DayId=d.DayId\n"
+                + "join Movie m on m.MovieID=d.MovieID\n"
+                + "join Ticket t  on t.MovieID=m.MovieID\n"
+                + "join [User] u on t.Phone= u.Phone\n"
+                + "where m.MovieID=? and d.DayId=? and sh.ShowtimeID=? and s.TransactionType='cart' and t.TransactionType='cart' and u.Phone=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, movieID);
+            st.setString(2, dayID);
+            st.setString(3, showtimeID);
+            st.setString(4, phone);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String seatName = rs.getString(3);
+                String[] seats = seatName.split(", ");
+                for (String s : seats) {                 
+                    if(!s.isBlank()){
+                        list.add(s);
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public Showtimes getShowtimes(String id) {
         String sql = "select s.*\n"
                 + "from Showtimes s\n"
@@ -211,10 +242,17 @@ public class SeatsDAO extends DBContext {
     public static void main(String[] args) {
         SeatsDAO d = new SeatsDAO();
         ArrayList<String> list = new ArrayList<>();
-        list = d.getAllSeatsName("s58");
-        for (String string : list) {
-            System.out.println(string);
-        }
+        ArrayList<String> list2 = new ArrayList<>();
+         list = d.getAllSeatsNameInCart("mov1","d1","s1","0377580457");
+         list2 = d.getAllSeatsName("s1");
+          String[] seatCart = list.toArray(new String[0]);
+          String[] seatCart2 = list2.toArray(new String[0]);
+       System.out.println(Arrays.toString(seatCart));
+System.out.println(Arrays.toString(seatCart2));
+
+//        for (String string : list) {
+//            System.out.println(string);
+//        }
 
     }
 }

@@ -448,6 +448,39 @@ public class MovieDAO extends DBContext {
         }
     }
 
+    public int countMovieMax(String category, String status) {
+        String sql = "";
+        
+        if (status.equals("all")) {
+            sql += "select COUNT(*)\n"
+                    + "from Movie m\n"
+                    + "join Category c on m.CategoryID=c.CategoryID\n"
+                    + "where c.CategoryName like ?";
+        } 
+        
+        else {
+            sql += "select COUNT(*)\n"
+                    + "from Movie m\n"
+                    + "join Category c on m.CategoryID=c.CategoryID\n"
+                    + "where c.CategoryName like ? and m.Status=?";
+        }
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            if(status.equals("all")){
+                st.setString(1, "%"+category+"%");
+            }else{
+                st.setString(1, "%"+category+"%");
+                st.setString(2, status);
+            }
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         MovieDAO dAO = new MovieDAO();
         int count = dAO.countMovieWithCategory("horror");

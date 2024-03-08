@@ -14,7 +14,7 @@
     </head>
     <body>
        <div class="footer">
-            <div class="grid">
+            <!--<div class="grid">-->
 
                 <div class="footer-contain">
                     <ul class="list-content__footer">
@@ -47,7 +47,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            <!--</div>-->
         </div>
     </body>
 </html>

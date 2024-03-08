@@ -18,6 +18,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
+        <jsp:useBean id="m" scope="page" class="dao.MovieDAO"></jsp:useBean>
         <div class="grid-more">
             <div class="more">
                 <div class="text">Movie</div>
@@ -37,14 +38,14 @@
                             <div class="single category">
                                 <h3 class="side-title">Category</h3>
                                 <ul class="list-unstyled">                      
-                                    <li><a href="more?categoryName=Horror&status=${param.status}" title="" class="${param.categoryName == 'Horror' ? 'active' : ''}">Horror <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Action&status=${param.status}" title="" class="${param.categoryName == 'Action' ? 'active' : ''}">Action <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Animation&status=${param.status}" title="" class="${param.categoryName == 'Animation' ? 'active' : ''}">Animation <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Fiction&status=${param.status}" title="" class="${param.categoryName == 'Fiction' ? 'active' : ''}">Fiction <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Adventure&status=${param.status}" title="" class="${param.categoryName == 'Adventure' ? 'active' : ''}">Adventure <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Psychology&status=${param.status}" title="" class="${param.categoryName == 'Psychology' ? 'active' : ''}">Psychology <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Comedy&status=${param.status}" title="" class="${param.categoryName == 'Comedy' ? 'active' : ''}">Comedy <span class="pull-right">13</span></a></li>
-                                    <li><a href="more?categoryName=Romance&status=${param.status}" title="" class="${param.categoryName == 'Romance' ? 'active' : ''}">Romance <span class="pull-right">13</span></a></li>
+                                    <li><a href="more?categoryName=Horror&status=${param.status}" title="" class="${param.categoryName == 'Horror' ? 'active' : ''}">Horror <span class="pull-right">${m.countMovieMax("horror", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Action&status=${param.status}" title="" class="${param.categoryName == 'Action' ? 'active' : ''}">Action <span class="pull-right">${m.countMovieMax("action", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Animation&status=${param.status}" title="" class="${param.categoryName == 'Animation' ? 'active' : ''}">Animation <span class="pull-right">${m.countMovieMax("animation", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Fiction&status=${param.status}" title="" class="${param.categoryName == 'Fiction' ? 'active' : ''}">Fiction <span class="pull-right">${m.countMovieMax("fiction", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Adventure&status=${param.status}" title="" class="${param.categoryName == 'Adventure' ? 'active' : ''}">Adventure <span class="pull-right">${m.countMovieMax("adventure", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Psychology&status=${param.status}" title="" class="${param.categoryName == 'Psychology' ? 'active' : ''}">Psychology <span class="pull-right">${m.countMovieMax("psychology", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Comedy&status=${param.status}" title="" class="${param.categoryName == 'Comedy' ? 'active' : ''}">Comedy <span class="pull-right">${m.countMovieMax("comedy", param.status)}</span></a></li>
+                                    <li><a href="more?categoryName=Romance&status=${param.status}" title="" class="${param.categoryName == 'Romance' ? 'active' : ''}">Romance <span class="pull-right">${m.countMovieMax("romance", param.status)}</span></a></li>
                                 </ul>
                             </div>
                         </div> 
