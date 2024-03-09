@@ -30,6 +30,26 @@
                 </div>
             </div>
         </div>
+        <div class="overlay2">
+            <div class="notifi2">
+                <div class="contain-notifi2">
+                    <div><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div>Notify</div>
+                    <div>The maximum number of seats set is 8</div>
+                    <div><button>Close</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay3">
+            <div class="notifi3">
+                <div class="contain-notifi3">
+                    <div><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div>Notify</div>
+                    <div>You haven't chosen any seats yet</div>
+                    <div><button>Close</button></div>
+                </div>
+            </div>
+        </div>
         <hr class="line">
         <div class="grid">
             <div class="grid-left__showtime">                  
@@ -37,7 +57,7 @@
                     <c:if test="${requestScope.ticketCheck != null}">
                         <div class="alert">
                             <div class="alert-icon"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="alert-notifi">Add to cart success</div>
+                            <div class="alert-notifi">You have ordered successfully!</div>
                         </div>
                     </c:if>
                     <c:set var="sID" value="${requestScope.showtimeID}"></c:set>
@@ -898,7 +918,7 @@
                                     <div class="seat">A</div>
                                 </li>
                             </ul>
-                            <button class="btn-order" type="submit" onclick="submitForm()"><span>Order</span></button>
+                            <button class="btn-order" ><span>Order</span></button>
                         </form>
                     </div>
                     <div class="view">Screen</div>
@@ -983,8 +1003,7 @@
             %>
 
             document.addEventListener("DOMContentLoaded", function () {
-                let seatCart = JSON.parse('<%= request.getAttribute("seatsCart") %>');
-                console.log(seatCart);
+
 
                 var bookedSeats = JSON.parse('${json}');
                 let total = 0;
@@ -993,8 +1012,8 @@
                 seatButtons.forEach(function (button, index) {
                     var seatValue = button.getAttribute('onclick').split("'")[3];
                     var isBooked = bookedSeats.includes(seatValue);
-
-
+                    let seatCart = JSON.parse('<%= request.getAttribute("seatsCart") %>');
+                    let check = seatCart.includes(seatValue);
                     if (isBooked) {
                         button.classList.add('booked');
                     }
@@ -1004,7 +1023,7 @@
                         var isSelected = this.classList.contains('selected');
 
                         if (!isBooked) {
-                            if (!isSelected && total < 8) {
+                            if (!isSelected && total < 8 && !check) {
                                 this.classList.add('selected');
                                 total++;
                                 console.log(total);
@@ -1036,11 +1055,24 @@
                 seatButtons.forEach(function (item) {
                     let check = false;
                     item.addEventListener('click', function () {
+                        let seatCart = JSON.parse('<%= request.getAttribute("seatsCart") %>');
                         let seatValue = item.getAttribute('onclick').split("'")[3];
                         let selected = this.classList.contains('selected');
                         let booked = this.classList.contains('booked');
+                        if (seatCart.includes(seatValue)) {
+                            
+                            let content = document.querySelector('.contain-notifi2 div:nth-child(3)');
+                            content.textContent = "Seat " + seatValue + " is already in the cart";
+                            var overlay = document.querySelector('.overlay2');
+                            overlay.classList.add('show-overlay2');
+                            var overlayBtn = document.querySelector('.overlay2 button');
+                            overlayBtn.addEventListener('click', () => {
+                                overlay.classList.remove('show-overlay2');
+                            });
+                        }
                         if (!check && !booked) {
-                            total++;
+                            if(!seatCart.includes(seatValue)){
+                                total++;
                             if (total <= 8) {
                                 if (days === "Sunday" || days === "Saturday") {
                                     seatPrice += 4;
@@ -1049,6 +1081,7 @@
                                 }
                                 selectedSeats.push(seatValue);
                                 check = true;
+                            }
                             }
 
                             bill.style.display = 'block';
@@ -1102,8 +1135,26 @@
             }
 
             function submitAllSeats() {
-                document.getElementById('seatForm').submit();
+                let btnsubmit = document.querySelector('.btn-order');
+                console.log(btnsubmit);
+                btnsubmit.addEventListener('click', (e) => {
+                    let seatName = document.querySelector('.seat-name span');                   
+                    if (seatName.innerHTML === '') {
+                        e.preventDefault();
+                        var overlay = document.querySelector('.overlay3');
+                        overlay.classList.add('show-overlay3');
+                        var overlayBtn = document.querySelector('.overlay3 button');
+                        overlayBtn.addEventListener('click', () => {
+                            overlay.classList.remove('show-overlay3');
+                        });
+                    } else {
+                        document.getElementById('seatForm').submit();
+                    }
+                });
             }
+            document.addEventListener('DOMContentLoaded', (event) => {
+                submitAllSeats();
+            });
             $(document).ready(function () {
                 if (window.location.pathname === "/main/ticket") {
                     $(".btn-order").click(function () {

@@ -394,6 +394,132 @@ body{
     cursor:pointer;
     border-radius:5px;
 }
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+    z-index: -8;
+    display: grid;
+    transition: opacity 0.3s ease;
+    margin: auto;
+   
+}
+.overlay2.show-overlay2 {
+    display: block;
+    opacity: 1;
+    z-index: 10;
+     display: flex;
+}
+.notifi2{
+    background-color: white;
+    width: 327px;
+    height: 260px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center;
+    border-radius: 7px;
+    margin: auto;
+}
+.contain-notifi2 div:first-child{
+    font-size: 30px;
+}
+.contain-notifi2 div{
+    margin: 10px 0;
+}
+.contain-notifi2 div:first-child{
+    font-size: 50px;
+    color:var(--primary-color);
+}
+.contain-notifi2 div:nth-child(2){
+    font-size:20px;
+    color:#4a4a4a;
+    font-weight:500;
+}
+.contain-notifi2 div:nth-child(3){
+    font-size:17px;
+    color:#4a4a4a;
+    font-weight:400;
+}
+.contain-notifi2 div button{
+    border:none;
+    background-color:var(--primary-color);
+    color:white;
+    width:170px;
+    height:40px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+
+.overlay3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+    z-index: -8;
+    display: grid;
+    transition: opacity 0.3s ease;
+    margin: auto;
+   
+}
+.overlay3.show-overlay3 {
+    display: block;
+    opacity: 1;
+    z-index: 10;
+     display: flex;
+}
+.notifi3{
+    background-color: white;
+    width: 327px;
+    height: 260px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center;
+    border-radius: 7px;
+    margin: auto;
+}
+.contain-notifi3 div:first-child{
+    font-size: 30px;
+}
+.contain-notifi3 div{
+    margin: 10px 0;
+}
+.contain-notifi3 div:first-child{
+    font-size: 50px;
+    color:var(--primary-color);
+}
+.contain-notifi3 div:nth-child(2){
+    font-size:20px;
+    color:#4a4a4a;
+    font-weight:500;
+}
+.contain-notifi3 div:nth-child(3){
+    font-size:17px;
+    color:#4a4a4a;
+    font-weight:400;
+}
+.contain-notifi3 div button{
+    border:none;
+    background-color:var(--primary-color);
+    color:white;
+    width:170px;
+    height:40px;
+    cursor:pointer;
+    border-radius:5px;
+}
 .cinema{
     color:#4a4a4a;
     font-weight:550;
@@ -414,4 +540,8 @@ body{
     font-size:19px;
     color:#198754;
     margin-right:15px;
+}
+.alert-notifi{
+       --tw-text-opacity: 1;
+    color: rgb(119 119 119 / var(--tw-text-opacity));
 }
