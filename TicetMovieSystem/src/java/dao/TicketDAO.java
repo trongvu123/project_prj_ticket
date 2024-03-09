@@ -48,7 +48,7 @@ public class TicketDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, phone);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -312,9 +312,33 @@ public class TicketDAO extends DBContext {
         return null;
     }
 
+    public ArrayList<String> getStastic() {
+        String sql = "SELECT u.FullName,t.Phone,COUNT(t.TicketID) as NumberOfTicket,SUM(t.Price) as AveragePrice\n"
+                + "FROM ticket t\n"
+                + "join [User] u on t.Phone=u.Phone\n"
+                + "WHERE t.TransactionType='bill'\n"
+                + "GROUP BY t.Phone,u.FullName\n"
+                + "ORDER BY AveragePrice ASC";
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String data = rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getInt(3)+"-"+rs.getString(4);
+                list.add(data);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         TicketDAO d = new TicketDAO();
-        int total = d.countTicket("0377580457");
-        System.out.println(total);
+        ArrayList<String> list = new ArrayList<>();
+        list = d.getStastic();
+        for (String s : list) {
+            System.out.println(s.split("-")[1]);
+        }
     }
 }

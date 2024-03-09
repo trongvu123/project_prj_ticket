@@ -26,7 +26,7 @@
     <body>
         <jsp:include page="header.jsp"></jsp:include>
             <form class="form-horizontal" action="update">
-                <fieldset>
+                <div>
                 <c:if test="${requestScope.messSuccess != null}">
                     <div class="alert alert-success " role="alert">
                         ${requestScope.messSuccess}
@@ -161,7 +161,7 @@
                     </div>
                 </div>
 
-            </fieldset>
+            </div>
                     
         </form>
                         <div>${requestScope.img}</div>  

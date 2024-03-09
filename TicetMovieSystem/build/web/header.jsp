@@ -41,7 +41,7 @@
                             <div class="m-contain">
                                 <div class="movie-hover">
                                     <div class="movie-hover_show">
-                                        
+
                                         <div class="4-movie_show">
                                             <div class="text-hover_show">Show</div>
                                             <div class="m_top3-show">
@@ -51,36 +51,36 @@
                                         list=mdao.getMovieTop8ByStatus("show");
                                         for (int i = 0; i < 4; i++) {
                                         Movie movie = list.get(i);
-                                        %>
-                                        <div class="movie-item_show">
-                                            <div class="img-show"><img src="<%= movie.getImgURL() %>" alt="alt"/></div>
-                                            <div class="title-show"><%= movie.getTitle() %></div>
-                                            <div class="btnz"><button><a href="movie?movieID=<%= movie.getMovieID() %>"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button></div>
-                                        </div>
-                                        <%
-                                        }  
-                                        %>    
-                                                
+                                                %>
+                                                <div class="movie-item_show">
+                                                    <div class="img-show"><img src="<%= movie.getImgURL() %>" alt="alt"/></div>
+                                                    <div class="title-show"><%= movie.getTitle() %></div>
+                                                    <div class="btnz"><button><a href="movie?movieID=<%= movie.getMovieID() %>"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button></div>
+                                                </div>
+                                                <%
+                                                }  
+                                                %>    
+
                                             </div>
-                                        <div class="text-hover_show">Show</div>
-                                        <div class="m_top3-soon">
+                                            <div class="text-hover_show">Show</div>
+                                            <div class="m_top3-soon">
                                                 <%
                                         
                                         ArrayList<Movie> list2 = new ArrayList<>();
                                         list2=mdao.getMovieTop8ByStatus("soon");
                                         for (int i = 0; i < 4; i++) {
                                         Movie movie2 = list2.get(i);
-                                        %>
-                                        <div class="movie-item_soon">
-                                            <div class="img-soon"><img src="<%= movie2.getImgURL() %>" alt="alt"/></div>
-                                            <div class="title-soon"><%= movie2.getTitle() %></div>
-                                            <div class="btnzx"><button><a href="movie?movieID=<%= movie2.getMovieID() %>"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button></div>
+                                                %>
+                                                <div class="movie-item_soon">
+                                                    <div class="img-soon"><img src="<%= movie2.getImgURL() %>" alt="alt"/></div>
+                                                    <div class="title-soon"><%= movie2.getTitle() %></div>
+                                                    <div class="btnzx"><button><a href="movie?movieID=<%= movie2.getMovieID() %>"><i class="fa-solid fa-ticket icon-m"></i>Buy ticket</a></button></div>
 
-                                        </div>
-                                        <%
-                                        }  
-                                        %>    
-                                                
+                                                </div>
+                                                <%
+                                                }  
+                                                %>    
+
                                             </div>
                                         </div>
                                     </div>
@@ -133,26 +133,35 @@
                             <div class="user-img"><img src="./img/avt.png" alt="alt"/></div>
                             <div class="user-name">${u.fullName}</div>
                             <div class="user-content">
-                                <div><i class="fa-solid fa-user"></i><a href="#">Account</a></div>
+                                <div><i class="fa-solid fa-user"></i><a href="account">Account</a></div>
                                 <div><i class="fa-solid fa-list-ol"></i><a href="history">History</a></div>
                                         <c:if test="${sessionScope.user.role==0}">
                                     <div><i class="fa-solid fa-bars-progress"></i><a href="manage">Manager</a></div>
                                         </c:if>
-                                <div><i class="fa-solid fa-cart-shopping"></i>
-                                    <%  
-              User user = (User) session.getAttribute("user");
-              int count = ticketDAO.countTicket(user.getPhone());
+                                        <c:choose>
+                                            <c:when test="${sessionScope.user.role==0}">
+                                        <div><i class="fa-solid fa-chart-simple"></i><a href="statistics">Statistics</a></div>
+                                            </c:when>
+                                            <c:otherwise>
+                                        <div><i class="fa-solid fa-cart-shopping"></i>
+                                            <%  
+                      User user = (User) session.getAttribute("user");
+                      int count = ticketDAO.countTicket(user.getPhone());
              
                                         
-              if(count > 0) {
-                                    %>
-                                    <span>
-                                        <%= count %>
-                                    </span>
-                                    <%  
-                                        }
-                                    %>
-                                    <a href="cart">Cart</a></div>
+                      if(count > 0) {
+                                            %>
+                                            <span>
+                                                <%= count %>
+                                            </span>
+                                            <%  
+                                                }
+                                            %>
+
+                                            <a href="cart">Cart</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 <div><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></div>
 
 
