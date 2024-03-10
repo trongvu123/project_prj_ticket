@@ -23,6 +23,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
+        <a href="add"><button class="button-5" role="button">Add movie</button></a>
         <table id="example" class="table table-striped" style="width:100%">
                        <thead>
                 <tr>

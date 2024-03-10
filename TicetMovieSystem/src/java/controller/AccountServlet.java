@@ -81,7 +81,7 @@ public class AccountServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         User userInfo = new User(user.getPhone(), fullname, email, dob, password, gender, user.getRole());
         userDAO.updateUser(userInfo);
-        session.setAttribute("us", user);
+//        session.setAttribute("us", user);
         request.getRequestDispatcher("account.jsp").forward(request, response);
     }
 

@@ -126,7 +126,7 @@
                     </div>
                     <c:set var="u" value="${sessionScope.user}"></c:set>
                     <c:if test="${u eq null}">
-                        <div class="login"><a href="login.jsp">Login</a></div>
+                        <div class="login"><a href="login">Login</a></div>
                     </c:if>
                     <c:if test="${u != null}">
                         <div class="user">

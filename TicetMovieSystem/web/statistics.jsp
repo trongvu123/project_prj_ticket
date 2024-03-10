@@ -20,6 +20,23 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap5.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+        <style>
+            .dt-length{
+                margin-left: 150px;
+            }
+            .dt-search{
+                margin-right: 0px;
+            }
+            .dt-info{
+                 margin-left: 150px;
+            }
+            .ms-auto{
+                margin-right: 150px;
+            }
+            #example_wrapper{
+                margin-top: 60px;
+            }
+        </style>
     </head>
        <jsp:include page="header.jsp"></jsp:include>
        <jsp:useBean id="m" scope="page" class="dao.TicketDAO"></jsp:useBean>  

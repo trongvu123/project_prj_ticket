@@ -72,7 +72,7 @@
                                 <a href="#!" class="forgot-password-link">Password?</a>
                             </div>
                         </form>           
-                        <p class="login-wrapper-footer-text">You have already account? <a href="login.jsp" class="text-reset">Login here</a></p>
+                        <p class="login-wrapper-footer-text">You have already account? <a href="login" class="text-reset">Login here</a></p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-7 intro-section">

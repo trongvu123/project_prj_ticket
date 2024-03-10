@@ -148,6 +148,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-weight:600;
     font-size:20px;
     border-left: 5px solid #034EA2;
+    padding-left: 8px;
+    opacity: 0.8;
 }
 .movie-top3{
     position:relative;

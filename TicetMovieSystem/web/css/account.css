@@ -188,4 +188,11 @@ label{
     border-radius:4px;
     margin-left:280px;
     cursor:pointer;
+    position: relative;
+    bottom: 17px;
+}
+.pass-input i:nth-child(3){
+    position:relative;
+    top: -29px;
+    left: 178px;
 }

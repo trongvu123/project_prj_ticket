@@ -63,7 +63,7 @@
                                 <a href="#!" class="forgot-password-link">Password?</a>
                             </div>
                         </form>           
-                        <p class="login-wrapper-footer-text">Need an account? <a href="signup.jsp" class="text-reset">Signup here</a></p>
+                        <p class="login-wrapper-footer-text">Need an account? <a href="signup" class="text-reset">Signup here</a></p>
                     </div>
                 </div>
             </div>
