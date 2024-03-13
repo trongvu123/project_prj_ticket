@@ -134,7 +134,10 @@
                             <div class="user-name">${u.fullName}</div>
                             <div class="user-content">
                                 <div><i class="fa-solid fa-user"></i><a href="account">Account</a></div>
-                                <div><i class="fa-solid fa-list-ol"></i><a href="history">History</a></div>
+                               
+                                <c:if test="${sessionScope.user.role==1}">
+                                    <div><i class="fa-solid fa-list-ol"></i><a href="history">History</a></div>
+                                </c:if>
                                         <c:if test="${sessionScope.user.role==0}">
                                     <div><i class="fa-solid fa-bars-progress"></i><a href="manage">Manager</a></div>
                                         </c:if>

@@ -349,3 +349,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius:2px;
     height:40px;
 }
+.release-soon{
+     --tw-text-opacity: 1;
+    color: rgb(119 119 119 / var(--tw-text-opacity));
+    font-size:20px;
+}

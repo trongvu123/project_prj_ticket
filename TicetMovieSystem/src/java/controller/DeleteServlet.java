@@ -6,6 +6,7 @@
 package controller;
 
 import dao.MovieDAO;
+import entity.Movie;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  *
@@ -58,8 +60,14 @@ public class DeleteServlet extends HttpServlet {
     throws ServletException, IOException {
         String movie = request.getParameter("movieID");
         MovieDAO movieDAO = new MovieDAO();
+        Movie m  = movieDAO.getMovieByID(movie);
         movieDAO.deleteMovie(movie);
-        response.sendRedirect("manage.jsp");
+         ArrayList<Movie> listMovie = new ArrayList<>();
+        listMovie = movieDAO.getAllMovie();
+        request.setAttribute("listMovie", listMovie);
+        request.setAttribute("m", m);
+        
+        request.getRequestDispatcher("manage.jsp").forward(request, response);
     } 
 
     /** 

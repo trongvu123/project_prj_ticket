@@ -77,13 +77,16 @@ public class MovieServlet extends HttpServlet {
         seatses = seatsDAO.getAllSeats(showtimeID);
          DaysDAO d1 = new DaysDAO();
           days=d1.getAllDays(id);
-              if(list.isEmpty()){
+          if(!days.isEmpty()){
+                    if(list.isEmpty()){
             String dayFirstString="";
 
          dayFirstString= days.get(0).getDayID();
 
         list=s.getAllShowtimes(dayFirstString);
         }
+          }
+        
         ArrayList<Movie> listTop3 = new ArrayList<>();
         listTop3 = d.getMovieTop8ByStatus("show");
         Movie movie = d.getMovieByID(id);

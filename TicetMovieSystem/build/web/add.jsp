@@ -25,7 +25,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <form class="form-horizontal" action="update">
+        <form class="form-horizontal" action="add" method="post">
                 <div>
                  <c:if test="${requestScope.messSuccess != null}">
                     <div class="alert alert-success " role="alert">
@@ -33,18 +33,18 @@
                     </div>
                 </c:if>  
                 <c:if test="${requestScope.messErr != null}">
-                    <div class="alert alert-success " role="alert">
+                    <div class="alert alert-danger " role="alert">
                         ${requestScope.messErr}
                     </div>
                 </c:if>                   
                 <!-- Form Name -->
-                <legend>PRODUCTS</legend>
+                <legend>ADD MOVIE</legend>
                 <c:set var="m" value="${requestScope.movie}"></c:set>
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="product_id">Movie ID</label>  
                         <div class="col-md-4">
-                            <input id="product_id" name="movie" value="${m.movieID}" placeholder="MOVIE ID" class="form-control input-md" readonly type="text">
+                            <input id="product_id" name="movie" value="${m.movieID}" placeholder="MOVIE ID" class="form-control input-md" type="text">
 
                     </div>
                 </div>

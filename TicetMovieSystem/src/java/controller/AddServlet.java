@@ -81,7 +81,8 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           String movie = request.getParameter("movie");
+           String movieID = request.getParameter("movieID");
+        String movieCode = request.getParameter("movie");
         String title = request.getParameter("title");
         String actor = request.getParameter("actor");
         String director = request.getParameter("director");
@@ -94,17 +95,39 @@ public class AddServlet extends HttpServlet {
         String status = request.getParameter("status");
         String imgURL = request.getParameter("imgURL");
         String imgCover = request.getParameter("imgCover");
+        String imgURL_org = request.getParameter("imgURL_origin");
+        String imgCover_org = request.getParameter("imgCover_origin");
         String trailer = request.getParameter("trailer");
+    String imgLink="";
+    String coverLink="";
+        if (imgURL == null || imgURL.isEmpty()) {
+        imgURL = imgURL_org;
+    } else {
+        String s = movieCode.substring(3);
+        int number = Integer.parseInt(s);
+        if (number <= 10) {
+            imgURL = "./img/show/" + imgURL;
+        } else {
+            imgURL = "./img/soon/" + imgURL;
+        }
+    }
+    if (imgCover == null || imgCover.isEmpty()) {
+        imgCover = imgCover_org;
+    } else {
+        imgCover = "./img/cover/" + imgCover;
+    }
+
         int duration_raw = 0, year_raw = 0;
         try {
             duration_raw = Integer.parseInt(duration);
             year_raw = Integer.parseInt(year);
         } catch (Exception e) {
         }
+
         CategoryDAO categoryDAO = new CategoryDAO();
         MovieDAO movieDAO = new MovieDAO();
         Category category1 = movieDAO.getCategory(category);
-        Movie newMovie = new Movie(movie, title, actor, director, producer, country, duration_raw, status, year_raw, category1, imgURL, imgCover, trailer, content);
+        Movie newMovie = new Movie(movieCode, title, actor, director, producer, country, duration_raw, status, year_raw, category1, imgURL, imgCover, trailer, content);
         boolean check = movieDAO.addMovie(newMovie);
         ArrayList<Category> listCategory = new ArrayList<>();
         listCategory = categoryDAO.getAll();
@@ -112,10 +135,12 @@ public class AddServlet extends HttpServlet {
         String mess = "";
         if (!check) {
             mess += "Duplicate movieID!";
-            request.setAttribute("messErr", mess);          
+            request.setAttribute("messErr", mess);  
+            request.getRequestDispatcher("add.jsp").forward(request, response);
         } else {
             mess += "Add successful!";
-            request.setAttribute("messSuccess", mess);          
+            request.setAttribute("messSuccess", mess);    
+            request.getRequestDispatcher("add.jsp").forward(request, response);
         }
     }
 

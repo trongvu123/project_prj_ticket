@@ -24,6 +24,23 @@
     <body>
         <jsp:include page="header.jsp"></jsp:include>
         <a href="add"><button class="button-5" role="button">Add movie</button></a>
+        <div class="overlay">
+            <div class="notifi">
+                <div class="contain-notifi">
+                    <div><i class="fa-solid fa-trash"></i></div>
+                    <div>Notify</div>
+                    <div></div>
+                    <div><button>Delete</button>
+                        <button>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <c:if test="${requestScope.m != null}">
+            <div class="alert alert-success " role="alert">
+                You have successfully deleted movie <strong>${m.title}</strong>
+                    </div>
+        </c:if>
         <table id="example" class="table table-striped" style="width:100%">
                        <thead>
                 <tr>
@@ -68,7 +85,20 @@ $(document).ready(function() {
         "lengthMenu": [ [8,10, 25, 50, -1], [8,10, 25, 50, "All"] ] 
     });
 });
-
+    function deleteItem(id) {
+                let overlay = document.querySelector('.overlay');
+                let content = document.querySelector('.contain-notifi div:nth-child(3)');
+                overlay.classList.add('show-overlay');
+                content.textContent="Are you sure to delete the "+id+" ?";
+                let btnBuy = document.querySelector('.overlay button:first-child');
+                let btnDelete = document.querySelector('.overlay button:last-child');
+                btnBuy.addEventListener('click', () => {
+                    window.location = "delete?movieID=" + id;
+                });
+                btnDelete.addEventListener('click', () => {
+                    overlay.classList.remove('show-overlay');
+                });
+            }
     </script>
     </body>
 </html>

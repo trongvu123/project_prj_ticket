@@ -83,6 +83,10 @@
                     <c:set var="seat" value="${requestScope.listSeat}"></c:set>
                     <c:set var="cinema" value="${requestScope.cinema}"></c:set>
                         <form action="showtime" >
+                        <c:if test="${empty d}">
+                            <h4 class="release-soon">The film will be released soon!!!</h4>
+                        </c:if>
+                        <c:if test="${not empty d}">
                             <div class="list-day">
                                 <div class="day-contain">
                                     <div class="day-remain">
@@ -127,6 +131,7 @@
                                 <h1>${t.seatName}</h1>
                             </c:forEach>
                         </div>
+                                </c:if>
 
                     </form>
                 </div>
