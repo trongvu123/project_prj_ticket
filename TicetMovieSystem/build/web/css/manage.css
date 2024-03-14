@@ -154,3 +154,12 @@ button a:hover{
     position:relative;
     top:50px
 }
+.dt-search{
+    margin-right: 20px;
+}
+.ms-auto{
+    margin-right: 20px;
+}
+.dt-info{
+    margin-left: 20px;
+}

@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cart Page</title>
         <link rel="stylesheet" href="./css/account.css"/>
         <link rel="stylesheet" href="./css/cart.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -63,7 +63,7 @@
                         <div class="acc-name">${sessionScope.us.fullName}</div>
                     </div>
                     <div class="hotline">
-                        <div>HOTLINE hỗ trợ: 0123456789</div>
+                        <div>HOTLINE support: 0123456789</div>
                         <div>Email: hotro@galaxystudio.vn</div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                                     <td>${l.showtimes.showtimeStart}</td>
                                     <td>${l.seats.seatName}</td>
                                     <td>${l.cinema.cinemaName}</td>
-                                    <td>${l.price}</td>
+                                    <td>${l.price}$</td>
                                     <td>${l.user.phone}</td>                                 
                                     <td>
                                         <a href="#" onclick="buy('${l.ticketID}')" title="Buy"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -127,7 +127,7 @@
                 </c:if>
                 <c:if test="${not empty o}">
                     <div class="buy-all">
-                    <div class="total-cart">Total price: ${requestScope.total}</div>
+                    <div class="total-cart">Total price: ${requestScope.total}$</div>
                     <a href="#" onclick="buyAll('buy')"><button>Buy all</button></a></div>
                 </c:if>
                 

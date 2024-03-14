@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Update Page</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -20,6 +20,11 @@
             }
             form{
                 margin-top: 40px;
+            }
+            .back{
+                    position: relative;
+    bottom: 48.5px;
+    left: 574px;
             }
         </style>
     </head>
@@ -33,7 +38,7 @@
                     </div>
                 </c:if>                  
                 <!-- Form Name -->
-                <legend>PRODUCTS</legend>
+                <legend>UPDATE</legend>
                 <c:set var="m" value="${requestScope.movie}"></c:set>
                     <!-- Text input-->
                     <div class="form-group">
@@ -157,13 +162,14 @@
                     <label class="col-md-4 control-label" for="singlebutton"></label>
                     <div class="col-md-4">
                         <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Add</button>
-                        <a href="manage"><button class="btn btn-primary">back</button></a>
+                       
                     </div>
                 </div>
 
             </div>
                     
         </form>
+                    <a href="manage" ><button class="btn btn-primary back">back</button></a>
                         <div>${requestScope.img}</div>  
                         <div>${requestScope.img2}</div>  
         <jsp:include page="footer.jsp"></jsp:include>

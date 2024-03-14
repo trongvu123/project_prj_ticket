@@ -119,7 +119,11 @@ public class UpdateServlet extends HttpServlet {
             request.setAttribute("messErr", mess);
         } else {
             mess += "Add successful!";
-            request.setAttribute("messSuccess", mess);
+            ArrayList<Movie> listMovie = new ArrayList<>();
+            listMovie = movieDAO.getAllMovie();
+            request.setAttribute("listMovie", listMovie);
+            request.setAttribute("messSuccessU", mess);
+            request.getRequestDispatcher("manage.jsp").forward(request, response);
         }
 
         Movie movie = movieDAO.getMovieByID(movieID);

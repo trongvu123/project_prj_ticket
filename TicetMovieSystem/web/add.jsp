@@ -10,24 +10,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add Page</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-           <style>
+        <style>
             legend{
                 margin-left: 20px;
             }
             form{
                 margin-top: 40px;
             }
+            .back{
+                position: relative;
+                bottom: 48.5px;
+                left: 574px;
+            }
         </style>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <form class="form-horizontal" action="add" method="post">
+            <form class="form-horizontal" action="add" method="post">
                 <div>
-                 <c:if test="${requestScope.messSuccess != null}">
+                <c:if test="${requestScope.messSuccess != null}">
                     <div class="alert alert-success " role="alert">
                         ${requestScope.messSuccess}
                     </div>
@@ -162,28 +167,29 @@
                     <label class="col-md-4 control-label" for="singlebutton"></label>
                     <div class="col-md-4">
                         <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Add</button>
-                        <a href="manage"><button class="btn btn-primary">back</button></a>
+
                     </div>
                 </div>
 
             </div>
-                    
+
         </form>
-                        <jsp:include page="footer.jsp"></jsp:include>
-                        <script>
-                            // Lấy tham chiếu đến phần tử select
-var selectElement = document.getElementById("product_categorie_2");
+        <a href="manage"><button class="btn btn-primary back">back</button></a>
+        <jsp:include page="footer.jsp"></jsp:include>
+        <script>
+            // Lấy tham chiếu đến phần tử select
+            var selectElement = document.getElementById("product_categorie_2");
 
 // Hủy bỏ thuộc tính disabled của phần tử select
-function enableSelect() {
-    selectElement.removeAttribute("disabled");
-}
+            function enableSelect() {
+                selectElement.removeAttribute("disabled");
+            }
 
 // Gọi hàm enableSelect khi cần thiết
 // Ví dụ: khi một sự kiện nào đó xảy ra
 // Trong ví dụ này, chúng ta gọi hàm enableSelect khi trang web được tải hoàn toàn
-window.onload = enableSelect;
+            window.onload = enableSelect;
 
-                        </script>
-                        </body>
-                        </html>
+        </script>
+    </body>
+</html>

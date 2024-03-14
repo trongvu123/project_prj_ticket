@@ -29,7 +29,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>RoleFilter</filter-name>
-        <url-pattern>/movie</url-pattern>
+       
         <url-pattern>/seat</url-pattern>
         <url-pattern>/ticket</url-pattern>       
         <url-pattern>/history</url-pattern>

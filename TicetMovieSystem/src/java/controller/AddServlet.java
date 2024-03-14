@@ -81,7 +81,7 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           String movieID = request.getParameter("movieID");
+        String movieID = request.getParameter("movieID");
         String movieCode = request.getParameter("movie");
         String title = request.getParameter("title");
         String actor = request.getParameter("actor");
@@ -98,24 +98,24 @@ public class AddServlet extends HttpServlet {
         String imgURL_org = request.getParameter("imgURL_origin");
         String imgCover_org = request.getParameter("imgCover_origin");
         String trailer = request.getParameter("trailer");
-    String imgLink="";
-    String coverLink="";
+        String imgLink = "";
+        String coverLink = "";
         if (imgURL == null || imgURL.isEmpty()) {
-        imgURL = imgURL_org;
-    } else {
-        String s = movieCode.substring(3);
-        int number = Integer.parseInt(s);
-        if (number <= 10) {
-            imgURL = "./img/show/" + imgURL;
+            imgURL = imgURL_org;
         } else {
-            imgURL = "./img/soon/" + imgURL;
+            String s = movieCode.substring(3);
+            int number = Integer.parseInt(s);
+            if (number <= 10) {
+                imgURL = "./img/show/" + imgURL;
+            } else {
+                imgURL = "./img/soon/" + imgURL;
+            }
         }
-    }
-    if (imgCover == null || imgCover.isEmpty()) {
-        imgCover = imgCover_org;
-    } else {
-        imgCover = "./img/cover/" + imgCover;
-    }
+        if (imgCover == null || imgCover.isEmpty()) {
+            imgCover = imgCover_org;
+        } else {
+            imgCover = "./img/cover/" + imgCover;
+        }
 
         int duration_raw = 0, year_raw = 0;
         try {
@@ -135,12 +135,15 @@ public class AddServlet extends HttpServlet {
         String mess = "";
         if (!check) {
             mess += "Duplicate movieID!";
-            request.setAttribute("messErr", mess);  
+            request.setAttribute("messErr", mess);
             request.getRequestDispatcher("add.jsp").forward(request, response);
         } else {
             mess += "Add successful!";
-            request.setAttribute("messSuccess", mess);    
-            request.getRequestDispatcher("add.jsp").forward(request, response);
+            ArrayList<Movie> listMovie = new ArrayList<>();
+            listMovie = movieDAO.getAllMovie();
+            request.setAttribute("listMovie", listMovie);
+            request.setAttribute("messSuccess", mess);
+            request.getRequestDispatcher("manage.jsp").forward(request, response);
         }
     }
 

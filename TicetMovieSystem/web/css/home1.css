@@ -577,7 +577,9 @@ a{
     text-align:center;
     height: 100px;
 }
-
+.choose-bar__buy a{
+    color: #4a4a4a;
+}
 
 
 

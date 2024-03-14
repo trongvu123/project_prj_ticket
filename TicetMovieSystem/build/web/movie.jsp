@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Movie Page</title>
         <link rel="stylesheet" href="./css/movie1.css"/>
 
     </head>
@@ -83,10 +83,10 @@
                     <c:set var="seat" value="${requestScope.listSeat}"></c:set>
                     <c:set var="cinema" value="${requestScope.cinema}"></c:set>
                         <form action="showtime" >
-                        <c:if test="${empty d}">
+                        <c:if test="${empty d or sessionScope.user.role==0}">
                             <h4 class="release-soon">The film will be released soon!!!</h4>
                         </c:if>
-                        <c:if test="${not empty d}">
+                        <c:if test="${not empty d and sessionScope.user.role==1}">
                             <div class="list-day">
                                 <div class="day-contain">
                                     <div class="day-remain">

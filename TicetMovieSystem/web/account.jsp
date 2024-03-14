@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Account</title>
         <link rel="stylesheet" href="./css/account.css"/>
     </head>
     <body>
@@ -25,7 +25,7 @@
                         <div class="acc-name">${us.fullName}</div>
                     </div>
                     <div class="hotline">
-                        <div>HOTLINE hỗ trợ: 0123456789</div>
+                        <div>HOTLINE support: 0123456789</div>
                         <div>Email: hotro@galaxystudio.vn</div>
                     </div>
                 </div>
